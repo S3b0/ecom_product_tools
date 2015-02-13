@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="title.description">
+				<source>The product name</source>
+			</trans-unit>
+			<trans-unit id="teaser.description">
+				<source>Product teaser</source>
+			</trans-unit>
+			<trans-unit id="link_title.description">
+				<source>Teaser link title</source>
+			</trans-unit>
+			<trans-unit id="link_to_page.description">
+				<source>Teaser link configuration</source>
+			</trans-unit>
+			<trans-unit id="product_categories.description">
+				<source>The corresponding (product-)category</source>
+			</trans-unit>
+			<trans-unit id="certifications.description">
+				<source>Product certifications</source>
+			</trans-unit>
+			<trans-unit id="attestations.description">
+				<source>Product attestations</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

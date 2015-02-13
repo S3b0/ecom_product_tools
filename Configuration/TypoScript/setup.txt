@@ -1,0 +1,49 @@
+
+plugin.tx_ecomproducttools {
+	view {
+		templateRootPath = {$plugin.tx_ecomproducttools.view.templateRootPath}
+		partialRootPath = {$plugin.tx_ecomproducttools.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_ecomproducttools.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_ecomproducttools.persistence.storagePid}
+	}
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
+plugin.tx_ecomproducttools._CSS_DEFAULT_STYLE (
+	textarea.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-ecom-product-tools table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-ecom-product-tools table th {
+		font-weight:bold;
+	}
+
+	.tx-ecom-product-tools table td {
+		vertical-align:top;
+	}
+
+	.typo3-messages .message-error {
+		color:red;
+	}
+
+	.typo3-messages .message-ok {
+		color:green;
+	}
+
+)

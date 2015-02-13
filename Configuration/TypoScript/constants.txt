@@ -1,0 +1,15 @@
+
+plugin.tx_ecomproducttools {
+	view {
+		# cat=plugin.tx_ecomproducttools/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:ecom_product_tools/Resources/Private/Templates/
+		# cat=plugin.tx_ecomproducttools/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:ecom_product_tools/Resources/Private/Partials/
+		# cat=plugin.tx_ecomproducttools/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:ecom_product_tools/Resources/Private/Layouts/
+	}
+	persistence {
+		# cat=plugin.tx_ecomproducttools//a; type=string; label=Default storage PID
+		storagePid =
+	}
+}

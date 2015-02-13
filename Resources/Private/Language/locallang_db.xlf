@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="tx_ecomproducttools_domain_model_product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.link_title">
+				<source>Link Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.link_to_page">
+				<source>Link to page</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.discontinued">
+				<source>Discontinued</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.atex_zone">
+				<source>ATEX Zone</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.nec_division">
+				<source>NEC Division</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.product_categories">
+				<source>Product Categories</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.certifications">
+				<source>Certifications</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.attestations">
+				<source>Attestations</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_language.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_language.flag">
+				<source>Flag</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file">
+				<source>File</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.file_reference">
+				<source>File reference</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.last_modification">
+				<source>Last Modification</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.revision">
+				<source>Revision</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.language">
+				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.products">
+				<source>Products</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_productdivision">
+				<source>Product Division</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_productdivision.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_productcategory">
+				<source>Product Category</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.product_division">
+				<source>Product Division</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval">
+				<source>Approval</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval.icon">
+				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval.setcard_icon">
+				<source>Setcard Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_attestation">
+				<source>Attestation</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_attestation.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_attestation.approval">
+				<source>Approval</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification">
+				<source>Certification</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.approval">
+				<source>Approval</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
