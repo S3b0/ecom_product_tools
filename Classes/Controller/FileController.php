@@ -30,15 +30,7 @@ namespace S3b0\EcomProductTools\Controller;
 /**
  * FileController
  */
-class FileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
-	/**
-	 * fileRepository
-	 *
-	 * @var \S3b0\EcomProductTools\Domain\Repository\FileRepository
-	 * @inject
-	 */
-	protected $fileRepository = NULL;
+class FileController extends ExtensionController {
 
 	/**
 	 * action listByCategory
@@ -46,7 +38,7 @@ class FileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function listByCategoryAction() {
-		
+
 	}
 
 	/**
@@ -55,7 +47,7 @@ class FileController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function listByProductAction() {
-		
+
 	}
 
 }

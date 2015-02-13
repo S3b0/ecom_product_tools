@@ -66,7 +66,6 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * File content language
 	 *
 	 * @var \S3b0\EcomProductTools\Domain\Model\Language
-	 * @lazy
 	 */
 	protected $language = NULL;
 
@@ -74,9 +73,15 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Affected products
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product>
-	 * @lazy
 	 */
 	protected $products = NULL;
+
+	/**
+	 * TYPO3 CMS fileCategory
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+	 */
+	protected $fileCategory = NULL;
 
 	/**
 	 * __construct
@@ -96,6 +101,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->products = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->fileCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -151,7 +157,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \DateTime $lastModification
 	 * @return void
 	 */
-	public function setLastModification(\DateTime $lastModification) {
+	public function setLastModification(\DateTime $lastModification = NULL) {
 		$this->lastModification = $lastModification;
 	}
 
@@ -189,7 +195,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \S3b0\EcomProductTools\Domain\Model\Language $language
 	 * @return void
 	 */
-	public function setLanguage(\S3b0\EcomProductTools\Domain\Model\Language $language) {
+	public function setLanguage(\S3b0\EcomProductTools\Domain\Model\Language $language = NULL) {
 		$this->language = $language;
 	}
 
@@ -228,8 +234,38 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product> $products
 	 * @return void
 	 */
-	public function setProducts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $products) {
+	public function setProducts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $products = NULL) {
 		$this->products = $products;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory
+	 * @return void
+	 */
+	public function addFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory) {
+		$this->fileCategory->attach($fileCategory);
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove The Category to be removed
+	 * @return void
+	 */
+	public function removeFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove) {
+		$this->fileCategory->detach($fileCategoryToRemove);
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+	 */
+	public function getFileCategory() {
+		return $this->fileCategory->current();
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $fileCategory
+	 */
+	public function setFileCategory($fileCategory = NULL) {
+		$this->fileCategory = $fileCategory;
 	}
 
 }

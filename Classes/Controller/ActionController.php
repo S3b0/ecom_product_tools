@@ -1,5 +1,5 @@
 <?php
-namespace S3b0\EcomProductTools\Domain\Model;
+namespace S3b0\EcomProductTools\Controller;
 
 
 /***************************************************************
@@ -28,35 +28,20 @@ namespace S3b0\EcomProductTools\Domain\Model;
  ***************************************************************/
 
 /**
- * FileCategory
+ * ActionController
  */
-class FileCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class ActionController extends ExtensionController {
 
 	/**
-	 * title
+	 * action downloadCenter
 	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $title = '';
-
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
-
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
 	 * @return void
 	 */
-	public function setTitle($title) {
-		$this->title = $title;
+	public function downloadCenterAction() {
+		$this->view->assignMultiple(array(
+			'debug' => $this->fileRepository->findAll()->getFirst()->getFileCategory(),
+			'productDivisions' => $this->productDivisionRepository->findAll()
+		));
 	}
 
 }

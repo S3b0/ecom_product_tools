@@ -32,5 +32,11 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  */
 class ApprovalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	
+	/**
+	 * @var array
+	 */
+	protected $defaultOrderings = array(
+		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+	);
+
 }

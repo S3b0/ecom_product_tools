@@ -26,14 +26,13 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	categories int(11) unsigned DEFAULT '0' NOT NULL,
-
 	file_reference int(11) unsigned NOT NULL default '0',
 	title varchar(255) DEFAULT '' NOT NULL,
 	last_modification date DEFAULT '0000-00-00',
 	revision int(11) DEFAULT '0' NOT NULL,
 	language int(11) unsigned DEFAULT '0',
 	products int(11) unsigned DEFAULT '0' NOT NULL,
+	file_category int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

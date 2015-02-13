@@ -82,9 +82,9 @@ return array(
 				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
 				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval', 0)
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval', '')
 				),
-				'minitems' => 0,
+				'minitems' => 1,
 				'maxitems' => 1
 			),
 		),

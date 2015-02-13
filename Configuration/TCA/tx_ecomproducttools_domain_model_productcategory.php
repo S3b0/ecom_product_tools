@@ -127,6 +127,7 @@ return array(
 				'MM' => 'tx_ecomproducttools_productcategory_productdivision_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
+				'minitems' => 1,
 				'maxitems' => 9999,
 				'multiple' => 0,
 				'renderMode' => 'checkbox'

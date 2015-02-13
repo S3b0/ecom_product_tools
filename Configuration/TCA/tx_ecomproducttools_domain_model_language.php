@@ -43,7 +43,7 @@ return array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('', 0, ''),
+					array('', '', ''),
 					array('multiple', 'multiple', 'EXT:t3skin/images/flags/multiple.png'),
 					array('ad', 'ad', 'EXT:t3skin/images/flags/ad.png'),
 					array('ae', 'ae', 'EXT:t3skin/images/flags/ae.png'),
@@ -296,7 +296,7 @@ return array(
 				),
 				'selicon_cols' => 16,
 				'size' => 1,
-				'minitems' => 0,
+				'minitems' => 1,
 				'maxitems' => 1
 			)
 		),

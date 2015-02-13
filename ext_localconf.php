@@ -8,45 +8,34 @@ if (!defined('TYPO3_MODE')) {
 	'Setcard',
 	array(
 		'Product' => 'showSetcard',
-		'File' => 'listByCategory, listByProduct',
-		
 	),
 	// non-cacheable actions
-	array(
-		'Product' => '',
-		'File' => '',
-		
-	)
+	array()
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'S3b0.' . $_EXTKEY,
 	'Certifications',
 	array(
-		'Product' => 'showSetcard',
-		'File' => 'listByCategory, listByProduct',
-		
+		'Product' => 'listApprovals',
 	),
 	// non-cacheable actions
-	array(
-		'Product' => '',
-		'File' => '',
-		
-	)
+	array()
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'S3b0.' . $_EXTKEY,
 	'Downloadcenter',
 	array(
-		'Product' => 'showSetcard',
+		'Action' => 'downloadCenter',
+		'ProductCategory' => 'listByDivision',
 		'File' => 'listByCategory, listByProduct',
-		
+
 	),
 	// non-cacheable actions
 	array(
-		'Product' => '',
-		'File' => '',
-		
+		'Action' => 'downloadCenter',
+		'ProductCategory' => 'listByDivision',
+		'File' => 'listByCategory, listByProduct',
 	)
 );

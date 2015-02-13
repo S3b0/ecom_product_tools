@@ -1,0 +1,39 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<div id="productSelect">
+		<f:form.select
+				name="division"
+				id="division"
+				options="{productDivisions}"
+				optionLabelField="title"
+				prependOptionLabel="{f:translate(id: 'select_product_division')}"
+				prependOptionValue="0" />
+
+		<f:form.select
+				name="category"
+				id="category"
+				disabled="1"
+				options="{0: '{f:translate(id: \'select_product_category\')}'}" />
+
+		<f:form.select
+				name="product"
+				id="product"
+				disabled="1"
+				options="{0: '{f:translate(id: \'select_product\')}'}" />
+
+		<div class="discontinuedBox disabled">
+			<f:form.checkbox id="discontinued" name="discontinued" value="1" disabled="disabled"/>
+			<label for="discontinued">
+				<f:translate id="discontinued_checkbox_label" />
+			</label>
+		</div>
+	</div>
+
+	<div id="productSelectInfo">
+		<f:translate id="hint" />
+	</div>
+
+	<div id="productData"></div>
+
+</f:section>

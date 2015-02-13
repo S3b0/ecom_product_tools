@@ -32,5 +32,4 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  */
 class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
-	
 }

@@ -34,5 +34,14 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
     $_EXTKEY,
-    'tx_ecomproducttools_domain_model_file'
+    'tx_ecomproducttools_domain_model_file',
+	'file_category',
+	array(
+		'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_category',
+		// Override generic configuration, e.g. sort by title rather than by sorting
+		'fieldConfiguration' => array(
+			'foreign_table_where' => ' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+			'maxitems' => 1
+		)
+	)
 );

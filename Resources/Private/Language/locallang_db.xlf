@@ -66,6 +66,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.products">
 				<source>Products</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.file_category">
+				<source>File Category</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_productdivision">
 				<source>Product Division</source>
 			</trans-unit>

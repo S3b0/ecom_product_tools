@@ -30,15 +30,7 @@ namespace S3b0\EcomProductTools\Controller;
 /**
  * ProductController
  */
-class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
-
-	/**
-	 * productRepository
-	 *
-	 * @var \S3b0\EcomProductTools\Domain\Repository\ProductRepository
-	 * @inject
-	 */
-	protected $productRepository = NULL;
+class ProductController extends ExtensionController {
 
 	/**
 	 * action showSetcard
@@ -46,7 +38,7 @@ class ProductController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function showSetcardAction() {
-		
+
 	}
 
 }

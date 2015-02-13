@@ -3,8 +3,17 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
 		<header/>
 		<body>
-			<trans-unit id="id">
-				<source>ID</source>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
 			</trans-unit>
 		</body>
 	</file>
