@@ -19,7 +19,7 @@ return array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'title,approval,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_attestation.gif'
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_attestation.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'hidden, title, approval',

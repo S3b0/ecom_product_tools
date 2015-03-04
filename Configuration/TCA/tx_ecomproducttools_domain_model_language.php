@@ -22,7 +22,7 @@ return array(
 			'mask' => 'flags-###TYPE###'
 		),
 		'searchFields' => 'title,flag,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_language.gif'
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_language.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'title, flag',

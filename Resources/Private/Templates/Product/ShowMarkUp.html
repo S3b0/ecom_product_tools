@@ -12,7 +12,7 @@
 					<f:groupedFor each="{product.certifications}" as="certification" groupBy="approval" groupKey="approval">
 						<div class="item" rel="ap{approval.uid}">
 							<span>{approval.title}</span>
-							<f:image src="EXT:ecom_product_tools/Resources/Public/Images/Flags/{approval.setcardIcon}.png" alt="{approval.title}" />
+							<f:image src="EXT:ecom_product_tools/Resources/Public/Images/Flags/{approval.setcardIcon}.png" alt="{approval.setcardIcon}" title="{approval.title}" />
 						</div>
 					</f:groupedFor>
 				</div>

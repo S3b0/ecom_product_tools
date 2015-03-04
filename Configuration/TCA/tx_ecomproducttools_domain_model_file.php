@@ -19,7 +19,7 @@ return array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'file_reference,title,last_modification,revision,language,products,',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.gif'
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png'
 	),
 	'interface' => array(
 		'showRecordFieldList' => 'hidden, file_reference, title, last_modification, revision, language, products',
