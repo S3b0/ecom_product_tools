@@ -1,39 +1,88 @@
-<f:layout name="Default" />
+<f:layout name="DownloadCenter" />
 
 <f:section name="main">
-	<div id="productSelect">
+	<f:form id="productSelect" actionUri="{f:uri.page()}">
 		<f:form.select
 				name="division"
 				id="division"
+				value="{division.uid}"
 				options="{productDivisions}"
 				optionLabelField="title"
 				prependOptionLabel="{f:translate(id: 'select_product_division')}"
-				prependOptionValue="0" />
+				prependOptionValue="0"
+				additionalAttributes="{onchange: 'this.form.submit()'}" />
 
-		<f:form.select
-				name="category"
-				id="category"
-				disabled="1"
-				options="{0: '{f:translate(id: \'select_product_category\')}'}" />
+		<f:if condition="{productCategories}">
+			<f:then>
+				<f:form.select
+						name="category"
+						id="category"
+						value="{category.uid}"
+						options="{productCategories}"
+						optionLabelField="title"
+						prependOptionLabel="{f:translate(id: 'select_product_category')}"
+						prependOptionValue="0"
+						additionalAttributes="{onchange: 'this.form.submit()'}" />
+			</f:then>
+			<f:else>
+				<f:form.select
+						name="category"
+						id="category"
+						disabled="1"
+						options="{0: '{f:translate(id: \'select_product_category\')}'}" />
+			</f:else>
+		</f:if>
 
-		<f:form.select
-				name="product"
-				id="product"
-				disabled="1"
-				options="{0: '{f:translate(id: \'select_product\')}'}" />
+		<f:if condition="{products}">
+			<f:then>
+				<f:form.select
+						name="product"
+						id="product"
+						value="{product.uid}"
+						options="{products}"
+						optionLabelField="title"
+						prependOptionLabel="{f:translate(id: 'select_product')}"
+						prependOptionValue="0"
+						additionalAttributes="{onchange: 'this.form.submit()'}" />
+			</f:then>
+			<f:else>
+				<f:form.select
+						name="product"
+						id="product"
+						disabled="1"
+						options="{0: '{f:translate(id: \'select_product\')}'}" />
+			</f:else>
+		</f:if>
 
-		<div class="discontinuedBox disabled">
-			<f:form.checkbox id="discontinued" name="discontinued" value="1" disabled="disabled"/>
+		<div class="checkbox">
 			<label for="discontinued">
+				<f:if condition="{category}">
+					<f:then><f:form.checkbox id="discontinued" name="discontinued" value="1" checked="{discontinued}" additionalAttributes="{onchange: 'this.form.submit()'}" /></f:then>
+					<f:else>
+						<f:if condition="{discontinued}">
+							<f:then><f:form.checkbox id="discontinued" name="discontinued" value="1" checked="{discontinued}" additionalAttributes="{onchange: 'this.form.submit()'}" /></f:then>
+							<f:else><f:form.checkbox id="discontinued" name="discontinued" value="1" checked="{discontinued}" disabled="disabled" /></f:else>
+						</f:if>
+					</f:else>
+				</f:if>
 				<f:translate id="discontinued_checkbox_label" />
 			</label>
 		</div>
-	</div>
+
+	</f:form>
 
 	<div id="productSelectInfo">
 		<f:translate id="hint" />
 	</div>
 
-	<div id="productData"></div>
+	<f:if condition="{product}">
+		<f:then>
+			<f:render partial="Misc/ListFiles" arguments="{files: files}" />
+			<f:render partial="Misc/ProductTeaser" arguments="{product: product}" />
+		</f:then>
+		<f:else>
+			<div id="productData"></div>
+		</f:else>
+	</f:if>
 
 </f:section>

@@ -12,6 +12,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_product.teaser">
 				<source>Teaser</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.image">
+				<source>Image</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_product.link_title">
 				<source>Link Title</source>
 			</trans-unit>
@@ -66,7 +69,7 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.products">
 				<source>Products</source>
 			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_file.file_category">
+			<trans-unit id="tx_ecomproducttools_domain_model_file.file_categories">
 				<source>File Category</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_productdivision">
@@ -92,6 +95,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval.icon">
 				<source>Icon</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval.icon_user">
+				<source>Add your own icon</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval.setcard_icon">
 				<source>Setcard Icon</source>

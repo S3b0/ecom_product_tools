@@ -39,4 +39,16 @@ class ProductCategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 	);
 
+	/**
+	 * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {
+		$query = $this->createQuery();
+
+		return $query->matching(
+			$query->contains('productDivision', $division)
+		)->execute();
+	}
+
 }

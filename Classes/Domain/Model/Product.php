@@ -47,6 +47,14 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $teaser = '';
 
 	/**
+	 * image
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|\TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy
+	 * @lazy
+	 */
+	protected $image = NULL;
+
+	/**
 	 * linkTitle
 	 *
 	 * @var string
@@ -131,7 +139,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return string $title
 	 */
 	public function getTitle() {
-		return $this->title;
+		return $this->title . ($this->isDiscontinued() ? \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('product.discontinued', 'ecom_product_tools') : '');
 	}
 
 	/**
@@ -161,6 +169,24 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setTeaser($teaser) {
 		$this->teaser = $teaser;
+	}
+
+	/**
+	 * Returns the image
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	public function getImage() {
+		return $this->image;
+	}
+
+	/**
+	 * Sets the image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+	 */
+	public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image = NULL) {
+		$this->image = $image;
 	}
 
 	/**

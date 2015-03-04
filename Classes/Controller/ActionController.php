@@ -32,14 +32,37 @@ namespace S3b0\EcomProductTools\Controller;
  */
 class ActionController extends ExtensionController {
 
+	public function initializeDownloadCenterAction() {
+		if ( $this->request->hasArgument('division') && (int)$this->request->getArgument('division') === 0 ) {
+			$this->request->setArgument('division', NULL);
+			$this->request->setArgument('category', NULL);
+			$this->request->setArgument('product', NULL);
+		} elseif ( $this->request->hasArgument('category') && (int)$this->request->getArgument('category') === 0 ) {
+			$this->request->setArgument('category', NULL);
+			$this->request->setArgument('product', NULL);
+		} elseif ( $this->request->hasArgument('product') && (int)$this->request->getArgument('product') === 0 ) {
+			$this->request->setArgument('product', NULL);
+		}
+	}
+
 	/**
 	 * action downloadCenter
 	 *
+	 * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
+	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
+	 * @param \S3b0\EcomProductTools\Domain\Model\Product         $product
+	 * @param boolean                                             $discontinued
 	 * @return void
 	 */
-	public function downloadCenterAction() {
+	public function downloadCenterAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division = NULL, \S3b0\EcomProductTools\Domain\Model\ProductCategory $category = NULL, \S3b0\EcomProductTools\Domain\Model\Product $product = NULL, $discontinued = FALSE) {
 		$this->view->assignMultiple(array(
-			'debug' => $this->fileRepository->findAll()->getFirst()->getFileCategory(),
+			'discontinued' => $discontinued,
+			'product' => $product,
+			'category' => $category,
+			'division' => $division,
+			'files' => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->findByProduct($product) : NULL,
+			'products' => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->findByProductCategory($category, $discontinued) : NULL,
+			'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->findByProductDivision($division) : NULL,
 			'productDivisions' => $this->productDivisionRepository->findAll()
 		));
 	}

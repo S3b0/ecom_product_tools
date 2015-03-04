@@ -39,4 +39,28 @@ class ProductRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 	);
 
+	/**
+	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
+	 * @param boolean                                             $discontinued
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = FALSE) {
+		$query = $this->createQuery();
+
+		if ( $discontinued ) {
+			$result = $query->matching(
+				$query->logicalAnd(
+					$query->contains('productCategories', $category),
+					$query->equals('discontinued', 0)
+				)
+			)->execute();
+		} else {
+			$result = $query->matching(
+				$query->contains('productCategories', $category)
+			)->execute();
+		}
+
+		return $result;
+	}
+
 }

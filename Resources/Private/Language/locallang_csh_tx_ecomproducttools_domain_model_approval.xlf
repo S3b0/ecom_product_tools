@@ -7,7 +7,10 @@
 				<source>The approval title</source>
 			</trans-unit>
 			<trans-unit id="icon.description">
-				<source>The approval icon</source>
+				<source>The approval icon (set of icons delivered with EXT)</source>
+			</trans-unit>
+			<trans-unit id="icon_user.description">
+				<source>The approval icon (choose your own)</source>
 			</trans-unit>
 			<trans-unit id="setcard_icon.description">
 				<source>The approval icon for setcard (flag)</source>

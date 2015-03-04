@@ -43,18 +43,24 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * The approval icon
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-	 * @validate NotEmpty
+	 * @var string
 	 */
-	protected $icon = NULL;
+	protected $icon = '';
+
+	/**
+	 * The approval icon (user-spec)
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $iconUser = NULL;
 
 	/**
 	 * The approval icon for setcard (flag)
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 * @var string
 	 * @validate NotEmpty
 	 */
-	protected $setcardIcon = NULL;
+	protected $setcardIcon = '';
 
 	/**
 	 * Returns the title
@@ -78,26 +84,45 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the icon
 	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $icon
+	 * @return string $icon
 	 */
 	public function getIcon() {
-		return $this->icon;
+		return $this->icon ? \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Approvals/' . $this->icon . '.png' : ($this->iconUser ? $this->iconUser->getOriginalResource()->getPublicUrl() : '');
 	}
 
 	/**
 	 * Sets the icon
 	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $icon
+	 * @param string $icon
 	 * @return void
 	 */
-	public function setIcon(\TYPO3\CMS\Extbase\Domain\Model\FileReference $icon) {
+	public function setIcon($icon) {
 		$this->icon = $icon;
+	}
+
+	/**
+	 * Returns the iconUser
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $iconUser
+	 */
+	public function getIconUser() {
+		return $this->iconUser;
+	}
+
+	/**
+	 * Sets the iconUser
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $iconUser
+	 * @return void
+	 */
+	public function setIconUser(\TYPO3\CMS\Extbase\Domain\Model\FileReference $iconUser) {
+		$this->iconUser = $iconUser;
 	}
 
 	/**
 	 * Returns the setcardIcon
 	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $setcardIcon
+	 * @return string $setcardIcon
 	 */
 	public function getSetcardIcon() {
 		return $this->setcardIcon;
@@ -106,10 +131,10 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the setcardIcon
 	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $setcardIcon
+	 * @param string $setcardIcon
 	 * @return void
 	 */
-	public function setSetcardIcon(\TYPO3\CMS\Extbase\Domain\Model\FileReference $setcardIcon) {
+	public function setSetcardIcon($setcardIcon) {
 		$this->setcardIcon = $setcardIcon;
 	}
 

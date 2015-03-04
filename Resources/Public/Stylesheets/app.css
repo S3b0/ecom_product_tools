@@ -1,0 +1,66 @@
+.tx-ecom-product-tools .panel-group .panel + .panel {
+	margin-top: 0;
+}
+
+.tx-ecom-product-tools .panel .panel-heading {
+	padding: 0;
+}
+
+.tx-ecom-product-tools .panel .panel-heading a.panel-title {
+	background: linear-gradient(to bottom, #F0F1F1 0%, #E4E5E6 100%) repeat scroll 0% 0% transparent;
+	border-bottom: 1px solid #D4D6D8;
+	color: #797F83;
+	cursor: pointer;
+	display: block;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 20px;
+	margin-bottom: 1px;
+	padding: 14px 20px;
+	position: relative;
+	text-align: center;
+	text-transform: inherit;
+}
+
+.tx-ecom-product-tools .panel .panel-heading a.panel-title:hover,
+.tx-ecom-product-tools .panel .panel-heading a.panel-title:focus,
+.tx-ecom-product-tools .panel .panel-heading a.panel-title:active {
+	text-decoration: none;
+}
+
+.tx-ecom-product-tools .panel .panel-heading a.panel-title:after {
+	background: url("../Images/accordion-arrow-up.png") no-repeat scroll 0 0 transparent;
+	content: "";
+	height: 13px;
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 26px;
+}
+
+.tx-ecom-product-tools .panel .panel-heading a.panel-title.collapsed:after {
+	background: url("../Images/accordion-arrow-down.png") no-repeat scroll 0 0 transparent;
+}
+
+.tx-ecom-product-tools .panel {
+	box-shadow: none;
+	margin-bottom: 0 !important;
+}
+
+.tx-ecom-product-tools .panel .table thead {
+	color: #808080;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.tx-ecom-product-tools .panel .table .download-icon { max-width: 2%; width: 2%; }
+.tx-ecom-product-tools .panel .table .filename { max-width: 40%; width: 40%; }
+.tx-ecom-product-tools .panel .table .revision { max-width: 5%; width: 5%; }
+.tx-ecom-product-tools .panel .table .size { max-width: 10%; width: 10%; }
+.tx-ecom-product-tools .panel .table .last-modified { max-width: 10%; width: 10%; }
+.tx-ecom-product-tools .panel .table .sha1 { max-width: 23%; width: 23%; }
+.tx-ecom-product-tools .panel .table .language { max-width: 10%; width: 10%; }
+
+.tx-ecom-product-tools .align-vertical-bottom {
+	vertical-align: bottom;
+}

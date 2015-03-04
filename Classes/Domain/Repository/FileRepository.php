@@ -32,4 +32,20 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  */
 class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	protected $defaultOrderings = array(
+		'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+	);
+
+	/**
+	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByProduct(\S3b0\EcomProductTools\Domain\Model\Product $product) {
+		$query = $this->createQuery();
+
+		return $query->matching(
+			$query->contains('products', $product)
+		)->execute();
+	}
 }

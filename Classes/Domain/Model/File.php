@@ -53,7 +53,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var \DateTime
 	 */
-	protected $lastModification = NULL;
+	protected $lastModification;
 
 	/**
 	 * The file revision#, if any
@@ -77,11 +77,11 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $products = NULL;
 
 	/**
-	 * TYPO3 CMS fileCategory
+	 * TYPO3 CMS fileCategories
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
 	 */
-	protected $fileCategory = NULL;
+	protected $fileCategories = NULL;
 
 	/**
 	 * __construct
@@ -101,7 +101,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->products = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->fileCategory = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->fileCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -157,7 +157,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \DateTime $lastModification
 	 * @return void
 	 */
-	public function setLastModification(\DateTime $lastModification = NULL) {
+	public function setLastModification(\DateTime $lastModification) {
 		$this->lastModification = $lastModification;
 	}
 
@@ -243,7 +243,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	public function addFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory) {
-		$this->fileCategory->attach($fileCategory);
+		$this->fileCategories->attach($fileCategory);
 	}
 
 	/**
@@ -251,21 +251,28 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	public function removeFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove) {
-		$this->fileCategory->detach($fileCategoryToRemove);
+		$this->fileCategories->detach($fileCategoryToRemove);
 	}
 
 	/**
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
 	 */
-	public function getFileCategory() {
-		return $this->fileCategory->current();
+	public function getFileCategories() {
+		return $this->fileCategories;
 	}
 
 	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $fileCategory
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $fileCategories
 	 */
-	public function setFileCategory($fileCategory = NULL) {
-		$this->fileCategory = $fileCategory;
+	public function setFileCategories($fileCategories = NULL) {
+		$this->fileCategories = $fileCategories;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\Category
+	 */
+	public function getFileCategory() {
+		return $this->fileCategories->current();
 	}
 
 }

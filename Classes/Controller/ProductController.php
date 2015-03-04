@@ -33,12 +33,12 @@ namespace S3b0\EcomProductTools\Controller;
 class ProductController extends ExtensionController {
 
 	/**
-	 * action showSetcard
+	 * action showMarkUp
 	 *
 	 * @return void
 	 */
-	public function showSetcardAction() {
-
+	public function showMarkUpAction() {
+		$this->view->assign('product', $this->productRepository->findByUid((int) $this->settings['product']));
 	}
 
 }

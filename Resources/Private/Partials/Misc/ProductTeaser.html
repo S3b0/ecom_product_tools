@@ -1,0 +1,26 @@
+<div id="pageTeaser">
+
+	<div class="row">
+		<div class="headline col-md-12">
+			<h2><f:translate id="teaser.about_product" /> - {product.title}</h2>
+		</div>
+	</div>
+
+	<div class="row clearfix body">
+		<f:if condition="{product.image}">
+			<div class="image col-xs-12 col-sm-12 col-md-6">
+				<f:image src="{product.image.uid}" treatIdAsReference="1" alt="{product.title}" width="253m" />
+			</div>
+		</f:if>
+		<div class="text col-sm-12 col-md-6">
+			{product.teaser -> f:format.html()}
+			<f:if condition="{product.linkToPage}">
+				<f:if condition="{product.linkTitle}">
+					<f:then><f:link.typolink parameter="{product.linkToPage}" class="btn btn-primary morelink">{product.linkTitle}</f:link.typolink></f:then>
+					<f:else><f:link.typolink parameter="{product.linkToPage}" class="btn btn-primary morelink" /></f:else>
+				</f:if>
+			</f:if>
+		</div>
+	</div>
+
+</div>

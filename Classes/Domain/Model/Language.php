@@ -43,10 +43,10 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * The flag representing language
 	 *
-	 * @var integer
+	 * @var string
 	 * @validate NotEmpty
 	 */
-	protected $flag = 0;
+	protected $flag = '';
 
 	/**
 	 * Returns the title
@@ -70,7 +70,7 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the flag
 	 *
-	 * @return integer $flag
+	 * @return string $flag
 	 */
 	public function getFlag() {
 		return $this->flag;
@@ -79,7 +79,7 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the flag
 	 *
-	 * @param integer $flag
+	 * @param string $flag
 	 * @return void
 	 */
 	public function setFlag($flag) {

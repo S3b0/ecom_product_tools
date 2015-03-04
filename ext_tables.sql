@@ -32,7 +32,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	revision int(11) DEFAULT '0' NOT NULL,
 	language int(11) unsigned DEFAULT '0',
 	products int(11) unsigned DEFAULT '0' NOT NULL,
-	file_category int(11) unsigned DEFAULT '0' NOT NULL,
+	file_categories int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -41,6 +41,8 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
 	starttime int(11) unsigned DEFAULT '0' NOT NULL,
 	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+	sorting int(11) DEFAULT '0' NOT NULL,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)
@@ -56,8 +58,9 @@ CREATE TABLE tx_ecomproducttools_domain_model_approval (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
-	icon int(11) unsigned NOT NULL default '0',
-	setcard_icon int(11) unsigned NOT NULL default '0',
+	icon varchar(255) DEFAULT '' NOT NULL,
+	icon_user int(11) unsigned NOT NULL default '0',
+	setcard_icon varchar(255) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -145,6 +148,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_product (
 
 	title varchar(255) DEFAULT '' NOT NULL,
 	teaser text NOT NULL,
+	image int(11) unsigned DEFAULT '0',
 	link_title varchar(255) DEFAULT '' NOT NULL,
 	link_to_page varchar(255) DEFAULT '' NOT NULL,
 	discontinued tinyint(1) unsigned DEFAULT '0' NOT NULL,

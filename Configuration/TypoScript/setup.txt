@@ -12,3 +12,7 @@ plugin.tx_ecomproducttools {
 		# rewrittenPropertyMapper = 1
 	}
 }
+
+page.includeCSSLibs {
+	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/app.css
+}

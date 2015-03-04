@@ -5,9 +5,9 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'S3b0.' . $_EXTKEY,
-	'Setcard',
+	'MarkUp',
 	array(
-		'Product' => 'showSetcard',
+		'Product' => 'showMarkUp',
 	),
 	// non-cacheable actions
 	array()
@@ -25,7 +25,7 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'S3b0.' . $_EXTKEY,
-	'Downloadcenter',
+	'DownloadCenter',
 	array(
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',

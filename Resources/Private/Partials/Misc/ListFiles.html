@@ -1,0 +1,79 @@
+<f:if condition="{files -> f:count()}">
+	<div id="accordion" role="tablist" aria-multiselectable="true">
+		<f:groupedFor each="{files}" as="fileCategoryFiles" groupBy="fileCategory" groupKey="fileCategory">
+			<div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading{fileCategory.uid}">
+					<a class="panel-title" data-toggle="collapse" data-parent="#accordion" href="#collapse{fileCategory.uid}" aria-expanded="true" aria-controls="collapse{fileCategory.uid}">
+						{f:if(condition: fileCategory.title, then: fileCategory.title, else: '{f:translate(id: \'file_category.no_category.title\')}')}
+					</a>
+				</div>
+
+				<div id="collapse{fileCategory.uid}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading{fileCategory.uid}">
+					<table class="table table-striped table-responsive">
+						<thead>
+							<tr>
+								<td class="download-icon hidden-xs"></td>
+								<td class="filename"><f:translate id="file.filename" /></td>
+								<td class="revision hidden-xs"><abbr title="{f:translate(id: 'file.revision')}"><f:translate id="file.revision.abbr" /></abbr></td>
+								<td class="size"><f:translate id="file.size" /></td>
+								<td class="last-modified hidden-xs"><f:translate id="file.last_modified" /></td>
+								<td class="sha1 hidden-xs"><abbr title="{f:translate(id: 'file.sha1')}"><f:translate id="file.sha1.abbr" /></abbr></td>
+								<td class="language"><f:translate id="file.language" /></td>
+							</tr>
+						</thead>
+
+						<tbody>
+							<f:for each="{fileCategoryFiles}" as="file" iteration="iterator">
+								<tr>
+									<td class="align-vertical-bottom hidden-xs"><f:image src="{f:uri.resource(path: 'Images/download-button.png')}" /></td>
+									<td>
+										{f:if(condition: file.title, then: file.title, else: file.fileReference.originalResource.name)}<br />
+										<small class="file-info">
+											<span class="text-uppercase">{file.fileReference.originalResource.extension}</span>
+											<a href="{file.fileReference.originalResource.publicUrl}" target="_blank">
+												<f:if condition="{file.fileReference.originalResource.properties.extension} == 'html'">
+													<f:then><f:translate id="file.open" /></f:then>
+													<f:else><f:translate id="file.download" /></f:else>
+												</f:if>
+											</a>
+										</small>
+									</td>
+									<td class="hidden-xs">{f:if(condition: '{file.revision} > 0', then: file.revision, else: '-')}</td>
+									<td>
+										<f:if condition="{file.fileReference.originalResource.size} > 0">
+											<f:then>
+												<f:if condition="{file.fileReference.originalResource.size} > 1048576">
+													<f:then>{file.fileReference.originalResource.size -> f:format.bytes(decimals: 1)}</f:then>
+													<f:else>{file.fileReference.originalResource.size -> f:format.bytes()}</f:else>
+												</f:if>
+											</f:then>
+											<f:else>-</f:else>
+										</f:if>
+									</td>
+									<td class="hidden-xs">
+										<f:if condition="{file.lastModification}">
+											<f:then>{file.lastModification -> f:format.date()}</f:then>
+											<f:else>{file.fileReference.originalResource.creationTime -> f:format.date()}</f:else>
+										</f:if>
+									</td>
+									<td class="hidden-xs">{file.fileReference.originalResource.sha1}</td>
+									<td>
+										<f:if condition="{f:s3b0.checkForExistingResource(source: 'EXT:core/Resources/Public/Icons/Flags/{file.language.flag}.png')}">
+											<f:then>
+												<f:image src="EXT:core/Resources/Public/Icons/Flags/{file.language.flag}.png" alt="{file.language.flag}" />
+											</f:then>
+											<f:else>
+												<f:image src="EXT:t3skin/images/flags/{file.language.flag}.png" alt="{file.language.flag}" />
+											</f:else>
+										</f:if>
+										<br />{file.language.title}
+									</td>
+								</tr>
+							</f:for>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</f:groupedFor>
+	</div>
+</f:if>
