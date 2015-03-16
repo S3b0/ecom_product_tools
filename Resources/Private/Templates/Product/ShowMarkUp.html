@@ -1,21 +1,19 @@
 <f:layout name="MarkUp" />
 
 <f:section name="main">
-	<div class="tx-sz-downloadcenter setcard">
-		<div id="approvalList" class="clearfix">
-			<div class="zoneWrap">
-				<div class="zone"><f:translate id="product.atex_zone.{product.atexZone}" /></div>
-				<div class="division"><f:translate id="product.nec_division.{product.necDivision}" /></div>
-			</div>
-			<div class="approvalWrap clearfix">
-				<div id="approvals">
-					<f:groupedFor each="{product.certifications}" as="certification" groupBy="approval" groupKey="approval">
-						<div class="item" rel="ap{approval.uid}">
-							<span>{approval.title}</span>
-							<f:image src="EXT:ecom_product_tools/Resources/Public/Images/Flags/{approval.setcardIcon}.png" alt="{approval.setcardIcon}" title="{approval.title}" />
-						</div>
-					</f:groupedFor>
-				</div>
+	<div id="approval-list" class="clearfix">
+		<div class="zone-wrap">
+			<div class="zone"><f:translate id="product.atex_zone.{product.atexZone}" /></div>
+			<div class="division"><f:translate id="product.nec_division.{product.necDivision}" /></div>
+		</div>
+		<div class="approval-wrap clearfix">
+			<div id="tx-ecom-product-tools-carousel">
+				<f:for each="{product.approvals}" as="approval">
+					<div class="item" rel="ap{approval.uid}">
+						{approval.markupLabel}<br />
+						<f:if condition="{approval.setcardIcon}"><f:image src="EXT:ecom_product_tools/Resources/Public/Images/Flags/{approval.setcardIcon}.png" alt="{approval.setcardIcon}" title="{approval.title}" /></f:if>
+					</div>
+				</f:for>
 			</div>
 		</div>
 	</div>

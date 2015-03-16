@@ -7,6 +7,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_language (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
+	sys_language int(11) DEFAULT '0' NOT NULL,
 	flag varchar(20) DEFAULT '' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
@@ -30,9 +31,9 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	title varchar(255) DEFAULT '' NOT NULL,
 	last_modification date DEFAULT '0000-00-00',
 	revision int(11) DEFAULT '0' NOT NULL,
+	approval int(11) unsigned DEFAULT '0',
 	language int(11) unsigned DEFAULT '0',
 	products int(11) unsigned DEFAULT '0' NOT NULL,
-	file_categories int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -58,6 +59,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_approval (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
+	markup_label varchar(255) DEFAULT '' NOT NULL,
 	icon varchar(255) DEFAULT '' NOT NULL,
 	icon_user int(11) unsigned NOT NULL default '0',
 	setcard_icon varchar(255) DEFAULT '' NOT NULL,
@@ -217,7 +219,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_productcategory (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	title varchar(255) DEFAULT '' NOT NULL,
-	product_division int(11) unsigned DEFAULT '0' NOT NULL,
+	product_divisions int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

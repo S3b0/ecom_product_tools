@@ -6,6 +6,9 @@
 			<trans-unit id="title.description">
 				<source>The approval title</source>
 			</trans-unit>
+			<trans-unit id="markup_label.description">
+				<source>The Mark-Up Label, if different to title</source>
+			</trans-unit>
 			<trans-unit id="icon.description">
 				<source>The approval icon (set of icons delivered with EXT)</source>
 			</trans-unit>

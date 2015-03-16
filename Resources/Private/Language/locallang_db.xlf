@@ -84,14 +84,17 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.title">
 				<source>Title</source>
 			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.product_division">
-				<source>Product Division</source>
+			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.product_divisions">
+				<source>Product Division(s)</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval">
 				<source>Approval</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval.title">
 				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_approval.markup_label">
+				<source>Mark-Up Label</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval.icon">
 				<source>Icon</source>

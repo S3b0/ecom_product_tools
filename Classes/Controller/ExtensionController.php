@@ -88,8 +88,19 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 */
 	protected $productRepository = NULL;
 
+	/**
+	 * Initializes the view before invoking an action method.
+	 *
+	 * Override this method to solve assign variables common for all actions
+	 * or prepare the view in another way before the action is called.
+	 *
+	 * @param \TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view The view to be initialized
+	 *
+	 * @return void
+	 * @api
+	 */
 	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
-		$view->assign('addLayoutClasses', '');
+		$view->assign('addLayoutClasses', strtolower($this->request->getPluginName()));
 		parent::initializeView($view);
 	}
 }

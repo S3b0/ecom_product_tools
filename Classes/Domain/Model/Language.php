@@ -41,6 +41,11 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
+	 * @var integer
+	 */
+	protected $sysLanguage = 0;
+
+	/**
 	 * The flag representing language
 	 *
 	 * @var string
@@ -68,6 +73,20 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @return integer
+	 */
+	public function getSysLanguage() {
+		return $this->sysLanguage;
+	}
+
+	/**
+	 * @param integer $sysLanguage
+	 */
+	public function setSysLanguage($sysLanguage) {
+		$this->sysLanguage = $sysLanguage;
+	}
+
+	/**
 	 * Returns the flag
 	 *
 	 * @return string $flag
@@ -84,6 +103,10 @@ class Language extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setFlag($flag) {
 		$this->flag = $flag;
+	}
+
+	public function getFlagSource() {
+		return (version_compare(TYPO3_branch, '7.1', '>=') ? 'EXT:core/Resources/Public/Icons/Flags/' : 'EXT:t3skin/images/flags/') . $this->flag . '.png';
 	}
 
 }

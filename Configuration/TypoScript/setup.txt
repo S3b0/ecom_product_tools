@@ -1,3 +1,7 @@
+############################################
+#         Default Plugin settings          #
+############################################
+
 plugin.tx_ecomproducttools {
 	view {
 		templateRootPaths.100 = {$plugin.tx_ecomproducttools.view.templateRootPath}
@@ -13,6 +17,87 @@ plugin.tx_ecomproducttools {
 	}
 }
 
+############################################
+#         Set global page settings         #
+############################################
+
 page.includeCSSLibs {
 	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/app.css
+}
+
+page.includeJSFooter {
+	markupJS = EXT:ecom_product_tools/Resources/Public/Javascripts/markup.js
+	owl = EXT:ecom_product_tools/Resources/Public/Javascripts/owl.carousel.min.js
+	owl.forceOnTop = 1
+}
+
+############################################
+#           Add Ajax PAGE-Object           #
+############################################
+
+EcomProductToolsAjaxRequest = PAGE
+EcomProductToolsAjaxRequest {
+	typeNum = 1425988257
+
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+		no_cache = 1
+		additionalHeaders = Content-type:text/html|Cache-Control:no-cache, must-revalidate, max-age=0|Pragma:no-cache
+		linkVars = L
+	}
+
+	10 = USER
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		vendorName = S3b0
+		extensionName = EcomProductTools
+		pluginName = DownloadCenter
+		controller = AjaxRequest
+		switchableControllerActions {
+			AjaxRequest {
+				1 = getProductData
+			}
+		}
+	}
+
+	view < plugin.tx_ecomproducttools.view
+	persistence < plugin.tx_ecomproducttools.persistence
+	settings < plugin.tx_ecomproducttools.settings
+}
+
+EcomProductToolsJsonRequest = PAGE
+EcomProductToolsJsonRequest {
+	typeNum = 1425988258
+
+	config {
+		disableAllHeaderCode = 1
+		xhtml_cleaning = 0
+		admPanel = 0
+		debug = 0
+		no_cache = 1
+		additionalHeaders = Content-type:application/json|Cache-Control:no-cache, must-revalidate, max-age=0|Pragma:no-cache
+		linkVars = L
+	}
+
+	10 = USER
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		vendorName = S3b0
+		extensionName = EcomProductTools
+		pluginName = DownloadCenter
+		controller = JsonRequest
+		switchableControllerActions {
+			AjaxRequest {
+				1 = getProductCategoriesByProductDivision
+				2 = getProductsByProductCategory
+			}
+		}
+	}
+
+	view < plugin.tx_ecomproducttools.view
+	persistence < plugin.tx_ecomproducttools.persistence
+	settings < plugin.tx_ecomproducttools.settings
 }

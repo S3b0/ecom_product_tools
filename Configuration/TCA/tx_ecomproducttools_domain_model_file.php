@@ -7,6 +7,7 @@ return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file',
 		'label' => 'title',
+		'label_userFunc' => 'S3b0\\EcomProductTools\\Utility\\ModifyTCA->labelUserFuncEPTDomainModelFile',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -22,13 +23,13 @@ return array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'hidden, file_reference, title, last_modification, revision, language, products',
+		'showRecordFieldList' => 'hidden, file_reference, title, last_modification, revision, approval, language, products',
 	),
 	'types' => array(
 		'1' => array('showitem' => 'file_reference;;;;1-1-1, --palette--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file;1, products, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
-		'1' => array('showitem' => 'title, --linebreak--, language, last_modification, revision, hidden', 'canNotCollapse' => TRUE),
+		'1' => array('showitem' => 'title, --linebreak--, language, last_modification, revision, approval, hidden', 'canNotCollapse' => TRUE),
 	),
 	'columns' => array(
 
@@ -95,7 +96,9 @@ return array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
-				'eval' => 'trim,required'
+				'eval' => 'trim',
+				'placeholder' => '__row|file_reference|uid_local|name',
+				'mode' => 'useOrOverridePlaceholder'
 			),
 		),
 		'last_modification' => array(
@@ -130,6 +133,18 @@ return array(
 					array('', '')
 				),
 				'minitems' => 1,
+				'maxitems' => 1
+			),
+		),
+		'approval' => array(
+			'exclude' => 1,
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
+				'items' => array(
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval', '')
+				),
 				'maxitems' => 1
 			),
 		),

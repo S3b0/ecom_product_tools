@@ -82,6 +82,25 @@
 			<trans-unit id="teaser.about_product" xml:space="preserve">
 				<source>More about the product</source>
 			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Approval type test certificates:</source>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+			</trans-unit>
+			<trans-unit id="dc.nodocs" xml:space="preserve">
+				<source>No documents found!</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

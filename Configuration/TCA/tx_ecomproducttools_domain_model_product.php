@@ -135,6 +135,7 @@ return array(
 			),
 		),
 		'image' => array(
+			'l10n_mode' => 'exclude',
 			'label'   => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.image',
 			'exclude' => 0,
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', array(
@@ -179,6 +180,7 @@ return array(
 			), $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
 		),
 		'link_title' => array(
+			'l10n_mode' => 'prefixLangTitle',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.link_title',
 			'config' => array(
@@ -188,6 +190,7 @@ return array(
 			),
 		),
 		'link_to_page' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.link_to_page',
 			'config' => array(
@@ -213,6 +216,7 @@ return array(
 			),
 		),
 		'product_categories' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.product_categories',
 			'config' => array(
@@ -236,6 +240,7 @@ return array(
 			),
 		),
 		'certifications' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.certifications',
 			'config' => array(
@@ -260,6 +265,7 @@ return array(
 			),
 		),
 		'attestations' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.attestations',
 			'config' => array(
@@ -286,6 +292,7 @@ return array(
 
 
 		'atex_zone' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.atex_zone',*/
 			'config' => array(
@@ -305,6 +312,7 @@ return array(
 			),
 		),
 		'nec_division' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.nec_division',*/
 			'config' => array(
@@ -320,6 +328,7 @@ return array(
 			),
 		),
 		'discontinued' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 1,
 			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.discontinued',*/
 			'config' => array(

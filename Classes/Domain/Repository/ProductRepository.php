@@ -40,6 +40,17 @@ class ProductRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	);
 
 	/**
+	 * @return \S3b0\EcomProductTools\Domain\Repository\ProductRepository
+	 */
+	public function ignoreStoragePid() {
+		/** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
+		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
+		$querySettings->setRespectStoragePage(FALSE); // Disable storage pid
+		$this->setDefaultQuerySettings($querySettings);
+		return $this;
+	}
+
+	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
 	 * @param boolean                                             $discontinued
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
@@ -49,10 +60,10 @@ class ProductRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		if ( $discontinued ) {
 			$result = $query->matching(
-				$query->logicalAnd(
+				$query->logicalAnd(array(
 					$query->contains('productCategories', $category),
 					$query->equals('discontinued', 0)
-				)
+				))
 			)->execute();
 		} else {
 			$result = $query->matching(

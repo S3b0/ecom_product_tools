@@ -3,6 +3,8 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+$extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ecom_product_tools']);
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'ecom_product_tools',
 	'MarkUp',
@@ -18,9 +20,12 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_markup
 	'Product Certifications'
 );
 
+$TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certifications'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('ecomproducttools_certifications', 'FILE:EXT:ecom_product_tools/Configuration/FlexForms/flexform_certifications.xml');
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'ecom_product_tools',
-	'Downloadcenter',
+	'DownloadCenter',
 	'Download-Center'
 );
 
@@ -43,7 +48,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_markup
 		'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_categories',
 		// Override generic configuration, e.g. sort by title rather than by sorting
 		'fieldConfiguration' => array(
-			'foreign_table_where' => ' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+			'foreign_table_where' => ' AND (sys_category.uid=' . $extensionConfiguration['rootCategory'] . ' OR sys_category.parent=' . $extensionConfiguration['rootCategory'] . ') AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
 			'minitems' => 1,
 			'maxitems' => 1
 		)

@@ -38,6 +38,16 @@ class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	);
 
 	/**
+	 * Set repository wide settings
+	 */
+	public function initializeObject() {
+		/** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
+		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
+		$querySettings->setRespectStoragePage(FALSE); // Disable storage pid
+		$this->setDefaultQuerySettings($querySettings);
+	}
+
+	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
@@ -46,6 +56,17 @@ class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		return $query->matching(
 			$query->contains('products', $product)
+		)->execute();
+	}
+
+	public function findApprovalDocuments(\S3b0\EcomProductTools\Domain\Model\Product $product) {
+		$query = $this->createQuery();
+
+		return $query->matching(
+			$query->logicalAnd(array(
+				$query->contains('products', $product),
+				$query->greaterThan('approval', 0)
+			))
 		)->execute();
 	}
 }

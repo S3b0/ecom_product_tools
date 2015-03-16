@@ -41,4 +41,18 @@ class ProductController extends ExtensionController {
 		$this->view->assign('product', $this->productRepository->findByUid((int) $this->settings['product']));
 	}
 
+	public function listApprovalsAction() {
+		/** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
+		$product = $this->productRepository->findByUid((int) $this->settings['product']);
+
+		/**
+		 * Include flags.css depending on TYPO3 version (moved in 7.1)
+		 * @var \TYPO3\CMS\Frontend\Controller\TyposcriptFrontendController $TSFE
+		 */
+		$TSFE = $GLOBALS['TSFE'];
+		$TSFE->getPageRenderer()->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/Stylesheets/' . (version_compare(TYPO3_branch, '7.1', '>=') ? 'flags-7.1' : 'flags') . (preg_match('/(?i)msie [1-8]/',$_SERVER['HTTP_USER_AGENT']) ? '_msie_lt9.css' : '.css'));
+
+		$this->view->assign('product', $product);
+		$this->view->assign('files', $this->fileRepository->findApprovalDocuments($product));
+	}
 }

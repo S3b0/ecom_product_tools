@@ -41,12 +41,12 @@ class ProductCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
-	 * The corresponding (product-)division
+	 * The corresponding (product-)divisions
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductDivision>
 	 * @lazy
 	 */
-	protected $productDivision = NULL;
+	protected $productDivisions = NULL;
 
 	/**
 	 * __construct
@@ -65,7 +65,7 @@ class ProductCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->productDivision = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->productDivisions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -94,7 +94,7 @@ class ProductCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	public function addProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $productDivision) {
-		$this->productDivision->attach($productDivision);
+		$this->productDivisions->attach($productDivision);
 	}
 
 	/**
@@ -104,26 +104,26 @@ class ProductCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	public function removeProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $productDivisionToRemove) {
-		$this->productDivision->detach($productDivisionToRemove);
+		$this->productDivisions->detach($productDivisionToRemove);
 	}
 
 	/**
-	 * Returns the productDivision
+	 * Returns the productDivisions
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductDivision> $productDivision
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductDivision> $productDivisions
 	 */
-	public function getProductDivision() {
-		return $this->productDivision;
+	public function getProductDivisions() {
+		return $this->productDivisions;
 	}
 
 	/**
-	 * Sets the productDivision
+	 * Sets the productDivisions
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductDivision> $productDivision
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductDivision> $productDivisions
 	 * @return void
 	 */
-	public function setProductDivision(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $productDivision) {
-		$this->productDivision = $productDivision;
+	public function setProductDivisions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $productDivisions) {
+		$this->productDivisions = $productDivisions;
 	}
 
 }

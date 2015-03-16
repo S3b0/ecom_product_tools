@@ -7,6 +7,8 @@ return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation',
 		'label' => 'title',
+		'label_alt' => 'approval',
+		'label_alt_force' => TRUE,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

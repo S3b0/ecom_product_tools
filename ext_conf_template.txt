@@ -1,0 +1,2 @@
+#cat=basic//10;type=int+;label=Root category:For better usability set a root category to avoid all category listing
+rootCategory = 57

@@ -6,8 +6,8 @@
 			<trans-unit id="title.description">
 				<source>Category title to be displayed</source>
 			</trans-unit>
-			<trans-unit id="product_division.description">
-				<source>The corresponding (product-)division</source>
+			<trans-unit id="product_divisions.description">
+				<source>The corresponding (product-)divisions</source>
 			</trans-unit>
 		</body>
 	</file>

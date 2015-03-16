@@ -63,6 +63,13 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $revision = 0;
 
 	/**
+	 * Assigned approval
+	 *
+	 * @var \S3b0\EcomProductTools\Domain\Model\Approval
+	 */
+	protected $approval = NULL;
+
+	/**
 	 * File content language
 	 *
 	 * @var \S3b0\EcomProductTools\Domain\Model\Language
@@ -129,7 +136,16 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return string $title
 	 */
 	public function getTitle() {
-		return $this->title;
+		if ( $this->title ) {
+			return $this->title;
+		} elseif ( $this->getFileCategory()->_languageUid !== $this->language->getSysLanguage() ) {
+			/** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
+			$db = $GLOBALS['TYPO3_DB'];
+			$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->language->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+			return $row['title'] ?: $this->getFileCategory()->getTitle();
+		} else {
+			return $this->getFileCategory()->getTitle();
+		}
 	}
 
 	/**
@@ -178,6 +194,25 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setRevision($revision) {
 		$this->revision = $revision;
+	}
+
+	/**
+	 * Returns the approval
+	 *
+	 * @return \S3b0\EcomProductTools\Domain\Model\Approval $approval
+	 */
+	public function getApproval() {
+		return $this->approval;
+	}
+
+	/**
+	 * Sets the approval
+	 *
+	 * @param \S3b0\EcomProductTools\Domain\Model\Approval $approval
+	 * @return void
+	 */
+	public function setApproval(\S3b0\EcomProductTools\Domain\Model\Approval $approval) {
+		$this->approval = $approval;
 	}
 
 	/**

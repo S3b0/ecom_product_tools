@@ -30,6 +30,8 @@ if (!defined('TYPO3_MODE')) {
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
 		'File' => 'listByCategory, listByProduct',
+		'AjaxRequest' => 'getProductData',
+		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
 
 	),
 	// non-cacheable actions
@@ -37,5 +39,9 @@ if (!defined('TYPO3_MODE')) {
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
 		'File' => 'listByCategory, listByProduct',
+		'AjaxRequest' => 'getProductData',
+		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
 	)
 );
+
+$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['EcomProductTools'] = 'EXT:ecom_product_tools/Classes/Utility/AjaxDispatcher.php';

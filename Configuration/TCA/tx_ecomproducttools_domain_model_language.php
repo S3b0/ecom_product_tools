@@ -21,14 +21,14 @@ return array(
 			'default' => 'mimetypes-x-sys_language',
 			'mask' => 'flags-###TYPE###'
 		),
-		'searchFields' => 'title,flag,',
+		'searchFields' => 'title,sys_language,flag,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_language.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'title, flag',
+		'showRecordFieldList' => 'title, sys_language, flag',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'title, flag, '),
+		'1' => array('showitem' => 'title, sys_language, flag, '),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -42,6 +42,19 @@ return array(
 				'max' => '80',
 				'eval' => 'trim,required'
 			)
+		),
+		'sys_language' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'sys_language',
+				'foreign_table_where' => 'ORDER BY sys_language.title',
+				'items' => array(
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
+					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
+				),
+			),
 		),
 		'flag' => array(
 			'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_language.flag',

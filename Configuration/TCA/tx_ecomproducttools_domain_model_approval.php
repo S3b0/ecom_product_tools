@@ -10,6 +10,8 @@ return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval',
 		'label' => 'title',
+		'label_alt' => 'markup_label,icon',
+		'label_alt_force' => TRUE,
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',
@@ -34,14 +36,15 @@ return array(
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_approval.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, setcard_icon, icon, icon_user',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, markup_label, setcard_icon, icon, icon_user',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, setcard_icon, icon;;2, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title;;2, setcard_icon, icon;;3, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
-		'2' => array('showitem' => 'icon_user', 'canNotCollapse' => TRUE)
+		'2' => array('showitem' => 'markup_label', 'canNotCollapse' => TRUE),
+		'3' => array('showitem' => 'icon_user', 'canNotCollapse' => TRUE)
 	),
 	'columns' => array(
 
@@ -126,7 +129,19 @@ return array(
 				'eval' => 'trim,required'
 			),
 		),
+		'markup_label' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval.markup_label',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim',
+				'placeholder' => '__row|title',
+				'mode' => 'useOrOverridePlaceholder'
+			),
+		),
 		'icon' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval.icon',
 			'config' => array(
@@ -166,12 +181,13 @@ return array(
 					array('ul-us', 'ul-us', $iconPath . 'ul-us.png'),
 					array('ul', 'ul', $iconPath . 'ul.png'),
 				),
-				'selicon_cols' => 16,
+				'selicon_cols' => 8,
 				'size' => 1,
 				'maxitems' => 1
 			),
 		),
 		'icon_user' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 0,
 			'displayCond' => 'FIELD:icon:REQ:FALSE',
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval.icon_user',
@@ -205,6 +221,7 @@ return array(
 			),
 		),
 		'setcard_icon' => array(
+			'l10n_mode' => 'exclude',
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval.setcard_icon',
 			'config' => array(

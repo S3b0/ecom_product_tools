@@ -26,21 +26,24 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * ActionController
  */
 class ActionController extends ExtensionController {
 
+	/**
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
+	 */
 	public function initializeDownloadCenterAction() {
-		if ( $this->request->hasArgument('division') && (int)$this->request->getArgument('division') === 0 ) {
+		if ( GeneralUtility::_POST('division') && (int)GeneralUtility::_POST('division') === 0 ) {
 			$this->request->setArgument('division', NULL);
+		}
+		if ( GeneralUtility::_POST('category') && (int)GeneralUtility::_POST('category') === 0 ) {
 			$this->request->setArgument('category', NULL);
-			$this->request->setArgument('product', NULL);
-		} elseif ( $this->request->hasArgument('category') && (int)$this->request->getArgument('category') === 0 ) {
-			$this->request->setArgument('category', NULL);
-			$this->request->setArgument('product', NULL);
-		} elseif ( $this->request->hasArgument('product') && (int)$this->request->getArgument('product') === 0 ) {
+		}
+		if ( GeneralUtility::_POST('product') && (int)GeneralUtility::_POST('product') === 0 ) {
 			$this->request->setArgument('product', NULL);
 		}
 	}
@@ -55,6 +58,9 @@ class ActionController extends ExtensionController {
 	 * @return void
 	 */
 	public function downloadCenterAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division = NULL, \S3b0\EcomProductTools\Domain\Model\ProductCategory $category = NULL, \S3b0\EcomProductTools\Domain\Model\Product $product = NULL, $discontinued = FALSE) {
+		$category = $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? ($category->getProductDivisions()->contains($division) ? $category : NULL) : NULL;
+		$product = $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? ($product->getProductCategories()->contains($category) ? $product : NULL) : NULL;
+
 		$this->view->assignMultiple(array(
 			'discontinued' => $discontinued,
 			'product' => $product,

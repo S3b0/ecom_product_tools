@@ -410,4 +410,24 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->attestations = $attestations;
 	}
 
+	/**
+	 * Returns the approvals (similar to groupedFor in Fluid @see Resources/Private/Templates/Product/ShowMarkup.html)
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getApprovals() {
+		$approvals = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
+		if ( $this->certifications->count() ) {
+			/** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
+			foreach ( $this->certifications as $certification ) {
+				if ( !$approvals->contains($certification->getApproval()) ) {
+					$approvals->attach($certification->getApproval());
+				}
+			}
+		}
+
+		return $approvals;
+	}
+
 }

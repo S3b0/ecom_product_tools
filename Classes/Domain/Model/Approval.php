@@ -41,6 +41,13 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
+	 * The approval mark-up label
+	 *
+	 * @var string
+	 */
+	protected $markupLabel = '';
+
+	/**
 	 * The approval icon
 	 *
 	 * @var string
@@ -82,12 +89,30 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * Returns the markupLabel
+	 *
+	 * @return string
+	 */
+	public function getMarkupLabel() {
+		return $this->markupLabel ?: $this->title;
+	}
+
+	/**
+	 * Sets the markupLabel
+	 *
+	 * @param string $markupLabel
+	 */
+	public function setMarkupLabel($markupLabel) {
+		$this->markupLabel = $markupLabel;
+	}
+
+	/**
 	 * Returns the icon
 	 *
 	 * @return string $icon
 	 */
 	public function getIcon() {
-		return $this->icon ? \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Approvals/' . $this->icon . '.png' : ($this->iconUser ? $this->iconUser->getOriginalResource()->getPublicUrl() : '');
+		return $this->icon;
 	}
 
 	/**
@@ -138,4 +163,10 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->setcardIcon = $setcardIcon;
 	}
 
+	/**
+	 * @return null|string
+	 */
+	public function getIconSource() {
+		return $this->icon ? 'EXT:ecom_product_tools/Resources/Public/Images/Approvals/' . $this->icon . '.png' : ($this->iconUser ? $this->iconUser->getOriginalResource()->getPublicUrl() : NULL);
+	}
 }

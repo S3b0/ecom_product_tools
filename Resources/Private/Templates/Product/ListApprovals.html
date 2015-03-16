@@ -1,0 +1,65 @@
+<f:layout name="Certifications" />
+
+<f:section name="main">
+	<div class="row">
+		<f:groupedFor each="{product.certifications}" as="certifications" groupBy="approval" groupKey="approval">
+			<div class="col-xs-12 col-sm-6 col-md-6 approval" id="ap{approval.uid}">
+				<div class="row">
+					<div class="col-xs-3 col-sm-4 col-md-4 image">
+						<f:if condition="{approval.iconSource}"><f:image src="{approval.iconSource}" alt="{approval.icon}" title="{approval.title}" /></f:if>
+					</div>
+
+					<div class="col-xs-9 col-sm-8 col-md-8 bodytext">
+						<label>{approval.title}</label>
+
+						<ul class="list">
+							<f:for each="{certifications}" as="certification"><li>{certification.title}</li></f:for>
+						</ul>
+
+						<f:if condition="{product.attestations -> f:count()}">
+							<f:groupedFor each="{product.attestations}" as="attestations" groupBy="approval" groupKey="aApproval">
+								<f:if condition="{aApproval.uid} == {approval.uid}">
+									<f:if condition="{attestations -> f:count()}">
+										<label><f:translate id="label.attestations" /></label>
+										<ul class="list">
+											<f:for each="{attestations}" as="attestation" iteration="a"><li>{attestation.title}</li></f:for>
+										</ul>
+									</f:if>
+								</f:if>
+							</f:groupedFor>
+						</f:if>
+
+						<f:if condition="{files -> f:count()}">
+							<f:groupedFor each="{files}" as="approvalDocuments" groupBy="approval" groupKey="fApproval">
+								<f:if condition="{fApproval.uid} == {approval.uid}">
+									<f:if condition="{approvalDocuments -> f:count}">
+											<f:if condition="{approvalDocuments -> f:count()} > 1">
+												<f:then>
+													<div class="dropdown">
+														<a class="btn btn-default morelink dropdown-toggle" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><f:translate id="label.dl_certification" /></a>
+														<ul class="dropdown-menu" role="menu">
+															<f:for each="{approvalDocuments}" as="document">
+																<li role="menuitem" class="lang-{document.language.flag}">
+																	<a href="{document.fileReference.originalResource.publicUrl}" target="_blank">{document.title}</a>
+																</li>
+															</f:for>
+														</ul>
+													</div>
+												</f:then>
+												<f:else>
+													<f:for each="{approvalDocuments}" as="document">
+														<a class="btn btn-default morelink" role="button" href="{document.fileReference.originalResource.publicUrl}" target="_blank"><f:translate id="label.dl_certification" /></a>
+													</f:for>
+												</f:else>
+											</f:if>
+									</f:if>
+								</f:if>
+							</f:groupedFor>
+						</f:if>
+
+					</div>
+				</div>
+			</div>
+		</f:groupedFor>
+	</div>
+</f:section>
