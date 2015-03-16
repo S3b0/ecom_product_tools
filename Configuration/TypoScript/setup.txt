@@ -22,11 +22,11 @@ plugin.tx_ecomproducttools {
 ############################################
 
 page.includeCSSLibs {
-	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/app.css
+	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/m.ept.main.css
 }
 
 page.includeJSFooter {
-	markupJS = EXT:ecom_product_tools/Resources/Public/Javascripts/markup.js
+	markupJS = EXT:ecom_product_tools/Resources/Public/Javascripts/m.ept.markup.js
 	owl = EXT:ecom_product_tools/Resources/Public/Javascripts/owl.carousel.min.js
 	owl.forceOnTop = 1
 }
