@@ -107,7 +107,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * attestations
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Attestation>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification>
 	 */
 	protected $attestations = NULL;
 
@@ -372,29 +372,29 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a Attestation
+	 * Adds an Attestation
 	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Attestation $attestation
+	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestation
 	 * @return void
 	 */
-	public function addAttestation(\S3b0\EcomProductTools\Domain\Model\Attestation $attestation) {
+	public function addAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestation) {
 		$this->attestations->attach($attestation);
 	}
 
 	/**
-	 * Removes a Attestation
+	 * Removes an Attestation
 	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Attestation $attestationToRemove The Attestation to be removed
+	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove The Attestation to be removed
 	 * @return void
 	 */
-	public function removeAttestation(\S3b0\EcomProductTools\Domain\Model\Attestation $attestationToRemove) {
+	public function removeAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove) {
 		$this->attestations->detach($attestationToRemove);
 	}
 
 	/**
 	 * Returns the attestations
 	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Attestation> $attestations
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
 	 */
 	public function getAttestations() {
 		return $this->attestations;
@@ -403,7 +403,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the attestations
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Attestation> $attestations
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
 	 * @return void
 	 */
 	public function setAttestations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $attestations) {

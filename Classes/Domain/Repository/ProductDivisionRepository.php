@@ -30,7 +30,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 /**
  * The repository for ProductDivisions
  */
-class ProductDivisionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class ProductDivisionRepository extends AbstractRepository {
 
 	/**
 	 * @var array

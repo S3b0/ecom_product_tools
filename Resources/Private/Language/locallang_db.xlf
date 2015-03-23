@@ -66,6 +66,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.language">
 				<source>Language</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.approval">
+				<source>Approval</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.products">
 				<source>Products</source>
 			</trans-unit>
@@ -105,17 +108,17 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_approval.setcard_icon">
 				<source>Setcard Icon</source>
 			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_attestation">
-				<source>Attestation</source>
-			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_attestation.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_attestation.approval">
-				<source>Approval</source>
-			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_certification">
+				<source>Certification / Attestation</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.type">
+				<source>Type</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.type.I.0">
 				<source>Certification</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.type.I.1">
+				<source>Attestation</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_certification.title">
 				<source>Title</source>

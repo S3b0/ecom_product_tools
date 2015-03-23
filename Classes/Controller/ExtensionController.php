@@ -41,14 +41,6 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	protected $approvalRepository = NULL;
 
 	/**
-	 * attestationRepository
-	 *
-	 * @var \S3b0\EcomProductTools\Domain\Repository\AttestationRepository
-	 * @inject
-	 */
-	protected $attestationRepository = NULL;
-
-	/**
 	 * certificationRepository
 	 *
 	 * @var \S3b0\EcomProductTools\Domain\Repository\CertificationRepository
@@ -100,7 +92,11 @@ class ExtensionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
 	 * @api
 	 */
 	public function initializeView(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface $view) {
-		$view->assign('addLayoutClasses', strtolower($this->request->getPluginName()));
+		$view->assignMultiple(array(
+			'addLayoutClasses' => strtolower($this->request->getPluginName()),
+			'language' => $GLOBALS['TSFE']->sys_language_uid,
+			'pageUid' => $GLOBALS['TSFE']->id
+		));
 		parent::initializeView($view);
 	}
 }

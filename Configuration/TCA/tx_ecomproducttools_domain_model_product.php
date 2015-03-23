@@ -222,6 +222,7 @@ return array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_productcategory',
+				'foregin_table_where' => 'tx_ecomproducttools_domain_model_productcategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_productcategory.title',
 				'MM' => 'tx_ecomproducttools_product_productcategory_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
@@ -246,7 +247,7 @@ return array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_certification',
-				'foreign_table_where' => 'ORDER BY tx_ecomproducttools_domain_model_certification.title',
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_certification.type=0 AND tx_ecomproducttools_domain_model_certification.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_certification.title',
 				'MM' => 'tx_ecomproducttools_product_certification_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
@@ -270,8 +271,8 @@ return array(
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.attestations',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_ecomproducttools_domain_model_attestation',
-				'foreign_table_where' => 'ORDER BY tx_ecomproducttools_domain_model_attestation.title',
+				'foreign_table' => 'tx_ecomproducttools_domain_model_certification',
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_certification.type=1 AND tx_ecomproducttools_domain_model_certification.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_certification.title',
 				'MM' => 'tx_ecomproducttools_product_attestation_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,
@@ -319,8 +320,12 @@ return array(
 				'type' => 'select',
 				'items' => array(
 					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.nec_division', -1),
+					array('0', 0),
 					array('1', 1),
 					array('2', 2),
+					array('0/20', 3),
+					array('1/21', 4),
+					array('2/22', 5),
 				),
 				'size' => 1,
 				'maxitems' => 1,

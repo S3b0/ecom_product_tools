@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="ch" datatype="plaintext" original="messages" date="2015-03-23T8:40:48Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+				<target>字节|KB|MB|GB|TB|PB|EB|ZB|YB</target>
+			</trans-unit>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>选择部门</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>选择类别</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>选择产品</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>隐藏已停产产品</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>未分类</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>文件名</target>
+			</trans-unit>
+			<trans-unit id="file.revision.abbr" xml:space="preserve">
+				<source>Rev.</source>
+				<target>修订版</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>修订版</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>尺寸</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>最后修改时间</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>文件类型</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>语言</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>打开</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>下载</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [已停产]</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.0" xml:space="preserve">
+				<source>Zone 0</source>
+				<target>区域 0</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.1" xml:space="preserve">
+				<source>Zone 1</source>
+				<target>区域 1</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.2" xml:space="preserve">
+				<source>Zone 2</source>
+				<target>区域 2</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.3" xml:space="preserve">
+				<source>Zone 0/20</source>
+				<target>区域 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.4" xml:space="preserve">
+				<source>Zone 1/21</source>
+				<target>区域 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.5" xml:space="preserve">
+				<source>Zone 2/22</source>
+				<target>区域 2/22</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+				<target>部门 0</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.1" xml:space="preserve">
+				<source>Division 1</source>
+				<target>部门 1</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.2" xml:space="preserve">
+				<source>Division 2</source>
+				<target>部门 2</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+				<target>部门 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+				<target>部门 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
+				<target>部门 2/22</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>产品详情</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>认证编号：</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>下载认证</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>您可以通过选择产品部门和相应类别来查找产品。</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>无类别找到了！</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>没有产品找到了！</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>没有文件找到了！</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

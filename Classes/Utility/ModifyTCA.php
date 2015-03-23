@@ -12,7 +12,7 @@ namespace S3b0\EcomProductTools\Utility;
  *
  *  Copyright notice
  *
- *  (c) 2014 Sebastian Iffland <sebastian.iffland@ecom-ex.com>, ecom instruments GmbH
+ *  (c) 2015 Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH
  *
  *  All rights reserved
  *
@@ -35,11 +35,8 @@ namespace S3b0\EcomProductTools\Utility;
 
 /**
  * Class ModifyTCA
- *
- * @author  Sebastian Iffland <sebastian.iffland@ecom-ex.com>, ecom instruments GmbH
- * @package S3b0\EcomProductTools\Utility
  */
-class ModifyTCA extends \TYPO3\CMS\Backend\Form\FormEngine {
+class ModifyTCA {
 
 	/**
 	 * labelUserFuncTxEcompcDomainModelOption function.
@@ -52,10 +49,10 @@ class ModifyTCA extends \TYPO3\CMS\Backend\Form\FormEngine {
 	public function labelUserFuncEPTDomainModelFile(array &$PA, \TYPO3\CMS\Backend\Form\FormEngine $pObj = NULL) {
 		$row = $PA['row'];
 		$PA['title'] = $row['title'];
-		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_file', $row['uid']);
+		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']);
 
 		if ( !$row['title'] ) {
-			$mapping = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordRaw('sys_category_record_mm', 'uid_foreign=' . $raw['uid'] . ' AND tablenames=\'tx_ecomproducttools_domain_model_file\'');
+			$mapping = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordRaw('sys_category_record_mm', 'uid_foreign=' . $raw['uid'] . ' AND tablenames=\'' . $PA['table'] . '\'');
 			$category = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('sys_category', $mapping['uid_local'], '*', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
 			$PA['title'] = $category['title'];
 		}

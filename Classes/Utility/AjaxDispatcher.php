@@ -5,8 +5,7 @@
 	/***************************************************************
 	 * Copyright notice
 	 *
-	 * 2010 Daniel Lienert <daniel@lienert.cc>, Michael Knoll <mimi@kaktusteam.de>
-	 * 2014 Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH (6.2 LTS Update)
+	 * 2015 Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH
 	 * All rights reserved
 	 *
 	 *
@@ -29,10 +28,9 @@
 	use TYPO3\CMS\Core\Utility as CoreUtility;
 
 	/**
-	 * Utility to include defined frontend libraries as jQuery and related CSS
+	 * Class AjaxDispatcher
 	 *
-	 * @package Utility
-	 * @author Daniel Lienert <daniel@lienert.cc>
+	 * @author Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH
 	 */
 	class AjaxDispatcher {
 
@@ -44,7 +42,6 @@
 		protected $requestArguments = array();
 
 		/**
-		 * Extbase Object Manager
 		 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
 		 */
 		protected $objectManager;
@@ -113,6 +110,7 @@
 		 * Builds an extbase context and returns the response
 		 *
 		 * ATTENTION: You should not call this method without initializing the dispatcher. Use initAndDispatch() instead!
+		 * @return string
 		 */
 		public function dispatch() {
 			$configuration['extensionName'] = $this->extensionName;
@@ -145,14 +143,14 @@
 			$this->initCallArguments();
 
 			/** @var \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController $GLOBALS['TSFE'] */
-			$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance( 'TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $TYPO3_CONF_VARS, $pid, 0, TRUE );
+			$GLOBALS['TSFE'] = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Controller\\TypoScriptFrontendController', $TYPO3_CONF_VARS, $pid, 0, TRUE);
 			$GLOBALS['TSFE']->fe_user = \TYPO3\CMS\Frontend\Utility\EidUtility::initFeUser();
 			$GLOBALS['TSFE']->id = $this->pageUid;
 			$GLOBALS['TSFE']->sys_language_content = $this->language;
-//			ATTENTION CAUSING 500 INTERNAL ERROR @TYPO3 CMS 6.2.x
-//			/** @var \TYPO3\CMS\Frontend\Page\PageRepository sys_page */
-//			$GLOBALS['TSFE']->sys_page = CoreUtility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
-//			$GLOBALS['TSFE']->sys_page->init($GLOBALS['TSFE']->showHiddenPage);
+//			ATTENTION CAUSING 500 INTERNAL ERROR @TYPO3 CMS 6.2.2-
+			/** @var \TYPO3\CMS\Frontend\Page\PageRepository sys_page */
+			$GLOBALS['TSFE']->sys_page = CoreUtility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
+			$GLOBALS['TSFE']->sys_page->init($GLOBALS['TSFE']->showHiddenPage);
 			$GLOBALS['TSFE']->determineId();
 			$GLOBALS['TSFE']->getCompressedTCarray();
 			$GLOBALS['TSFE']->initTemplate();
@@ -301,7 +299,7 @@
 		}
 
 		/**
-		 * @param int $language
+		 * @param integer $language
 		 * @return \S3b0\EcomProductTools\Utility\AjaxDispatcher
 		 */
 		public function setLanguage($language) {

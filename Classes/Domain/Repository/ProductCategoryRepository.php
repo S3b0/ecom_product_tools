@@ -30,7 +30,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 /**
  * The repository for ProductCategories
  */
-class ProductCategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class ProductCategoryRepository extends AbstractRepository {
 
 	/**
 	 * @var array
@@ -40,18 +40,8 @@ class ProductCategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repositor
 	);
 
 	/**
-	 * @return \S3b0\EcomProductTools\Domain\Repository\ProductCategoryRepository
-	 */
-	public function ignoreStoragePid() {
-		/** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
-		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
-		$querySettings->setRespectStoragePage(FALSE); // Disable storage pid
-		$this->setDefaultQuerySettings($querySettings);
-		return $this;
-	}
-
-	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
+	 *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {

@@ -33,7 +33,14 @@ namespace S3b0\EcomProductTools\Domain\Model;
 class Certification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
-	 * The certification!
+	 * The type, whether certification [0] or attestation [1]
+	 *
+	 * @var integer
+	 */
+	protected $type = 0;
+
+	/**
+	 * The certification or attestation!
 	 *
 	 * @var string
 	 * @validate NotEmpty
@@ -48,12 +55,28 @@ class Certification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $approval = NULL;
 
 	/**
+	 * @return integer
+	 */
+	public function getType()
+	{
+		return $this->type;
+	}
+
+	/**
+	 * @param integer $type
+	 */
+	public function setType($type)
+	{
+		$this->type = $type;
+	}
+
+	/**
 	 * Returns the title
 	 *
 	 * @return string $title
 	 */
 	public function getTitle() {
-		return $this->title;
+		return str_ireplace('|', PHP_EOL, $this->title);
 	}
 
 	/**

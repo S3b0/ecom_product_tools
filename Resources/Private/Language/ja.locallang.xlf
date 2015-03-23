@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="ja" datatype="plaintext" original="messages" date="2015-03-23T10:00:00Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+				<target>バイト|キロバイト|メガバイト|ギガバイト</target>
+			</trans-unit>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>部門を選択</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>カテゴリを選択</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>製品を選択</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>販売終了した製品を非表示にする</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>分類されない</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>ファイル名</target>
+			</trans-unit>
+			<trans-unit id="file.revision.abbr" xml:space="preserve">
+				<source>Rev.</source>
+				<target>リビジョン</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>リビジョン</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>サイズ</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>最終更新時刻</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>ファイルタイプ</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>言語</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>オープン</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>ダウンロード</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [販売終了]</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.0" xml:space="preserve">
+				<source>Zone 0</source>
+				<target>ゾーン0</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.1" xml:space="preserve">
+				<source>Zone 1</source>
+				<target>ゾーン1</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.2" xml:space="preserve">
+				<source>Zone 2</source>
+				<target>ゾーン2</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.3" xml:space="preserve">
+				<source>Zone 0/20</source>
+				<target>ゾーン0/20</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.4" xml:space="preserve">
+				<source>Zone 1/21</source>
+				<target>ゾーン1/21</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.5" xml:space="preserve">
+				<source>Zone 2/22</source>
+				<target>ゾーン2/22</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+				<target>部門0</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.1" xml:space="preserve">
+				<source>Division 1</source>
+				<target>部門1</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.2" xml:space="preserve">
+				<source>Division 2</source>
+				<target>部門2</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+				<target>部門0/20</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+				<target>部門1/21</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
+				<target>部門2/22</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>製品の詳細</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>証明書番号:</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>証明書のダウンロード</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>製品を検索するには、製品部門と対応するカテゴリを選択します。</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>いいえカテゴリが見つかりませんでした！</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>いいえ製品が見つかりませんでした！</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>どのファイルが見つかりませんでした！</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

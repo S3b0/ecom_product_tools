@@ -18,7 +18,7 @@ return array(
 		'dividers2tabs' => TRUE,
 		'typeicon_column' => 'flag',
 		'typeicon_classes' => array(
-			'default' => 'mimetypes-x-sys_language',
+			'default' => 'extensions-ept-language',
 			'mask' => 'flags-###TYPE###'
 		),
 		'searchFields' => 'title,sys_language,flag,',

@@ -24,14 +24,20 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'title,approval,',
+		'typeicon_column' => 'type',
+		'typeicon_classes' => array(
+			'default' => 'extensions-ept-certification',
+			'mask' => 'extensions-ept-certification-###TYPE###'
+		),
+		'useColumnsForDefaultValues' => 'type,approval',
+		'searchFields' => 'type,title,approval,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_certification.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, approval',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, approval',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, type, title;;1, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => 'approval, hidden', 'canNotCollapse' => TRUE),
@@ -103,6 +109,20 @@ return array(
 			),
 		),
 
+		'type' => array(
+			'l10n_mode' => 'exclude',
+			'exclude' => 1,
+			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.type',*/
+			'config' => array(
+				'type' => 'select',
+				'iconsInOptionTags' => 1,
+				'suppress_icons' => 1,
+				'items' => array(
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.type.I.0', 0, 'EXT:ecom_product_tools/Resources/Public/Icons/tx_ecomproducttools_domain_model_certification_certification.png'),
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.type.I.1', 1, 'EXT:ecom_product_tools/Resources/Public/Icons/tx_ecomproducttools_domain_model_certification_attestation.png')
+				),
+			),
+		),
 		'title' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.title',
@@ -115,13 +135,13 @@ return array(
 		'approval' => array(
 			'l10n_mode' => 'exclude',
 			'exclude' => 1,
-			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval',*/
+			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval',*/
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
 				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval', '')
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval', '')
 				),
 				'minitems' => 1,
 				'maxitems' => 1

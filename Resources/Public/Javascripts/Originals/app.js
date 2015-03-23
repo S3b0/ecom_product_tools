@@ -101,8 +101,8 @@ function ajaxRequest(action, arguments, onSuccess, dataType, pageType) {
 		dataType: dataType.length ? dataType : 'json',
 		data: {
 			eID: 'EcomProductTools',
-			id: 120,
-			L: 0,
+			id: parseInt(pid),
+			L: parseInt(langUid),
 			type: parseInt(pageType),
 			request: {
 				controllerName: dataType == 'json' ? 'JsonRequest' : 'AjaxRequest',

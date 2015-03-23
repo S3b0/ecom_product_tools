@@ -32,7 +32,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ecom_product_tools', 'Configuration/TypoScript', 'ecom Product Tools');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_approval', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_approval.xlf');
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_attestation', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_attestation.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_certification', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_certification.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_file', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_file.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_language', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_language.xlf');
@@ -58,6 +57,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 // Add Sprite Icons for different record types (visual distinction)
 \TYPO3\CMS\Backend\Sprite\SpriteManager::addSingleIcons(
 	array(
+		'approval' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_approval.png',
 		'approval-Abkhazia' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Abkhazia.png',
 		'approval-Afghanistan' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Afghanistan.png',
 		'approval-Aland' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Aland.png',
@@ -318,7 +318,11 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 		'approval-Worldwide' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Worldwide.png',
 		'approval-Yemen' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Yemen.png',
 		'approval-Zambia' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Zambia.png',
-		'approval-Zimbabwe' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Zimbabwe.png'
+		'approval-Zimbabwe' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Zimbabwe.png',
+		'language' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_language.png',
+		'certification' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_certification.png',
+		'certification-0' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_certification_certification.png',
+		'certification-1' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_certification_attestation.png'
 	),
 	'ept'
 );

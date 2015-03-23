@@ -5,7 +5,7 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Iffland <sebastian.iffland@ecom-ex.com>, ecom instruments GmbH
+ *  (c) 2015 Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH
  *
  *  All rights reserved
  *
@@ -28,9 +28,6 @@ namespace S3b0\EcomProductTools\Controller;
 
 /**
  * JsonRequestController
- *
- * @package S3b0
- * @subpackage EcomProductTools
  */
 class JsonRequestController extends \S3b0\EcomProductTools\Controller\ExtensionController {
 
@@ -79,7 +76,7 @@ class JsonRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductCategoriesByProductDivisionAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {
-		$this->view->assign('value', $this->productCategoryRepository->ignoreStoragePid()->findByProductDivision($division));
+		$this->view->assign('value', $this->productCategoryRepository->setExtQuerySettings()->findByProductDivision($division));
 	}
 
 	/**
@@ -103,7 +100,7 @@ class JsonRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductsByProductCategoryAction(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = FALSE) {
-		$this->view->assign('value', $this->productRepository->ignoreStoragePid()->findByProductCategory($category, $discontinued));
+		$this->view->assign('value', $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued));
 	}
 
 }

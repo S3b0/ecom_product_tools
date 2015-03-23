@@ -138,11 +138,15 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	public function getTitle() {
 		if ( $this->title ) {
 			return $this->title;
-		} elseif ( $this->getFileCategory()->_languageUid !== $this->language->getSysLanguage() ) {
+		} elseif ( $this->getFileCategory()->_languageUid !== $this->getLanguage()->getSysLanguage() ) { // If current language differs from file language
 			/** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
 			$db = $GLOBALS['TYPO3_DB'];
-			$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->language->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
-			return $row['title'] ?: $this->getFileCategory()->getTitle();
+			$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->getLanguage()->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+			// If no translation exists, fetch default!
+			if ( !$row ) {
+				$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+			}
+			return $row && $row['title'] ? $row['title'] : $this->getFileCategory()->getTitle();
 		} else {
 			return $this->getFileCategory()->getTitle();
 		}

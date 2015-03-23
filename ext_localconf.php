@@ -29,7 +29,7 @@ if (!defined('TYPO3_MODE')) {
 	array(
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
-		'File' => 'listByCategory, listByProduct',
+		/*'File' => 'listByCategory, listByProduct',*/
 		'AjaxRequest' => 'getProductData',
 		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
 
@@ -38,7 +38,7 @@ if (!defined('TYPO3_MODE')) {
 	array(
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
-		'File' => 'listByCategory, listByProduct',
+		/*'File' => 'listByCategory, listByProduct',*/
 		'AjaxRequest' => 'getProductData',
 		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
 	)

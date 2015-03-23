@@ -66,9 +66,9 @@ class ActionController extends ExtensionController {
 			'product' => $product,
 			'category' => $category,
 			'division' => $division,
-			'files' => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->findByProduct($product) : NULL,
-			'products' => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->findByProductCategory($category, $discontinued) : NULL,
-			'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->findByProductDivision($division) : NULL,
+			'files' => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->setExtQuerySettings()->findByProduct($product) : NULL,
+			'products' => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued) : NULL,
+			'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->setExtQuerySettings()->findByProductDivision($division) : NULL,
 			'productDivisions' => $this->productDivisionRepository->findAll()
 		));
 	}

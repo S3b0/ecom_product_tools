@@ -29,7 +29,7 @@ return array(
 		),
 		'typeicon_column' => 'setcard_icon',
 		'typeicon_classes' => array(
-			'default' => 'mimetypes-x-sys_language',
+			'default' => 'extensions-ept-approval',
 			'mask' => 'extensions-ept-approval-###TYPE###'
 		),
 		'searchFields' => 'title,setcard_icon,icon,icon_user,',

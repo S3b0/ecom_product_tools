@@ -5,7 +5,7 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  Copyright notice
  *
- *  (c) 2015 Sebastian Iffland <sebastian.iffland@ecom-ex.com>, ecom instruments GmbH
+ *  (c) 2015 Sebastian Iffland <Sebastian.Iffland@ecom-ex.com>, ecom instruments GmbH
  *
  *  All rights reserved
  *
@@ -28,9 +28,6 @@ namespace S3b0\EcomProductTools\Controller;
 
 /**
  * AjaxRequestController
- *
- * @package S3b0
- * @subpackage EcomProductTools
  */
 class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionController {
 
@@ -57,7 +54,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
 	 */
 	public function initializeGetProductDataAction() {
-		if ( !$this->request->getArgument('product') instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('product')) ) {
+		if ( !$this->request->getArgument('product') instanceof \S3b0\EcomProductTools\Domain\Model\Product && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('product')) ) {
 			$this->request->setArgument('product', $this->productRepository->findByUid($this->request->getArgument('product')));
 		}
 	}
@@ -69,7 +66,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductDataAction(\S3b0\EcomProductTools\Domain\Model\Product $product){
-		$this->view->assign('files', $this->fileRepository->findByProduct($product));
+		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByProduct($product));
 	}
 
 }

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2015-03-23T8:06:10Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+				<target>Octets|Ko|Mo|Go|To|Po|Zo|Yo</target>
+			</trans-unit>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>Sélectionner une branche</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>Sélectionner une catégorie</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>Sélectionner un produit</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>Masquer les produits abandonnés</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>Aucune catégorie</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>Nom du fichier</target>
+			</trans-unit>
+			<trans-unit id="file.revision.abbr" xml:space="preserve">
+				<source>Rev.</source>
+				<target>Rév.</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>Révision</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>Taille</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>Dernière modification</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>Type de fichier</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>Sprache</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>Ouvrir</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>Télécharger</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [abandonné]</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>En savoir plus</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>N° de certification :</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>Télécharger la certification</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>Vous pouvez trouver votre produit en sélectionnant la branche du produit puis la catégorie correspondante.</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>Aucune catégorie trouvé!</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>Aucun produit trouvé!</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>Aucun résultat!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -28,15 +28,20 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  ***************************************************************/
 
 /**
- * The repository for Attestations
+ * Abstract repository
  */
-class AttestationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
-	 * @var array
+	 * @return \S3b0\EcomProductTools\Domain\Repository\AbstractRepository
 	 */
-	protected $defaultOrderings = array(
-		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	);
-
+	public function setExtQuerySettings() {
+		/** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
+		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
+		$querySettings
+			->setRespectStoragePage(FALSE)  // Disable storage pid
+			->setRespectSysLanguage(FALSE); // Disable sys_language
+		$this->setDefaultQuerySettings($querySettings);
+		return $this;
+	}
 }

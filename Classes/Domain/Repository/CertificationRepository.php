@@ -30,7 +30,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 /**
  * The repository for Certifications
  */
-class CertificationRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class CertificationRepository extends AbstractRepository {
 
 	/**
 	 * @var array

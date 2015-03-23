@@ -143,7 +143,7 @@ return array(
 				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
 				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_attestation.approval', '')
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.approval', '')
 				),
 				'maxitems' => 1
 			),
@@ -154,6 +154,7 @@ return array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_product',
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_product.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_product.title',
 				'MM' => 'tx_ecomproducttools_file_product_mm',
 				'size' => 10,
 				'autoSizeMax' => 30,

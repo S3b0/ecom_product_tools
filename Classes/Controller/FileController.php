@@ -35,19 +35,21 @@ class FileController extends ExtensionController {
 	/**
 	 * action listByCategory
 	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
 	 * @return void
 	 */
-	public function listByCategoryAction() {
-
+	public function listByCategoryAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
+		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByCategory($category));
 	}
 
 	/**
 	 * action listByProduct
 	 *
+	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
 	 * @return void
 	 */
-	public function listByProductAction() {
-
+	public function listByProductAction(\S3b0\EcomProductTools\Domain\Model\Product $product) {
+		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByProduct($product));
 	}
 
 }

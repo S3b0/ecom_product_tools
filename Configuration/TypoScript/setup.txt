@@ -15,12 +15,17 @@ plugin.tx_ecomproducttools {
 		# uncomment the following line to enable the new Property Mapper.
 		# rewrittenPropertyMapper = 1
 	}
+	settings {
+		decimalSeparator = .
+		thousandsSeparator = ,
+	}
 }
 
 ############################################
 #         Set global page settings         #
 ############################################
 
+[PIDinRootline = {$plugin.tx_ecomproducttools.settings.rootLine}]
 page.includeCSSLibs {
 	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/m.ept.main.css
 }
@@ -30,6 +35,7 @@ page.includeJSFooter {
 	owl = EXT:ecom_product_tools/Resources/Public/Javascripts/owl.carousel.min.js
 	owl.forceOnTop = 1
 }
+[global]
 
 ############################################
 #           Add Ajax PAGE-Object           #

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="es" datatype="plaintext" original="messages" date="2015-03-23T8:51:38Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>Seleccione una división</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>Seleccione una categoría</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>Seleccione un producto</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>Ocultar productos discontinuados</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>No categorizado</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>Nombre de archivo</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>Revisión</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>Tamaño</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>Última modificación</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>Tipo archivo</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>Idioma</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>Abrir</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>Descargar</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [discontinuado]</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.0" xml:space="preserve">
+				<source>Zone 0</source>
+				<target>Zona 0</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.1" xml:space="preserve">
+				<source>Zone 1</source>
+				<target>Zona 1</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.2" xml:space="preserve">
+				<source>Zone 2</source>
+				<target>Zona 2</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.3" xml:space="preserve">
+				<source>Zone 0/20</source>
+				<target>Zona 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.4" xml:space="preserve">
+				<source>Zone 1/21</source>
+				<target>Zona 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.5" xml:space="preserve">
+				<source>Zone 2/22</source>
+				<target>Zona 2/22</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+				<target>División 0</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.1" xml:space="preserve">
+				<source>Division 1</source>
+				<target>División 1</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.2" xml:space="preserve">
+				<source>Division 2</source>
+				<target>División 2</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+				<target>División 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+				<target>División 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
+				<target>División 2/22</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>Más información sobre el producto</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>N.° de certificación:</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>Descargar certificación</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>Para buscar productos, seleccione la división de productos y la categoría correspondiente.</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>No hay categorías encontrado!</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>Productos no encontrados!</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>No se han encontrado!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

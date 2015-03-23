@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="ar" datatype="plaintext" original="messages" date="2015-03-23T8:27:13Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+				<target>بايت|KB|MB|GB|TB|PB|EB|ZB|YB</target>
+			</trans-unit>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>تحديد قسم</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>تحديد فئة</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>تحديد منتج</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>إخفاء المنتجات غير المستمرة</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>غير مصنف</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>اسم الملف</target>
+			</trans-unit>
+			<trans-unit id="file.revision.abbr" xml:space="preserve">
+				<source>Rev.</source>
+				<target>المراجعة</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>المراجعة</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>الحجم</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>آخر تعديل</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>نوع الملف</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>اللغة</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>فتح</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>تنزيل</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [غير مستمر]</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.0" xml:space="preserve">
+				<source>Zone 0</source>
+				<target>المنطقة 0</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.1" xml:space="preserve">
+				<source>Zone 1</source>
+				<target>المنطقة 1</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.2" xml:space="preserve">
+				<source>Zone 2</source>
+				<target>المنطقة 2</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.3" xml:space="preserve">
+				<source>Zone 0/20</source>
+				<target>المنطقة 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.4" xml:space="preserve">
+				<source>Zone 1/21</source>
+				<target>المنطقة 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.5" xml:space="preserve">
+				<source>Zone 2/22</source>
+				<target>المنطقة 2/22</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+				<target>القسم 0</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.1" xml:space="preserve">
+				<source>Division 1</source>
+				<target>القسم 1</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.2" xml:space="preserve">
+				<source>Division 2</source>
+				<target>القسم 2</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+				<target>القسم 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+				<target>القسم 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
+				<target>القسم 2/22</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>المزيد حول المنتج</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>رقم الشهادة:</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>تنزيل الشهادة</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>تستطيع البحث عن المنتج بتحديد قسم المنتج والفئة المناظرة.</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>لا يوجد فئات وجدت!</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>لا توجد منتجات وجدت!</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>لا توجد ملفات وجدت!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

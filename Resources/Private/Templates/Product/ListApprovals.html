@@ -12,22 +12,22 @@
 					<div class="col-xs-9 col-sm-8 col-md-8 bodytext">
 						<label>{approval.title}</label>
 
-						<ul class="list">
-							<f:for each="{certifications}" as="certification"><li>{certification.title}</li></f:for>
-						</ul>
-
 						<f:if condition="{product.attestations -> f:count()}">
 							<f:groupedFor each="{product.attestations}" as="attestations" groupBy="approval" groupKey="aApproval">
 								<f:if condition="{aApproval.uid} == {approval.uid}">
 									<f:if condition="{attestations -> f:count()}">
-										<label><f:translate id="label.attestations" /></label>
-										<ul class="list">
-											<f:for each="{attestations}" as="attestation" iteration="a"><li>{attestation.title}</li></f:for>
-										</ul>
+										<p>
+											<f:translate id="label.attestations" />
+											<f:for each="{attestations}" as="attestation" iteration="a"><span class="nowrap">{attestation.title}</span><f:if condition="{a.isLast} == 0">, </f:if></f:for>
+										</p>
 									</f:if>
 								</f:if>
 							</f:groupedFor>
 						</f:if>
+
+						<ul class="list">
+							<f:for each="{certifications}" as="certification"><li><f:format.nl2br>{certification.title}</f:format.nl2br></li></f:for>
+						</ul>
 
 						<f:if condition="{files -> f:count()}">
 							<f:groupedFor each="{files}" as="approvalDocuments" groupBy="approval" groupKey="fApproval">

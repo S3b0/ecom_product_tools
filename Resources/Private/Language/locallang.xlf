@@ -3,6 +3,9 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-12T16:38:02Z" product-name="ecom_product_tools">
 		<header/>
 		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+			</trans-unit>
 			<trans-unit id="select_product_division" xml:space="preserve">
 				<source>Select a division</source>
 			</trans-unit>
@@ -72,11 +75,23 @@
 			<trans-unit id="product.atex_zone.5" xml:space="preserve">
 				<source>Zone 2/22</source>
 			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+			</trans-unit>
 			<trans-unit id="product.nec_division.1" xml:space="preserve">
 				<source>Division 1</source>
 			</trans-unit>
 			<trans-unit id="product.nec_division.2" xml:space="preserve">
 				<source>Division 2</source>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
 			</trans-unit>
 
 			<trans-unit id="teaser.about_product" xml:space="preserve">
@@ -84,7 +99,7 @@
 			</trans-unit>
 
 			<trans-unit id="label.attestations" xml:space="preserve">
-				<source>Approval type test certificates:</source>
+				<source>Certification No.:</source>
 			</trans-unit>
 			<trans-unit id="label.dl_certification" xml:space="preserve">
 				<source>Download certification</source>
@@ -98,8 +113,8 @@
 			<trans-unit id="dc.noprod" xml:space="preserve">
 				<source>No products found!</source>
 			</trans-unit>
-			<trans-unit id="dc.nodocs" xml:space="preserve">
-				<source>No documents found!</source>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
 			</trans-unit>
 		</body>
 	</file>

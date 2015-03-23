@@ -2,7 +2,9 @@
 	<f:render section="main" />
 	<script language="JavaScript" type="text/javascript">
 		var noCatMsg = '{f:translate(id:"dc.nocats")}',
-			noProdMsg = '{f:translate(id:"dc.noprod")}';
+			noProdMsg = '{f:translate(id:"dc.noprod")}',
+			pid = {pageUid},
+			langUid = {language};
 	</script>
 	<script language="JavaScript" type="text/javascript" src="{f:uri.resource(path: 'Javascripts/m.ept.main.js')}"></script>
 </div>

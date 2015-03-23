@@ -30,7 +30,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 /**
  * The repository for Files
  */
-class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class FileRepository extends AbstractRepository {
 
 	protected $defaultOrderings = array(
 		'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
@@ -48,7 +48,21 @@ class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	}
 
 	/**
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
+		$query = $this->createQuery();
+
+		return $query->matching(
+			$query->contains('file_categories', $category)
+		)->execute();
+	}
+
+	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+	 *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
 	public function findByProduct(\S3b0\EcomProductTools\Domain\Model\Product $product) {
@@ -59,6 +73,11 @@ class FileRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		)->execute();
 	}
 
+	/**
+	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
 	public function findApprovalDocuments(\S3b0\EcomProductTools\Domain\Model\Product $product) {
 		$query = $this->createQuery();
 

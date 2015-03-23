@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="ru" datatype="plaintext" original="messages" date="2015-03-23T10:52:03Z" product-name="ecom_product_tools">
+		<header/>
+		<body>
+			<trans-unit id="file_size_units" xml:space="preserve">
+				<source>Byte|KB|MB|GB|TB|PB|EB|ZB|YB</source>
+				<target>байт|КБ|Мб|Гб|ТБ|ПБ|ЭБ|ЗБ|ЙБ</target>
+			</trans-unit>
+			<trans-unit id="select_product_division" xml:space="preserve">
+				<source>Select a division</source>
+				<target>Выбрать подразделение</target>
+			</trans-unit>
+			<trans-unit id="select_product_category" xml:space="preserve">
+				<source>Select a category</source>
+				<target>Выбрать категорию</target>
+			</trans-unit>
+			<trans-unit id="select_product" xml:space="preserve">
+				<source>Select a product</source>
+				<target>Выбрать изделие</target>
+			</trans-unit>
+			<trans-unit id="discontinued_checkbox_label" xml:space="preserve">
+				<source>Hide discontinued products</source>
+				<target>Спрятать снятые с производства изделия</target>
+			</trans-unit>
+			<trans-unit id="file_category.no_category.title" xml:space="preserve">
+				<source>Not categorized</source>
+				<target>Не классифицируется</target>
+			</trans-unit>
+			<trans-unit id="file.filename" xml:space="preserve">
+				<source>File name</source>
+				<target>Имя файла</target>
+			</trans-unit>
+			<trans-unit id="file.revision.abbr" xml:space="preserve">
+				<source>Rev.</source>
+				<target>Ред</target>
+			</trans-unit>
+			<trans-unit id="file.revision" xml:space="preserve">
+				<source>Revision</source>
+				<target>Редакция</target>
+			</trans-unit>
+			<trans-unit id="file.size" xml:space="preserve">
+				<source>Size</source>
+				<target>Размер</target>
+			</trans-unit>
+			<trans-unit id="file.last_modified" xml:space="preserve">
+				<source>Last modified</source>
+				<target>Последнее изменение</target>
+			</trans-unit>
+			<trans-unit id="file.type" xml:space="preserve">
+				<source>Type</source>
+				<target>Тип файла</target>
+			</trans-unit>
+			<trans-unit id="file.language" xml:space="preserve">
+				<source>Language</source>
+				<target>Язык</target>
+			</trans-unit>
+			<trans-unit id="file.open" xml:space="preserve">
+				<source>Open</source>
+				<target>Открыть</target>
+			</trans-unit>
+			<trans-unit id="file.download" xml:space="preserve">
+				<source>Download</source>
+				<target>Загрузить</target>
+			</trans-unit>
+			<trans-unit id="product.discontinued" xml:space="preserve">
+				<source> [discontinued]</source>
+				<target> [снято с производства]</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.0" xml:space="preserve">
+				<source>Zone 0</source>
+				<target>Зона 0</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.1" xml:space="preserve">
+				<source>Zone 1</source>
+				<target>Зона 1</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.2" xml:space="preserve">
+				<source>Zone 2</source>
+				<target>Зона 2</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.3" xml:space="preserve">
+				<source>Zone 0/20</source>
+				<target>Зона 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.4" xml:space="preserve">
+				<source>Zone 1/21</source>
+				<target>Зона 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.atex_zone.5" xml:space="preserve">
+				<source>Zone 2/22</source>
+				<target>Зона 2/22</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.0" xml:space="preserve">
+				<source>Division 0</source>
+				<target>Подразделение 0</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.1" xml:space="preserve">
+				<source>Division 1</source>
+				<target>Подразделение 1</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.2" xml:space="preserve">
+				<source>Division 2</source>
+				<target>Подразделение 2</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.3" xml:space="preserve">
+				<source>Division 0/20</source>
+				<target>Подразделение 0/20</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.4" xml:space="preserve">
+				<source>Division 1/21</source>
+				<target>Подразделение 1/21</target>
+			</trans-unit>
+			<trans-unit id="product.nec_division.5" xml:space="preserve">
+				<source>Division 2/22</source>
+				<target>Подразделение 2/22</target>
+			</trans-unit>
+
+			<trans-unit id="teaser.about_product" xml:space="preserve">
+				<source>More about the product</source>
+				<target>Больше об изделии</target>
+			</trans-unit>
+
+			<trans-unit id="label.attestations" xml:space="preserve">
+				<source>Certification No.:</source>
+				<target>Сертификат №:</target>
+			</trans-unit>
+			<trans-unit id="label.dl_certification" xml:space="preserve">
+				<source>Download certification</source>
+				<target>Загрузить сертификат</target>
+			</trans-unit>
+			<trans-unit id="dc.hint" xml:space="preserve">
+				<source>You can find your product by selecting the product division and corresponding category.</source>
+				<target>Изделие можно найти, выбрав подразделение изделия и соответствующую категорию.</target>
+			</trans-unit>
+			<trans-unit id="dc.nocats" xml:space="preserve">
+				<source>No categories found!</source>
+				<target>Категории не найдены!</target>
+			</trans-unit>
+			<trans-unit id="dc.noprod" xml:space="preserve">
+				<source>No products found!</source>
+				<target>Продуктов не найдено!</target>
+			</trans-unit>
+			<trans-unit id="dc.nofiles" xml:space="preserve">
+				<source>No files found!</source>
+				<target>Никакие файлы не найдены!</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

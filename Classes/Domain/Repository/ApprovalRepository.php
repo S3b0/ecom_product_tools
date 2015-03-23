@@ -30,7 +30,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 /**
  * The repository for Approvals
  */
-class ApprovalRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+class ApprovalRepository extends AbstractRepository {
 
 	/**
 	 * @var array
