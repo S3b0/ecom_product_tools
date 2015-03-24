@@ -29,6 +29,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 
 	file_reference int(11) unsigned NOT NULL default '0',
 	title varchar(255) DEFAULT '' NOT NULL,
+	append_to_title varchar(255) DEFAULT '' NOT NULL,
 	last_modification date DEFAULT '0000-00-00',
 	revision int(11) DEFAULT '0' NOT NULL,
 	approval int(11) unsigned DEFAULT '0',

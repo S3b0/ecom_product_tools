@@ -58,7 +58,7 @@ class ModifyTCA {
 		}
 
 		$language = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_language', $raw['language'], 'title', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('tx_ecomproducttools_domain_model_language'));
-		$PA['title'] .= ' | ' . ucfirst($language['title']);
+		$PA['title'] .= ' ' . ($raw['append_to_title'] ?: '') . ' | ' . ucfirst($language['title']);
 	}
 
 }

@@ -9,6 +9,9 @@
 			<trans-unit id="title.description">
 				<source>File title to be displayed</source>
 			</trans-unit>
+			<trans-unit id="append_to_title.description">
+				<source>Appendix to file title, if any. Works with no title set, results in "category title + appendix".</source>
+			</trans-unit>
 			<trans-unit id="last_modification.description">
 				<source>Last modification date</source>
 			</trans-unit>

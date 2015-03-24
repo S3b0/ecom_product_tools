@@ -57,6 +57,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.title">
 				<source>Title</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.append_to_title">
+				<source>Appendix</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.last_modification">
 				<source>Last Modification</source>
 			</trans-unit>

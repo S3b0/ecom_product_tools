@@ -49,6 +49,13 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $title = '';
 
 	/**
+	 * String to append to tile, if any
+	 *
+	 * @var string
+	 */
+	protected $appendToTitle = '';
+
+	/**
 	 * Last modification date
 	 *
 	 * @var \DateTime
@@ -146,9 +153,9 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 			if ( !$row ) {
 				$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
 			}
-			return $row && $row['title'] ? $row['title'] : $this->getFileCategory()->getTitle();
+			return ($row && $row['title'] ? $row['title'] : $this->getFileCategory()->getTitle()) . ' ' . $this->getAppendToTitle();
 		} else {
-			return $this->getFileCategory()->getTitle();
+			return $this->getFileCategory()->getTitle() . $this->getAppendToTitle();
 		}
 	}
 
@@ -160,6 +167,24 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setTitle($title) {
 		$this->title = $title;
+	}
+
+	/**
+	 * Returns the title
+	 *
+	 * @return string
+	 */
+	public function getAppendToTitle () {
+		return ' ' . $this->appendToTitle;
+	}
+
+	/**
+	 * Sets the title
+	 *
+	 * @param string $appendToTitle
+	 */
+	public function setAppendToTitle ($appendToTitle) {
+		$this->appendToTitle = $appendToTitle;
 	}
 
 	/**
