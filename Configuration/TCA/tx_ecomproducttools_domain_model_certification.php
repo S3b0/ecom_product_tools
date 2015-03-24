@@ -7,8 +7,7 @@ return array(
 	'ctrl' => array(
 		'title'	=> 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification',
 		'label' => 'title',
-		'label_alt' => 'approval',
-		'label_alt_force' => TRUE,
+		'label_userFunc' => 'S3b0\\EcomProductTools\\Utility\\ModifyTCA->labelUserFuncEPTDomainModelCertification',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
 		'cruser_id' => 'cruser_id',

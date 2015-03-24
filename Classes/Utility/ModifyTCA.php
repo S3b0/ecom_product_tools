@@ -39,6 +39,46 @@ namespace S3b0\EcomProductTools\Utility;
 class ModifyTCA {
 
 	/**
+	 * labelUserFuncEPTDomainModelApproval function.
+	 *
+	 * @param array                              $PA
+	 * @param \TYPO3\CMS\Backend\Form\FormEngine $pObj
+	 *
+	 * @return void
+	 */
+	public function labelUserFuncEPTDomainModelApproval(array &$PA, \TYPO3\CMS\Backend\Form\FormEngine $pObj = NULL) {
+		$row = $PA['row'];
+		$PA['title'] = $row['title'];
+		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']);
+		$this->getApprovalLabelAddition($PA, $raw, $PA['title']);
+	}
+
+	/**
+	 * labelUserFuncEPTDomainModelCertification function.
+	 *
+	 * @param array                              $PA
+	 * @param \TYPO3\CMS\Backend\Form\FormEngine $pObj
+	 *
+	 * @return void
+	 */
+	public function labelUserFuncEPTDomainModelCertification(array &$PA, \TYPO3\CMS\Backend\Form\FormEngine $pObj = NULL) {
+		$row = $PA['row'];
+		$PA['title'] = $row['title'];
+		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']);
+		$approval = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_approval', $raw['approval']);
+		$approvalAtList = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_approval', $raw['approval_at_list']);
+
+		if ( $approval ) {
+			$PA['title'] .= ', ' . ($approval['markup_label'] ?: $approval['title']);
+			$this->getApprovalLabelAddition($PA, $approval);
+		}
+
+		if ( $approvalAtList && !preg_match('/' . preg_quote($approvalAtList['markup_label'], '/') . '/i', $PA['title']) ) {
+			$PA['title'] .= ' | ' . ($approvalAtList['markup_label'] ?: $approvalAtList['title']);
+		}
+	}
+
+	/**
 	 * labelUserFuncTxEcompcDomainModelOption function.
 	 *
 	 * @param array                              $PA
@@ -59,6 +99,34 @@ class ModifyTCA {
 
 		$language = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_language', $raw['language'], 'title', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('tx_ecomproducttools_domain_model_language'));
 		$PA['title'] .= ' ' . ($raw['append_to_title'] ?: '') . ' | ' . ucfirst($language['title']);
+	}
+
+	/**
+	 * getApprovalLabelAddition function.
+	 *
+	 * @param array  $PA
+	 * @param array  $approval
+	 * @param string $title
+	 *
+	 * @return void
+	 */
+	private function getApprovalLabelAddition(array &$PA, array $approval = array(), $title = '') {
+		$checkForDuplicates = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordsByField('tx_ecomproducttools_domain_model_approval', 'title', $title ?: $approval['title']);
+
+		if ( count((array)$checkForDuplicates) > 1 ) {
+			$markups = array();
+			$icons = array();
+			foreach ( $checkForDuplicates as $record ) {
+				$markups[] = $record['markup_label'];
+				$icons[] = $record['icon'];
+			}
+
+			if ( count(array_unique($markups)) > 1 ) {
+				$PA['title'] .= ', markup:' . $approval['markup_label'];
+			} else {
+				$PA['title'] .= ', ico:' . $approval['icon'];
+			}
+		}
 	}
 
 }
