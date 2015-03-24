@@ -430,4 +430,24 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		return $approvals;
 	}
 
+	/**
+	 * Returns the approvals that are not in list
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getApprovalsNotInList() {
+		$approvals = $this->getApprovals();
+
+		if ( $approvals->count() ) {
+			/** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
+			foreach ( $this->certifications as $certification ) {
+				if ( $approvals->contains($certification->getApprovalAtList()) ) {
+					$approvals->detach($certification->getApprovalAtList());
+				}
+			}
+		}
+
+		return $approvals;
+	}
+
 }

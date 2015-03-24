@@ -2,7 +2,10 @@
 
 <f:section name="main">
 	<div class="row">
-		<f:groupedFor each="{product.certifications}" as="certifications" groupBy="approval" groupKey="approval">
+		<f:if condition="{product.approvalsNotInList -> f:count()}">
+			<f:for each="{product.approvalsNotInList}" as="approval"><div class="sr-only" id="ap{approval.uid}"></div></f:for>
+		</f:if>
+		<f:groupedFor each="{product.certifications}" as="certifications" groupBy="approvalAtList" groupKey="approval">
 			<div class="col-xs-12 col-sm-6 col-md-6 approval" id="ap{approval.uid}">
 				<div class="row">
 					<div class="col-xs-3 col-sm-4 col-md-4 image">
@@ -16,10 +19,7 @@
 							<f:groupedFor each="{product.attestations}" as="attestations" groupBy="approval" groupKey="aApproval">
 								<f:if condition="{aApproval.uid} == {approval.uid}">
 									<f:if condition="{attestations -> f:count()}">
-										<p>
-											<f:translate id="label.attestations" />
-											<f:for each="{attestations}" as="attestation" iteration="a"><span class="nowrap">{attestation.title}</span><f:if condition="{a.isLast} == 0">, </f:if></f:for>
-										</p>
+										<p><f:translate id="label.attestations" /> <f:for each="{attestations}" as="attestation" iteration="a"><span class="nowrap">{attestation.title}</span><f:if condition="{a.isLast} == 0">, </f:if></f:for></p>
 									</f:if>
 								</f:if>
 							</f:groupedFor>

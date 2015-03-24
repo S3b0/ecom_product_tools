@@ -30,17 +30,17 @@ return array(
 			'mask' => 'extensions-ept-certification-###TYPE###'
 		),
 		'useColumnsForDefaultValues' => 'type,approval',
-		'searchFields' => 'type,title,approval,',
+		'searchFields' => 'type,title,approval,approval_at_list,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_certification.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, approval',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, title, approval, approval_at_list',
 	),
 	'types' => array(
 		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, type, title;;1, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
-		'1' => array('showitem' => 'approval, hidden', 'canNotCollapse' => TRUE),
+		'1' => array('showitem' => 'approval, approval_at_list, hidden', 'canNotCollapse' => TRUE),
 	),
 	'columns' => array(
 
@@ -135,16 +135,30 @@ return array(
 		'approval' => array(
 			'l10n_mode' => 'exclude',
 			'exclude' => 1,
-			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval',*/
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
 				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval', '')
+					array('', 0)
 				),
 				'minitems' => 1,
 				'maxitems' => 1
+			),
+		),
+		'approval_at_list' => array(
+			'l10n_mode' => 'exclude',
+			'displayCond' => 'FIELD:type:=:0',
+			'exclude' => 1,
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_certification.approval_at_list',
+			'config' => array(
+				'type' => 'select',
+				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
+				'items' => array(
+					array('', 0)
+				)
 			),
 		),
 		'hidden' => array(

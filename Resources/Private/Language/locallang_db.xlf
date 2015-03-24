@@ -126,6 +126,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_certification.approval">
 				<source>Approval</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_certification.approval_at_list">
+				<source>Approval (list)</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

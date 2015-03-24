@@ -35,9 +35,12 @@ return array(
 
 		'hidden' => array(
 			'exclude' => 1,
-			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+			/*'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',*/
 			'config' => array(
 				'type' => 'check',
+				'items' => array(
+					array('LLL:EXT:lang/locallang_core.xlf:labels.hidden', 1)
+				)
 			),
 		),
 		'starttime' => array(
@@ -138,12 +141,13 @@ return array(
 		),
 		'approval' => array(
 			'exclude' => 1,
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.approval',
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_ecomproducttools_domain_model_approval',
 				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_approval.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_approval.title',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.approval', '')
+					array('', 0)
 				),
 				'maxitems' => 1
 			),

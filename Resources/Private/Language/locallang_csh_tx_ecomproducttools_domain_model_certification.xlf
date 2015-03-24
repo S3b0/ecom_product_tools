@@ -6,6 +6,9 @@
 			<trans-unit id="title.description">
 				<source>The certification!</source>
 			</trans-unit>
+			<trans-unit id="approval_at_list.description">
+				<source>Approval to list certification below, if differing from original approval.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

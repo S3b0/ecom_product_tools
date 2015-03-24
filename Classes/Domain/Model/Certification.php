@@ -55,6 +55,13 @@ class Certification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $approval = NULL;
 
 	/**
+	 * Assigned approvalAtList
+	 *
+	 * @var \S3b0\EcomProductTools\Domain\Model\Approval
+	 */
+	protected $approvalAtList = NULL;
+
+	/**
 	 * @return integer
 	 */
 	public function getType()
@@ -106,6 +113,25 @@ class Certification extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setApproval(\S3b0\EcomProductTools\Domain\Model\Approval $approval) {
 		$this->approval = $approval;
+	}
+
+	/**
+	 * Returns the approvalAtList
+	 *
+	 * @return \S3b0\EcomProductTools\Domain\Model\Approval $approvalAtList
+	 */
+	public function getApprovalAtList() {
+		return $this->type === 0 ? ($this->approvalAtList ?: $this->approval) : $this->approval;
+	}
+
+	/**
+	 * Sets the approvalAtList
+	 *
+	 * @param \S3b0\EcomProductTools\Domain\Model\Approval $approvalAtList
+	 * @return void
+	 */
+	public function setApprovalAtList(\S3b0\EcomProductTools\Domain\Model\Approval $approvalAtList) {
+		$this->approvalAtList = $approvalAtList;
 	}
 
 }

@@ -92,9 +92,10 @@ CREATE TABLE tx_ecomproducttools_domain_model_certification (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-  type int(11) DEFAULT '0' NOT NULL,
+	type int(11) DEFAULT '0' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	approval int(11) unsigned DEFAULT '0',
+	approval_at_list int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,

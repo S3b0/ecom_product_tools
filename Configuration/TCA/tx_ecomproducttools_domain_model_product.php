@@ -295,11 +295,11 @@ return array(
 		'atex_zone' => array(
 			'l10n_mode' => 'exclude',
 			'exclude' => 1,
-			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.atex_zone',*/
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.atex_zone',
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.atex_zone', -1),
+					array('', -1),
 					array('0', 0),
 					array('1', 1),
 					array('2', 2),
@@ -315,11 +315,11 @@ return array(
 		'nec_division' => array(
 			'l10n_mode' => 'exclude',
 			'exclude' => 1,
-			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.nec_division',*/
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.nec_division',
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.nec_division', -1),
+					array('', -1),
 					array('0', 0),
 					array('1', 1),
 					array('2', 2),
