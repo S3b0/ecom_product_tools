@@ -147,15 +147,9 @@
 			$GLOBALS['TSFE']->fe_user = \TYPO3\CMS\Frontend\Utility\EidUtility::initFeUser();
 			$GLOBALS['TSFE']->id = $this->pageUid;
 			$GLOBALS['TSFE']->sys_language_content = $this->language;
-//			ATTENTION CAUSING 500 INTERNAL ERROR @TYPO3 CMS 6.2.2-
-			/** @var \TYPO3\CMS\Frontend\Page\PageRepository sys_page */
-			$GLOBALS['TSFE']->sys_page = CoreUtility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
-			$GLOBALS['TSFE']->sys_page->init($GLOBALS['TSFE']->showHiddenPage);
 			$GLOBALS['TSFE']->determineId();
-//			$GLOBALS['TSFE']->getCompressedTCarray(); @deprecated since TYPO3 CMS 6.1
 			$GLOBALS['TSFE']->initTemplate();
 			$GLOBALS['TSFE']->getConfigArray();
-//			$GLOBALS['TSFE']->includeTCA(); @deprecated since TYPO3 CMS 6.1
 
 			return $this;
 		}

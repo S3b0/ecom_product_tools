@@ -66,7 +66,10 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductDataAction(\S3b0\EcomProductTools\Domain\Model\Product $product){
-		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByProduct($product));
+		$this->view->assignMultiple(array(
+			'product' => $product,
+			'files' => $this->fileRepository->setExtQuerySettings()->findByProduct($product)
+		));
 	}
 
 }
