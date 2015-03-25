@@ -122,9 +122,9 @@ class ModifyTCA {
 			}
 
 			if ( count(array_unique($markups)) > 1 ) {
-				$PA['title'] .= ', markup:' . $approval['markup_label'];
+				$PA['title'] .= ' [markup:' . $approval['markup_label'] . ']';
 			} else {
-				$PA['title'] .= ', ico:' . $approval['icon'];
+				$PA['title'] .= ' [icon:' . $approval['icon'] . ']';
 			}
 		}
 	}
