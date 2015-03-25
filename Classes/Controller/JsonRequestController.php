@@ -76,7 +76,7 @@ class JsonRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductCategoriesByProductDivisionAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {
-		$this->view->assign('value', $this->productCategoryRepository->setExtQuerySettings()->findByProductDivision($division));
+		$this->view->assign('value', $this->productCategoryRepository->setExtQuerySettings()->jsonRequestSetOrderingByAlphabet()->findByProductDivision($division));
 	}
 
 	/**

@@ -36,6 +36,7 @@ class ProductRepository extends AbstractRepository {
 	 * @var array
 	 */
 	protected $defaultOrderings = array(
+		'discontinued' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 	);
 

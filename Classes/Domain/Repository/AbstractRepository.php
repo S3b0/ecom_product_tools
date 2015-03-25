@@ -33,6 +33,19 @@ namespace S3b0\EcomProductTools\Domain\Repository;
 class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 	/**
+	 * @param string $labelField
+	 *
+	 * @return \S3b0\EcomProductTools\Domain\Repository\AbstractRepository
+	 */
+	public function jsonRequestSetOrderingByAlphabet($labelField = 'title') {
+		$this->setDefaultOrderings(array(
+			$labelField => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+		));
+
+		return $this;
+	}
+
+	/**
 	 * @return \S3b0\EcomProductTools\Domain\Repository\AbstractRepository
 	 */
 	public function setExtQuerySettings() {
