@@ -152,10 +152,10 @@
 			$GLOBALS['TSFE']->sys_page = CoreUtility\GeneralUtility::makeInstance('TYPO3\\CMS\\Frontend\\Page\\PageRepository');
 			$GLOBALS['TSFE']->sys_page->init($GLOBALS['TSFE']->showHiddenPage);
 			$GLOBALS['TSFE']->determineId();
-			$GLOBALS['TSFE']->getCompressedTCarray();
+//			$GLOBALS['TSFE']->getCompressedTCarray(); @deprecated since TYPO3 CMS 6.1
 			$GLOBALS['TSFE']->initTemplate();
 			$GLOBALS['TSFE']->getConfigArray();
-			$GLOBALS['TSFE']->includeTCA();
+//			$GLOBALS['TSFE']->includeTCA(); @deprecated since TYPO3 CMS 6.1
 
 			return $this;
 		}
