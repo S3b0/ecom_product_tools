@@ -12,7 +12,7 @@ plugin.tx_ecomproducttools {
 		storagePid =
 	}
 	settings {
-		#cat=basic//10;type=string;label=rootLine PIDs:Page Uid list where to include CSS/JS recursively
+		#cat=plugin.tx_ecomproducttools//10;type=string;label=rootLine PIDs:Page Uid list where to include CSS/JS recursively
 		rootLine = 39,40,83,84,85,258,120
 	}
 }
