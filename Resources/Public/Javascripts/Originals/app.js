@@ -84,6 +84,8 @@
 					}
 				}
 			}, 'json', 1425988258);
+		} else {
+			resetDC('#product-select-product', true);
 		}
 	});
 

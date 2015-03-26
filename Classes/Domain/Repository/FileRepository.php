@@ -34,6 +34,7 @@ class FileRepository extends AbstractRepository {
 
 	protected $defaultOrderings = array(
 		'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+		'pid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
 	);
 
