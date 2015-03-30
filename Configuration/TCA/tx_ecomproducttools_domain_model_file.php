@@ -19,6 +19,11 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
+		'typeicon_column' => 'file_reference',
+		'typeicon_classes' => array(
+			'default' => 'extensions-ept-file',
+			'0' => 'extensions-ept-file-external-url'
+		),
 		'searchFields' => 'file_reference,external_url,title,append_to_title,last_modification,revision,language,products,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png'
 	),
@@ -83,7 +88,7 @@ return array(
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
 				'file_reference',
 				array(
-					'minitems' => 1,
+					'minitems' => 0,
 					'maxitems' => 1,
 					'appearance' => array(
 						'enabledControls' => array(
