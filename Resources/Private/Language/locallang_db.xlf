@@ -54,6 +54,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.file_reference">
 				<source>File reference</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.external_url">
+				<source>External URL</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.title">
 				<source>Title</source>
 			</trans-unit>

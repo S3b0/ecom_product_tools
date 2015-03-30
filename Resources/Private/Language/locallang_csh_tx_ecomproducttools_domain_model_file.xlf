@@ -6,6 +6,9 @@
 			<trans-unit id="file_reference.description">
 				<source>The file reference</source>
 			</trans-unit>
+			<trans-unit id="external_url.description">
+				<source>An external URL referencing to desired website or file</source>
+			</trans-unit>
 			<trans-unit id="title.description">
 				<source>File title to be displayed</source>
 			</trans-unit>

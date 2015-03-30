@@ -28,10 +28,11 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	file_reference int(11) unsigned NOT NULL default '0',
+	external_url varchar(255) DEFAULT '' NOT NULL,
 	title varchar(255) DEFAULT '' NOT NULL,
 	append_to_title varchar(255) DEFAULT '' NOT NULL,
 	last_modification date DEFAULT '0000-00-00',
-	revision int(11) DEFAULT '0' NOT NULL,
+	revision varchar(255) DEFAULT '' NOT NULL,
 	approval int(11) unsigned DEFAULT '0',
 	language int(11) unsigned DEFAULT '0',
 	products int(11) unsigned DEFAULT '0' NOT NULL,

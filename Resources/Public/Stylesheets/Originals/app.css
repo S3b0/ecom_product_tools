@@ -82,6 +82,7 @@
 
 .tx-ecom-product-tools .panel .table .language-information { font-size: .8em; padding: 16px 8px 8px; }
 .tx-ecom-product-tools .panel .table small.file-info { color: #797f83; font-size: 11px; }
+.tx-ecom-product-tools .panel .table td { vertical-align: middle; }
 
 .tx-ecom-product-tools .align-vertical-bottom { vertical-align: bottom; }
 .tx-ecom-product-tools .align-vertical-middle { vertical-align: middle; }

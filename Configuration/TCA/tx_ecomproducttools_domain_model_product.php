@@ -218,7 +218,10 @@ return array(
 								'mode' => 'wizard'
 							)
 						),
-						'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
+						'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+						'params' => array(
+							'blindLinkOptions' => 'file, folder, mail, spec, url'
+						)
 					)
 				),
 				'softref' => 'typolink'

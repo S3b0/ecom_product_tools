@@ -36,9 +36,15 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * The fileReference
 	 *
 	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-	 * @validate NotEmpty
 	 */
 	protected $fileReference = NULL;
+
+	/**
+	 * The externalUrl
+	 *
+	 * @var string
+	 */
+	protected $externalUrl = '';
 
 	/**
 	 * File title to be displayed
@@ -65,9 +71,9 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * The file revision#, if any
 	 *
-	 * @var integer
+	 * @var string
 	 */
-	protected $revision = 0;
+	protected $revision = '';
 
 	/**
 	 * Assigned approval
@@ -135,6 +141,35 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setFileReference(\TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference) {
 		$this->fileReference = $fileReference;
+	}
+
+	/**
+	 * Returns the externalUrl
+	 *
+	 * @return string
+	 */
+	public function getExternalUrl() {
+		return $this->externalUrl;
+	}
+
+	/**
+	 * Sets the externalUrl
+	 *
+	 * @param string $externalUrl
+	 */
+	public function setExternalUrl($externalUrl) {
+		$this->externalUrl = $externalUrl;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUrlType() {
+		$typolinkParams = \TYPO3\CMS\Core\Utility\GeneralUtility::unQuoteFilenames($this->externalUrl, TRUE);
+		$url = $typolinkParams[0];
+		$file = new \SplFileInfo($url);
+
+		return $file->getExtension() ?: 'URL';
 	}
 
 	/**
@@ -209,7 +244,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the revision
 	 *
-	 * @return integer $revision
+	 * @return string $revision
 	 */
 	public function getRevision() {
 		return $this->revision;
@@ -218,7 +253,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the revision
 	 *
-	 * @param integer $revision
+	 * @param string $revision
 	 * @return void
 	 */
 	public function setRevision($revision) {

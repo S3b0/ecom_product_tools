@@ -19,14 +19,14 @@ return array(
 			'starttime' => 'starttime',
 			'endtime' => 'endtime',
 		),
-		'searchFields' => 'file_reference,title,append_to_title,last_modification,revision,language,products,',
+		'searchFields' => 'file_reference,external_url,title,append_to_title,last_modification,revision,language,products,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'hidden, file_reference, title, append_to_title, last_modification, revision, approval, language, products',
+		'showRecordFieldList' => 'hidden, file_reference, external_url, title, append_to_title, last_modification, revision, approval, language, products',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'file_reference;;;;1-1-1, --palette--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file;1, products, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
+		'1' => array('showitem' => 'file_reference;;;;1-1-1, external_url, --palette--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file;1, products, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => 'title, --linebreak--, append_to_title, --linebreak--, language, last_modification, revision, approval, hidden', 'canNotCollapse' => TRUE),
@@ -77,6 +77,7 @@ return array(
 		),
 
 		'file_reference' => array(
+			'displayCond' => 'FIELD:external_url:REQ:FALSE',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_reference',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
@@ -91,6 +92,36 @@ return array(
 						),
 					),
 				)
+			),
+		),
+		'external_url' => array(
+			'l10n_mode' => 'exclude',
+			'displayCond' => 'FIELD:file_reference:REQ:FALSE',
+			'exclude' => 1,
+			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.external_url',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'max' => 1024,
+				'eval' => 'trim',
+				'wizards' => array(
+					'link' => array(
+						'type' => 'popup',
+						'title' => 'LLL:EXT:cms/locallang_ttc.xlf:header_link_formlabel',
+						'icon' => 'link_popup.gif',
+						'module' => array(
+							'name' => 'wizard_element_browser',
+							'urlParameters' => array(
+								'mode' => 'wizard'
+							)
+						),
+						'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1',
+						'params' => array(
+							'blindLinkOptions' => 'file, folder, mail, spec'
+						)
+					)
+				),
+				'softref' => 'typolink'
 			),
 		),
 		'title' => array(
@@ -132,7 +163,7 @@ return array(
 			'config' => array(
 				'type' => 'input',
 				'size' => 4,
-				'eval' => 'int'
+				'eval' => 'trim'
 			)
 		),
 		'language' => array(
