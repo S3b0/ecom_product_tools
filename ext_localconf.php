@@ -30,8 +30,7 @@ if (!defined('TYPO3_MODE')) {
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
 		/*'File' => 'listByCategory, listByProduct',*/
-		'AjaxRequest' => 'getProductData',
-		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
+		'AjaxRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory, getProductData'
 
 	),
 	// non-cacheable actions
@@ -39,8 +38,7 @@ if (!defined('TYPO3_MODE')) {
 		'Action' => 'downloadCenter',
 		'ProductCategory' => 'listByDivision',
 		/*'File' => 'listByCategory, listByProduct',*/
-		'AjaxRequest' => 'getProductData',
-		'JsonRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory'
+		'AjaxRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory, getProductData'
 	)
 );
 

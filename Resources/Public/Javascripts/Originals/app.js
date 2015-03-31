@@ -20,7 +20,7 @@
 					$('#product-select-info').hide();
 					$('#product-data').html('<p class="alert alert-info"><i class="fa fa-info-circle fa-fw fa-lg"></i> ' + noCatMsg + '</p>');
 				}
-			}, 'json', 1425988258);
+			});
 		}
 	});
 
@@ -44,7 +44,7 @@
 					$('#product-select-info').hide();
 					$('#product-data').html('<p class="alert alert-info"><i class="fa fa-info-circle fa-fw fa-lg"></i> ' + noProdMsg + '</p>');
 				}
-			}, 'json', 1425988258);
+			});
 		}
 	});
 
@@ -57,11 +57,11 @@
 			ajaxRequest('getProductData', {
 				product: this.value
 			}, function ( result ) {
-				$('#product-data').html(result);
+				$('#product-data').html(result['html']);
 				initializeCollapse();
 				$('#ecomproducttools-accordion').collapse();
 				$('#product-select-info').hide();
-			}, 'html', 1425988257);
+			});
 		}
 	});
 
@@ -83,7 +83,7 @@
 						productSelect.append('<option value="' + result[key].uid + '">' + result[key].title + '</option>');
 					}
 				}
-			}, 'json', 1425988258);
+			});
 		} else {
 			resetDC('#product-select-product', true);
 		}
@@ -93,21 +93,21 @@
 	$('#product-select-division').val(0);
 })(jQuery);
 
-function ajaxRequest(action, arguments, onSuccess, dataType, pageType) {
+function ajaxRequest(action, arguments, onSuccess) {
 	$('#ecom-product-tools-ajax-indicator').css('display', 'inline-block');
 	$.ajax({
 		async: 'true',
 		url: 'index.php',
 		type: 'POST',
 		//contentType: 'application/json; charset=utf-8',
-		dataType: dataType.length ? dataType : 'json',
+		dataType: 'json',
 		data: {
 			eID: 'EcomProductTools',
 			id: parseInt(pid),
 			L: parseInt(langUid),
-			type: parseInt(pageType),
+			type: 1425988258,
 			request: {
-				controllerName: dataType == 'json' ? 'JsonRequest' : 'AjaxRequest',
+				controllerName: 'AjaxRequest',
 				actionName: action,
 				arguments: arguments
 			}

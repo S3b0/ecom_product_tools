@@ -197,7 +197,7 @@
 				->setVendorName($this->requestArguments['vendorName'] ?: 'S3b0')
 				->setExtensionName($this->requestArguments['extensionName'] ?: 'EcomProductTools')
 				->setPluginName($this->requestArguments['pluginName'] ?: 'ecomproducttools_downloadcenter')
-				->setControllerName($this->requestArguments['controllerName'] ?: 'JsonRequest')
+				->setControllerName($this->requestArguments['controllerName'] ?: 'AjaxRequest')
 				->setActionName($this->requestArguments['actionName'] ?: 'getProductCategoriesByProductDivision')
 				->setArguments($this->requestArguments['arguments']);
 

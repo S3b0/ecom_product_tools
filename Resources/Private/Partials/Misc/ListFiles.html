@@ -13,17 +13,17 @@
 						<thead>
 							<tr>
 								<td class="download-icon hidden-xs"></td>
-								<td class="filename"><f:translate id="file.filename" /></td>
+								<td class="filename"><f:translate id="file.filename" extensionName="ecom_product_tools" /></td>
 								<td class="revision hidden-xs">
-									<f:if condition="{f:translate(id: 'file.revision')} == {f:translate(id: 'file.revision.abbr')}">
-										<f:then><f:translate id="file.revision" /></f:then>
-										<f:else><abbr title="{f:translate(id: 'file.revision')}"><f:translate id="file.revision.abbr" /></abbr></f:else>
+									<f:if condition="{f:translate(id: 'file.revision', extensionName: 'ecom_product_tools')} == {f:translate(id: 'file.revision.abbr', extensionName: 'ecom_product_tools')}">
+										<f:then><f:translate id="file.revision" extensionName="ecom_product_tools" /></f:then>
+										<f:else><abbr title="{f:translate(id: 'file.revision', extensionName: 'ecom_product_tools')}"><f:translate id="file.revision.abbr" extensionName="ecom_product_tools" /></abbr></f:else>
 									</f:if>
 								</td>
-								<td class="size"><f:translate id="file.size" /></td>
-								<td class="last-modified hidden-xs"><f:translate id="file.last_modified" /></td>
-								<td class="sha1 hidden-xs hidden-sm hidden-md"><abbr title="{f:translate(id: 'file.sha1')}"><f:translate id="file.sha1.abbr" /></abbr></td>
-								<td class="language align-center"><f:translate id="file.language" /></td>
+								<td class="size"><f:translate id="file.size" extensionName="ecom_product_tools" /></td>
+								<td class="last-modified hidden-xs"><f:translate id="file.last_modified" extensionName="ecom_product_tools" /></td>
+								<td class="sha1 hidden-xs hidden-sm hidden-md"><abbr title="{f:translate(id: 'file.sha1', extensionName: 'ecom_product_tools')}"><f:translate id="file.sha1.abbr" extensionName="ecom_product_tools" /></abbr></td>
+								<td class="language align-center"><f:translate id="file.language" extensionName="ecom_product_tools" /></td>
 							</tr>
 						</thead>
 
@@ -33,10 +33,10 @@
 									<td class="hidden-xs">
 										<f:if condition="{file.externalUrl}">
 											<f:then>
-												<f:link.typolink parameter="{file.externalUrl}" target="_blank"><f:image src="{f:uri.resource(path: 'Images/download-button.png')}" /></f:link.typolink>
+												<f:link.typolink parameter="{file.externalUrl}" target="_blank"><f:image src="{f:uri.resource(path: 'Images/download-button.png', extensionName: 'ecom_product_tools')}" /></f:link.typolink>
 											</f:then>
 											<f:else>
-												<f:if condition="{file.fileReference}"><a href="{file.fileReference.originalResource.publicUrl}" target="_blank"><f:image src="{f:uri.resource(path: 'Images/download-button.png')}" /></a></f:if>
+												<f:if condition="{file.fileReference}"><a href="{file.fileReference.originalResource.publicUrl}" target="_blank"><f:image src="{f:uri.resource(path: 'Images/download-button.png', extensionName: 'ecom_product_tools')}" /></a></f:if>
 											</f:else>
 										</f:if>
 									</td>
@@ -46,7 +46,7 @@
 											<f:then>
 												<small class="file-info">
 													<span class="text-uppercase">{file.urlType}</span>&nbsp;
-													<f:link.typolink parameter="{file.externalUrl}" class="text-primary" target="_blank"><f:translate id="file.open" /></f:link.typolink>
+													<f:link.typolink parameter="{file.externalUrl}" class="text-primary" target="_blank"><f:translate id="file.open" extensionName="ecom_product_tools" /></f:link.typolink>
 												</small>
 											</f:then>
 											<f:else>
@@ -55,8 +55,8 @@
 														<span class="text-uppercase">{file.fileReference.originalResource.extension}</span>&nbsp;
 														<a href="{file.fileReference.originalResource.publicUrl}" class="text-primary" target="_blank">
 															<f:if condition="{file.fileReference.originalResource.properties.extension} == 'html'">
-																<f:then><f:translate id="file.open" /></f:then>
-																<f:else><f:translate id="file.download" /></f:else>
+																<f:then><f:translate id="file.open" extensionName="ecom_product_tools" /></f:then>
+																<f:else><f:translate id="file.download" extensionName="ecom_product_tools" /></f:else>
 															</f:if>
 														</a>
 													</small>
@@ -112,5 +112,5 @@
 	</div>
 </f:if>
 <f:if condition="{files -> f:count()} == 0">
-	<p class="alert alert-info alert-dismissable"><i class="fa fa-info-circle fa-lg"></i> &nbsp; <f:translate id="dc.nofiles" /></p>
+	<p class="alert alert-info alert-dismissable"><i class="fa fa-info-circle fa-lg"></i> &nbsp; <f:translate id="dc.nofiles" extensionName="ecom_product_tools" /></p>
 </f:if>

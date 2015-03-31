@@ -43,7 +43,7 @@ page.includeJSFooter {
 
 EcomProductToolsAjaxRequest = PAGE
 EcomProductToolsAjaxRequest {
-	typeNum = 1425988257
+	typeNum = 1425988258
 
 	config {
 		disableAllHeaderCode = 1
@@ -65,40 +65,8 @@ EcomProductToolsAjaxRequest {
 		switchableControllerActions {
 			AjaxRequest {
 				1 = getProductData
-			}
-		}
-	}
-
-	view < plugin.tx_ecomproducttools.view
-	persistence < plugin.tx_ecomproducttools.persistence
-	settings < plugin.tx_ecomproducttools.settings
-}
-
-EcomProductToolsJsonRequest = PAGE
-EcomProductToolsJsonRequest {
-	typeNum = 1425988258
-
-	config {
-		disableAllHeaderCode = 1
-		xhtml_cleaning = 0
-		admPanel = 0
-		debug = 0
-		no_cache = 1
-		additionalHeaders = Content-type:application/json|Cache-Control:no-cache, must-revalidate, max-age=0|Pragma:no-cache
-		linkVars = L
-	}
-
-	10 = USER
-	10 {
-		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-		vendorName = S3b0
-		extensionName = EcomProductTools
-		pluginName = DownloadCenter
-		controller = JsonRequest
-		switchableControllerActions {
-			AjaxRequest {
-				1 = getProductCategoriesByProductDivision
-				2 = getProductsByProductCategory
+				2 = getProductCategoriesByProductDivision
+				3 = getProductsByProductCategory
 			}
 		}
 	}
