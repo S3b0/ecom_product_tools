@@ -179,7 +179,8 @@ return array(
 				'foreign_table' => 'tx_ecomproducttools_domain_model_language',
 				'foreign_table_where' => 'ORDER BY tx_ecomproducttools_domain_model_language.title',
 				'items' => array(
-					array('', '')
+					array('', ''),
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.language.I.0', 0)
 				),
 				'minitems' => 1,
 				'maxitems' => 1

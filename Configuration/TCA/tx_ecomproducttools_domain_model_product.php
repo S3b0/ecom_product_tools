@@ -27,17 +27,17 @@ return array(
 			'default' => 'extensions-ept-product',
 			'mask' => 'extensions-ept-product-###TYPE###'
 		),
-		'searchFields' => 'title,teaser,link_title,link_to_page,discontinued,atex_zone,nec_division,product_categories,certifications,attestations,',
+		'searchFields' => 'title,teaser,link_title,link_to_page,discontinued,excluded_in_download_center,atex_zone,nec_division,product_categories,certifications,attestations,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_product.png'
 	),
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, image, link_title, link_to_page, discontinued, product_categories, certifications, attestations',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, image, link_title, link_to_page, discontinued, excluded_in_download_center, product_categories, certifications, attestations',
 	),
 	'types' => array(
 		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, product_categories, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.teaser,teaser;;;richtext:rte_transform[mode=ts_links], image, link_title, link_to_page, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval,certifications, attestations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
 	),
 	'palettes' => array(
-		'1' => array('showitem' => 'atex_zone, nec_division, discontinued, hidden', 'canNotCollapse' => TRUE),
+		'1' => array('showitem' => 'atex_zone, nec_division, discontinued, excluded_in_download_center, hidden', 'canNotCollapse' => TRUE),
 	),
 	'columns' => array(
 
@@ -354,6 +354,18 @@ return array(
 				'type' => 'check',
 				'items' => array(
 					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.discontinued', 1)
+				),
+				'default' => 0
+			)
+		),
+		'excluded_in_download_center' => array(
+			'l10n_mode' => 'exclude',
+			'exclude' => 1,
+			/*'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.excluded_in_download_center',*/
+			'config' => array(
+				'type' => 'check',
+				'items' => array(
+					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.excluded_in_download_center', 1)
 				),
 				'default' => 0
 			)

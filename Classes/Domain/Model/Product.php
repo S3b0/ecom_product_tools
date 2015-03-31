@@ -76,6 +76,13 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $discontinued = FALSE;
 
 	/**
+	 * excludedInDownloadCenter
+	 *
+	 * @var boolean
+	 */
+	protected $excludedInDownloadCenter = FALSE;
+
+	/**
 	 * atexZone
 	 *
 	 * @var integer
@@ -253,6 +260,34 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function isDiscontinued() {
 		return $this->discontinued;
+	}
+
+	/**
+	 * Returns the excludedInDownloadCenter
+	 *
+	 * @return boolean $excludedInDownloadCenter
+	 */
+	public function getExcludedInDownloadCenter() {
+		return $this->excludedInDownloadCenter;
+	}
+
+	/**
+	 * Sets the excludedInDownloadCenter
+	 *
+	 * @param boolean $excludedInDownloadCenter
+	 * @return void
+	 */
+	public function setExcludedInDownloadCenter($excludedInDownloadCenter) {
+		$this->excludedInDownloadCenter = $excludedInDownloadCenter;
+	}
+
+	/**
+	 * Returns the boolean state of excludedInDownloadCenter
+	 *
+	 * @return boolean
+	 */
+	public function isExcludedInDownloadCenter() {
+		return $this->excludedInDownloadCenter;
 	}
 
 	/**

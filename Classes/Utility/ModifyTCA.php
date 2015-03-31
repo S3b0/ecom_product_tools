@@ -97,8 +97,13 @@ class ModifyTCA {
 			$PA['title'] = $category['title'];
 		}
 
-		$language = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_language', $raw['language'], 'title', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('tx_ecomproducttools_domain_model_language'));
 		$PA['title'] .= ' ' . ($raw['append_to_title'] ?: '') . ' | ' . ucfirst($language['title']);
+		if ( \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($raw['language']) && $raw['language'] > 0 ) {
+			$language = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_language', $raw['language'], 'title', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('tx_ecomproducttools_domain_model_language'));
+			$PA['title'] .= ucfirst($language['title']);
+		} else {
+			$PA['title'] .= ucfirst(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.language.I.0', 'ecomProductTools'));
+		}
 	}
 
 	/**

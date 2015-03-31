@@ -24,6 +24,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_product.discontinued">
 				<source>Discontinued</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.excluded_in_download_center">
+				<source>Exclude in DLC</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_product.atex_zone">
 				<source>ATEX Zone</source>
 			</trans-unit>
@@ -71,6 +74,9 @@
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.language">
 				<source>Language</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.language.I.0">
+				<source>none</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.approval">
 				<source>Approval</source>

@@ -94,8 +94,13 @@
 										</f:if>
 									</td>
 									<td class="align-center language-information">
-										<f:image src="{file.language.flagSource}" alt="{file.language.flag}" />
-										<br />{file.language.title}
+										<f:if condition="{file.language}">
+											<f:then>
+												<f:image src="{file.language.flagSource}" alt="{file.language.flag}" />
+												<br />{file.language.title}
+											</f:then>
+											<f:else>-</f:else>
+										</f:if>
 									</td>
 								</tr>
 							</f:for>

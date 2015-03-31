@@ -43,27 +43,26 @@ class ProductRepository extends AbstractRepository {
 
 	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
-	 * @param boolean                                             $discontinued
+	 * @param boolean                                             $excludeDiscontinuedItems
+	 * @param boolean                                             $excludeExcludedInDownloadCenterItems
 	 *
 	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
 	 */
-	public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = FALSE) {
+	public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $excludeDiscontinuedItems = FALSE, $excludeExcludedInDownloadCenterItems = FALSE) {
 		$query = $this->createQuery();
 
-		if ( $discontinued ) {
-			$result = $query->matching(
-				$query->logicalAnd(array(
-					$query->contains('productCategories', $category),
-					$query->equals('discontinued', 0)
-				))
-			)->execute();
-		} else {
-			$result = $query->matching(
-				$query->contains('productCategories', $category)
-			)->execute();
+		$andConstraint = array(
+			$query->contains('productCategories', $category)
+		);
+		if ( $excludeDiscontinuedItems ) {
+			$andConstraint[] = $query->equals('discontinued', 0);
 		}
+		if ( $excludeExcludedInDownloadCenterItems ) {
+			$andConstraint[] = $query->equals('excludedInDownloadCenter', 0);
+		}
+		$constraint = $query->logicalAnd($andConstraint);
 
-		return $result;
+		return $query->matching($constraint)->execute();
 	}
 
 }

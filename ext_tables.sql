@@ -133,6 +133,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_product (
 	link_title varchar(255) DEFAULT '' NOT NULL,
 	link_to_page varchar(255) DEFAULT '' NOT NULL,
 	discontinued tinyint(1) unsigned DEFAULT '0' NOT NULL,
+	excluded_in_download_center tinyint(1) unsigned DEFAULT '0' NOT NULL,
 	atex_zone int(11) DEFAULT '0' NOT NULL,
 	nec_division int(11) DEFAULT '0' NOT NULL,
 	product_categories int(11) unsigned DEFAULT '0' NOT NULL,

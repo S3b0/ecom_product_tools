@@ -100,7 +100,7 @@ class JsonRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductsByProductCategoryAction(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = FALSE) {
-		$this->view->assign('value', $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued));
+		$this->view->assign('value', $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued, TRUE));
 	}
 
 }
