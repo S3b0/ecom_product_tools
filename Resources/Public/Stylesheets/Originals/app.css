@@ -80,7 +80,7 @@
 .tx-ecom-product-tools .panel .table .sha1 { max-width: 23%; width: 23%; }
 .tx-ecom-product-tools .panel .table .language { max-width: 10%; width: 10%; }
 
-.tx-ecom-product-tools .panel .table .language-information { font-size: .8em; padding: 16px 8px 8px; }
+.tx-ecom-product-tools .panel .table .language-information { color: #a3a7a9; font-size: .8em; padding: 16px 8px 8px; }
 .tx-ecom-product-tools .panel .table .ecomproducttools-file-title { color: #393f43; }
 .tx-ecom-product-tools .panel .table small.file-info { color: #797f83; font-size: 11px; }
 .tx-ecom-product-tools .panel .table td { vertical-align: middle; }
@@ -120,6 +120,9 @@
 }
 #approval-list .approval-wrap #tx-ecom-product-tools-carousel {
 	padding: 0 27px;
+}
+.tx-ecom-product-tools.markup #approval-list .approval-wrap #tx-ecom-product-tools-carousel.fit {
+	padding: 0;
 }
 .tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-buttons div {
 	border-right: 1px solid #d5d7d8;

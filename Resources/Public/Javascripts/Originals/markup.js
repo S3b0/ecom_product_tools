@@ -15,12 +15,14 @@
 		});
 
 		checkMarkupWidth(owl);
+/*
 		$('#approval-list .next').click(function(){
 			owl.trigger('owl.next');
 		});
 		$('#approval-list .prev').click(function(){
 			owl.trigger('owl.prev');
 		});
+*/
 
 		window.onresize = function() {
 			checkMarkupWidth(owl);
