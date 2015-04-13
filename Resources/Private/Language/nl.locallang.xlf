@@ -21,7 +21,7 @@
 			</trans-unit>
 			<trans-unit id="file_category.no_category.title" xml:space="preserve">
 				<source>Not categorized</source>
-				<target>Niet gecategoriseerd</target>
+				<target>Zonder categorie</target>
 			</trans-unit>
 			<trans-unit id="file.filename" xml:space="preserve">
 				<source>File name</source>

@@ -21,7 +21,7 @@
 			</trans-unit>
 			<trans-unit id="file_category.no_category.title" xml:space="preserve">
 				<source>Not categorized</source>
-				<target>Não categorizado</target>
+				<target>Não classificado</target>
 			</trans-unit>
 			<trans-unit id="file.filename" xml:space="preserve">
 				<source>File name</source>
@@ -127,11 +127,11 @@
 			</trans-unit>
 			<trans-unit id="dc.nocats" xml:space="preserve">
 				<source>No categories found!</source>
-				<target>Não há categorias encontrado!</target>
+				<target>Nenhuma categoria encontrada!</target>
 			</trans-unit>
 			<trans-unit id="dc.noprod" xml:space="preserve">
 				<source>No products found!</source>
-				<target>Nenhum produto foi encontrado!</target>
+				<target>Nenhum produto encontrado!</target>
 			</trans-unit>
 			<trans-unit id="dc.nofiles" xml:space="preserve">
 				<source>No files found!</source>

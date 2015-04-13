@@ -143,8 +143,8 @@
 	right: 0;
 }
 .tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-buttons div.owl-prev {
-	left: 0;
 	background: url('../Images/markup-prev.png') no-repeat center center #0083CB;
+	left: 0;
 }
 
 .tx-ecom-product-tools.markup #approval-list .approval-wrap #tx-ecom-product-tools-carousel .item {
@@ -164,17 +164,18 @@
 	margin-bottom: 50px;
 }
 .tx-ecom-product-tools.certifications .approval .image img {
-	width: 100%;
 	height: auto;
+	width: 100%;
 }
 
 .tx-ecom-product-tools.certifications .approval ul.list {
 	margin-bottom: 12px;
 }
 .tx-ecom-product-tools.certifications .approval label {
-	font-weight: bold;
 	color: #000;
 	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 10px;
 }
 .tx-ecom-product-tools.certifications .dropdown-menu li {
 	padding-right: 30px;
