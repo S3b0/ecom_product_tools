@@ -49,7 +49,7 @@ class ModifyTCA {
 	public function labelUserFuncEPTDomainModelApproval(array &$PA, \TYPO3\CMS\Backend\Form\FormEngine $pObj = NULL) {
 		$row = $PA['row'];
 		$PA['title'] = $row['title'];
-		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']);
+		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']) ?: array();
 		$this->getApprovalLabelAddition($PA, $raw, $PA['title']);
 	}
 
@@ -68,7 +68,7 @@ class ModifyTCA {
 		$approval = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_approval', $raw['approval']);
 		$approvalAtList = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomproducttools_domain_model_approval', $raw['approval_at_list']);
 
-		if ( $approval ) {
+		if ( is_array($approval) ) {
 			$PA['title'] .= ', ' . ($approval['markup_label'] ?: $approval['title']);
 			$this->getApprovalLabelAddition($PA, $approval);
 		}
