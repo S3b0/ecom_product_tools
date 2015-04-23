@@ -8,8 +8,6 @@
 
 	$extensionClassesPath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('ecom_product_tools') . 'Classes/';
 
-	return array(
-		'TYPO3\CMS\Fluid\ViewHelpers\Link\TypolinkViewHelper' => $extensionClassesPath . 'ViewHelpers/Link/TypolinkViewHelper.php',
-		'TYPO3\CMS\Fluid\ViewHelpers\S3b0\Format\BytesViewHelper' => $extensionClassesPath . 'ViewHelpers/S3b0/Format/BytesViewHelper.php',
+	return [
 		'TYPO3\CMS\Fluid\ViewHelpers\S3b0\GetLocalizedCategoryTitleViewHelper' => $extensionClassesPath . 'ViewHelpers/S3b0/GetLocalizedCategoryTitleViewHelper.php'
-	);
+	];

@@ -43,20 +43,20 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
     'ecom_product_tools',
     'tx_ecomproducttools_domain_model_file',
 	'file_categories',
-	array(
+	[
 		'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_categories',
 		// Override generic configuration, e.g. sort by title rather than by sorting
-		'fieldConfiguration' => array(
-			'foreign_table_where' => ' AND (sys_category.uid=' . $extensionConfiguration['rootCategory'] . ' OR sys_category.parent=' . $extensionConfiguration['rootCategory'] . ') AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+		'fieldConfiguration' => [
+			'foreign_table_where' => ' AND (sys_category.uid=' . $extensionConfiguration[ 'rootCategory' ] . ' OR sys_category.parent=' . $extensionConfiguration[ 'rootCategory' ] . ') AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
 			'minitems' => 1,
 			'maxitems' => 1
-		)
-	)
+		]
+	]
 );
 
 // Add Sprite Icons for different record types (visual distinction)
 \TYPO3\CMS\Backend\Sprite\SpriteManager::addSingleIcons(
-	array(
+	[
 		'approval' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_approval.png',
 		'approval-Abkhazia' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Abkhazia.png',
 		'approval-Afghanistan' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Images/Flags/BE/Afghanistan.png',
@@ -328,6 +328,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 		'product-1' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_product_discontinued.png',
 		'file' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png',
 		'file-external-url' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file_external_url.png'
-	),
+	],
 	'ept'
 );

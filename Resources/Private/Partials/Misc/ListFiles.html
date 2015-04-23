@@ -69,8 +69,8 @@
 										<f:if condition="{file.fileReference.originalResource.size} > 0">
 											<f:then>
 												<f:if condition="{file.fileReference.originalResource.size} > 1048576">
-													<f:then>{file.fileReference.originalResource.size -> f:s3b0.format.bytes(decimals: 1, decimalSeparator: settings.decimalSeparator, thousandsSeparator: settings.thousandsSeparator)}</f:then>
-													<f:else>{file.fileReference.originalResource.size -> f:s3b0.format.bytes(decimalSeparator: settings.decimalSeparator, thousandsSeparator: settings.thousandsSeparator)}</f:else>
+													<f:then>{file.fileReference.originalResource.size -> f:ecom.format.bytes(decimals: 1, decimalSeparator: settings.decimalSeparator, thousandsSeparator: settings.thousandsSeparator)}</f:then>
+													<f:else>{file.fileReference.originalResource.size -> f:ecom.format.bytes(decimalSeparator: settings.decimalSeparator, thousandsSeparator: settings.thousandsSeparator)}</f:else>
 												</f:if>
 											</f:then>
 											<f:else>-</f:else>

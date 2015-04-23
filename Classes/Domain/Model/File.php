@@ -85,7 +85,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * File content language
 	 *
-	 * @var \S3b0\EcomProductTools\Domain\Model\Language
+	 * @var \Ecom\EcomToolbox\Domain\Model\Language
 	 */
 	protected $language = NULL;
 
@@ -282,7 +282,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Returns the language
 	 *
-	 * @return \S3b0\EcomProductTools\Domain\Model\Language $language
+	 * @return \Ecom\EcomToolbox\Domain\Model\Language $language
 	 */
 	public function getLanguage() {
 		return $this->language;
@@ -291,10 +291,10 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Sets the language
 	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Language $language
+	 * @param \Ecom\EcomToolbox\Domain\Model\Language $language
 	 * @return void
 	 */
-	public function setLanguage(\S3b0\EcomProductTools\Domain\Model\Language $language = NULL) {
+	public function setLanguage(\Ecom\EcomToolbox\Domain\Model\Language $language = NULL) {
 		$this->language = $language;
 	}
 

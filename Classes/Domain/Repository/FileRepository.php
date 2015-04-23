@@ -32,11 +32,11 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  */
 class FileRepository extends AbstractRepository {
 
-	protected $defaultOrderings = array(
+	protected $defaultOrderings = [
 		'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 		'pid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	);
+	];
 
 	/**
 	 * Set repository wide settings
@@ -83,10 +83,10 @@ class FileRepository extends AbstractRepository {
 		$query = $this->createQuery();
 
 		return $query->matching(
-			$query->logicalAnd(array(
+			$query->logicalAnd([
 				$query->contains('products', $product),
 				$query->greaterThan('approval', 0)
-			))
+			])
 		)->execute();
 	}
 }

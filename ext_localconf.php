@@ -4,42 +4,32 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'S3b0.' . $_EXTKEY,
+	'S3b0.EcomProductTools',
 	'MarkUp',
-	array(
-		'Product' => 'showMarkUp',
-	),
-	// non-cacheable actions
-	array()
+	[ 'Product' => 'showMarkUp' ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'S3b0.' . $_EXTKEY,
+	'S3b0.EcomProductTools',
 	'Certifications',
-	array(
-		'Product' => 'listApprovals',
-	),
-	// non-cacheable actions
-	array()
+	[ 'Product' => 'listApprovals' ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'S3b0.' . $_EXTKEY,
+	'S3b0.EcomProductTools',
 	'DownloadCenter',
-	array(
-		'Action' => 'downloadCenter',
-		'ProductCategory' => 'listByDivision',
+	[
+		'DefaultAction' => 'downloadCenter',
 		/*'File' => 'listByCategory, listByProduct',*/
 		'AjaxRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory, getProductData'
 
-	),
+	],
 	// non-cacheable actions
-	array(
-		'Action' => 'downloadCenter',
-		'ProductCategory' => 'listByDivision',
+	[
+		'DefaultAction' => 'downloadCenter',
 		/*'File' => 'listByCategory, listByProduct',*/
 		'AjaxRequest' => 'getProductCategoriesByProductDivision, getProductsByProductCategory, getProductData'
-	)
+	]
 );
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['EcomProductTools'] = 'EXT:ecom_product_tools/Classes/Utility/AjaxDispatcher.php';

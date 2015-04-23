@@ -35,9 +35,7 @@ class ProductCategoryRepository extends AbstractRepository {
 	/**
 	 * @var array
 	 */
-	protected $defaultOrderings = array(
-		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	);
+	protected $defaultOrderings = [ 'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING ];
 
 	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division

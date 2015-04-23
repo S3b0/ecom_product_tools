@@ -29,9 +29,9 @@ namespace S3b0\EcomProductTools\Controller;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
- * ActionController
+ * DefaultActionController
  */
-class ActionController extends ExtensionController {
+class DefaultActionController extends ExtensionController {
 
 	/**
 	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException

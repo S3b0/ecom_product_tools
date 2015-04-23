@@ -35,11 +35,11 @@ class ProductRepository extends AbstractRepository {
 	/**
 	 * @var array
 	 */
-	protected $defaultOrderings = array(
+	protected $defaultOrderings = [
 		'discontinued' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
 		'pid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
 		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	);
+	];
 
 	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
@@ -51,9 +51,9 @@ class ProductRepository extends AbstractRepository {
 	public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $excludeDiscontinuedItems = FALSE, $excludeExcludedInDownloadCenterItems = FALSE) {
 		$query = $this->createQuery();
 
-		$andConstraint = array(
+		$andConstraint = [
 			$query->contains('productCategories', $category)
-		);
+		];
 		if ( $excludeDiscontinuedItems ) {
 			$andConstraint[] = $query->equals('discontinued', 0);
 		}

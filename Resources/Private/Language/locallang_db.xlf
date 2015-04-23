@@ -42,15 +42,6 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_product.attestations">
 				<source>Attestations</source>
 			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_language">
-				<source>Language</source>
-			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_language.title">
-				<source>Title</source>
-			</trans-unit>
-			<trans-unit id="tx_ecomproducttools_domain_model_language.flag">
-				<source>Flag</source>
-			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file">
 				<source>File</source>
 			</trans-unit>

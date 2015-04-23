@@ -10,7 +10,7 @@
  * "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[ 'ecom_product_tools' ] = [
 	'title' => 'ecom Product Tools',
 	'description' => '',
 	'category' => 'plugin',
@@ -22,15 +22,14 @@ $EM_CONF[$_EXTKEY] = array(
 	'uploadfolder' => 0,
 	'createDirs' => '',
 	'clearCacheOnLoad' => 0,
-	'version' => '1.1.2',
-	'constraints' => array(
-		'depends' => array(
+	'version' => '1.2.0',
+	'constraints' => [
+		'depends' => [
 			'typo3' => '6.2.4-7.1.99',
-			'php' => '5.4.0-5.5.99'
-		),
-		'conflicts' => array(
-		),
-		'suggests' => array(
-		),
-	),
-);
+			'php' => '5.4.0-5.5.99',
+			'ecom_toolbox'
+		],
+		'conflicts' => [],
+		'suggests' => []
+	]
+];

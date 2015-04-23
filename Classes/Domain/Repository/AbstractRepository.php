@@ -38,9 +38,7 @@ class AbstractRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return \S3b0\EcomProductTools\Domain\Repository\AbstractRepository
 	 */
 	public function jsonRequestSetOrderingByAlphabet($labelField = 'title') {
-		$this->setDefaultOrderings(array(
-			$labelField => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-		));
+		$this->setDefaultOrderings([ $labelField => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING ]);
 
 		return $this;
 	}
