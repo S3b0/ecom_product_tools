@@ -176,8 +176,8 @@ return array(
 			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.language',
 			'config' => array(
 				'type' => 'select',
-				'foreign_table' => 'tx_ecomproducttools_domain_model_language',
-				'foreign_table_where' => 'ORDER BY tx_ecomproducttools_domain_model_language.title',
+				'foreign_table' => 'tx_ecomtoolbox_domain_model_language',
+				'foreign_table_where' => 'ORDER BY tx_ecomtoolbox_domain_model_language.title',
 				'items' => array(
 					array('', ''),
 					array('LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.language.I.0', 0)
