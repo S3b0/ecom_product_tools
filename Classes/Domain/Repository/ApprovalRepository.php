@@ -26,6 +26,7 @@ namespace S3b0\EcomProductTools\Domain\Repository;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
 
 /**
  * The repository for Approvals
