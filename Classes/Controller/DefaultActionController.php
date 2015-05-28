@@ -61,16 +61,19 @@ class DefaultActionController extends ExtensionController {
 		$category = $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? ($category->getProductDivisions()->contains($division) ? $category : NULL) : NULL;
 		$product = $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? ($product->getProductCategories()->contains($category) ? $product : NULL) : NULL;
 
-		$this->view->assignMultiple(array(
+		$this->view->assignMultiple([
 			'discontinued' => $discontinued,
 			'product' => $product,
 			'category' => $category,
 			'division' => $division,
-			'files' => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->setExtQuerySettings()->findByProduct($product) : NULL,
-			'products' => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued) : NULL,
-			'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->setExtQuerySettings()->findByProductDivision($division) : NULL,
+			'files' => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->ignoreStoragePidAndSysLanguageUid()
+				->findByProduct($product) : NULL,
+			'products' => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->ignoreStoragePidAndSysLanguageUid()
+				->findByProductCategory($category, $discontinued) : NULL,
+			'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->ignoreStoragePidAndSysLanguageUid()
+				->findByProductDivision($division) : NULL,
 			'productDivisions' => $this->productDivisionRepository->findAll()
-		));
+		]);
 	}
 
 }

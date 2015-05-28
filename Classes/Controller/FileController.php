@@ -39,7 +39,7 @@ class FileController extends ExtensionController {
 	 * @return void
 	 */
 	public function listByCategoryAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
-		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByCategory($category));
+		$this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByCategory($category));
 	}
 
 	/**
@@ -49,7 +49,7 @@ class FileController extends ExtensionController {
 	 * @return void
 	 */
 	public function listByProductAction(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$this->view->assign('files', $this->fileRepository->setExtQuerySettings()->findByProduct($product));
+		$this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product));
 	}
 
 }

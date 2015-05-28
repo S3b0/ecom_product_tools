@@ -76,7 +76,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductCategoriesByProductDivisionAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {
-		$this->view->assign('value', $this->productCategoryRepository->setExtQuerySettings()->jsonRequestSetOrderingByAlphabet()->findByProductDivision($division));
+		$this->view->assign('value', $this->productCategoryRepository->ignoreStoragePidAndSysLanguageUid()->jsonRequestSetOrderingByAlphabet()->findByProductDivision($division));
 	}
 
 	/**
@@ -100,7 +100,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductsByProductCategoryAction(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = FALSE) {
-		$this->view->assign('value', $this->productRepository->setExtQuerySettings()->findByProductCategory($category, $discontinued, TRUE));
+		$this->view->assign('value', $this->productRepository->ignoreStoragePidAndSysLanguageUid()->findByProductCategory($category, $discontinued, TRUE));
 	}
 
 	/**
@@ -120,13 +120,14 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 * @return void
 	 */
 	public function getProductDataAction(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$html = $this->getHTML('GetProductData', array(
+		$html = $this->getHTML('GetProductData', [
 			'product' => $product,
-			'files' => $this->fileRepository->setExtQuerySettings()->findByProduct($product)
-		));
-		$this->view->assign('value', new \ArrayObject(array(
+			'files' => $this->fileRepository->ignoreStoragePidAndSysLanguageUid()
+				->findByProduct($product)
+		]);
+		$this->view->assign('value', new \ArrayObject([
 			'html' => $html
-		)));
+		]));
 	}
 
 	/**
@@ -135,7 +136,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	 *
 	 * @return string
 	 */
-	private function getHTML($templateName, array $variables = array()) {
+	private function getHTML($templateName, array $variables = []) {
 		/** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
 		$view = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
 
@@ -144,7 +145,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 		$partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration['view']['partialRootPath'] ?: end($extbaseFrameworkConfiguration['view']['partialRootPaths']));
 		$templatePathAndFilename = $templateRootPath . 'StandAloneViews/' . $templateName . '.html';
 		$view->setTemplatePathAndFilename($templatePathAndFilename);
-		$view->setPartialRootPaths(array($partialRootPath));
+		$view->setPartialRootPaths([$partialRootPath]);
 		$view->assignMultiple($variables);
 		$view->setFormat('html');
 
