@@ -3,9 +3,11 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-return array(
-	'ctrl' => array(
-		'title'	=> 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_productdivision',
+$locallang = 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:';
+
+return [
+	'ctrl' => [
+		'title'	=> $locallang . 'tx_ecomproducttools_domain_model_productdivision',
 		'label' => 'title',
 		'tstamp' => 'tstamp',
 		'crdate' => 'crdate',
@@ -17,111 +19,101 @@ return array(
 		'transOrigPointerField' => 'l10n_parent',
 		'transOrigDiffSourceField' => 'l10n_diffsource',
 		'delete' => 'deleted',
-		'enablecolumns' => array(
+		'enablecolumns' => [
 			'disabled' => 'hidden',
 			'starttime' => 'starttime',
-			'endtime' => 'endtime',
-		),
+			'endtime' => 'endtime'
+		],
 		'searchFields' => 'title,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_productdivision.png'
-	),
-	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title',
-	),
-	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'),
-	),
-	'palettes' => array(
-		'1' => array('showitem' => ''),
-	),
-	'columns' => array(
+	],
+	'interface' => [ 'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title' ],
+	'types' => [
+		'1' => [ 'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime' ]
+	],
+	'palettes' => [ ],
+	'columns' => [
 
-		'sys_language_uid' => array(
+		'sys_language_uid' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
 				'foreign_table' => 'sys_language',
 				'foreign_table_where' => 'ORDER BY sys_language.title',
-				'items' => array(
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1),
-					array('LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0)
-				),
-			),
-		),
-		'l10n_parent' => array(
+				'items' => [
+					['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
+					['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
+				]
+			]
+		],
+		'l10n_parent' => [
 			'displayCond' => 'FIELD:sys_language_uid:>:0',
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
-			'config' => array(
+			'config' => [
 				'type' => 'select',
-				'items' => array(
-					array('', 0),
-				),
+				'items' => [ [ '', 0 ] ],
 				'foreign_table' => 'tx_ecomproducttools_domain_model_productdivision',
-				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_productdivision.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_productdivision.sys_language_uid IN (-1,0)',
-			),
-		),
-		'l10n_diffsource' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
+				'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_productdivision.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_productdivision.sys_language_uid IN (-1,0)'
+			]
+		],
+		'l10n_diffsource' => [
+			'config' => [ 'type' => 'passthrough' ]
+		],
 
-		'hidden' => array(
+		'hidden' => [
 			'exclude' => 1,
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
-			'config' => array(
-				'type' => 'check',
-			),
-		),
-		'starttime' => array(
+			'config' => [
+				'type' => 'check'
+			]
+		],
+		'starttime' => [
 			'exclude' => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 13,
 				'max' => 20,
 				'eval' => 'datetime',
 				'checkbox' => 0,
 				'default' => 0,
-				'range' => array(
+				'range' => [
 					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
-			),
-		),
-		'endtime' => array(
+				]
+			]
+		],
+		'endtime' => [
 			'exclude' => 1,
 			'l10n_mode' => 'mergeIfNotBlank',
 			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
-			'config' => array(
+			'config' => [
 				'type' => 'input',
 				'size' => 13,
 				'max' => 20,
 				'eval' => 'datetime',
 				'checkbox' => 0,
 				'default' => 0,
-				'range' => array(
+				'range' => [
 					'lower' => mktime(0, 0, 0, date('m'), date('d'), date('Y'))
-				),
-			),
-		),
+				]
+			]
+		],
 
-		'title' => array(
+		'title' => [
 			'exclude' => 0,
-			'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_productdivision.title',
-			'config' => array(
+			'label' => $locallang . 'tx_ecomproducttools_domain_model_productdivision.title',
+			'config' => [
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
-			),
-		),
+			]
+		],
 
-		'productcategory' => array(
-			'config' => array(
-				'type' => 'passthrough',
-			),
-		),
-	),
-);
+		'productcategory' => [
+			'config' => [ 'type' => 'passthrough' ]
+		]
+	]
+];

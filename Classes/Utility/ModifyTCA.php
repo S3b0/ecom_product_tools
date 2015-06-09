@@ -49,7 +49,7 @@ class ModifyTCA {
 	public function labelUserFuncEPTDomainModelApproval(array &$PA, \TYPO3\CMS\Backend\Form\FormEngine $pObj = NULL) {
 		$row = $PA['row'];
 		$PA['title'] = $row['title'];
-		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']) ?: array();
+		$raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA['table'], $row['uid']) ?: [];
 		$this->getApprovalLabelAddition($PA, $raw, $PA['title']);
 	}
 
@@ -115,12 +115,12 @@ class ModifyTCA {
 	 *
 	 * @return void
 	 */
-	private function getApprovalLabelAddition(array &$PA, array $approval = array(), $title = '') {
+	private function getApprovalLabelAddition(array &$PA, array $approval = [], $title = '') {
 		$checkForDuplicates = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordsByField('tx_ecomproducttools_domain_model_approval', 'title', $title ?: $approval['title']);
 
 		if ( count((array)$checkForDuplicates) > 1 ) {
-			$markups = array();
-			$icons = array();
+			$markups = [];
+			$icons = [];
 			foreach ( $checkForDuplicates as $record ) {
 				$markups[] = $record['markup_label'];
 				$icons[] = $record['icon'];
