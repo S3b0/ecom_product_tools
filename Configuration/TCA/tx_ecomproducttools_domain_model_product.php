@@ -113,7 +113,7 @@ return [
 		],
 		'teaser' => [
 			'exclude' => 1,
-			'displayCond' => 'FIELD:discontinued:=:0',
+			/*'displayCond' => 'FIELD:discontinued:=:0',*/
 			'label' => $locallang . 'tx_ecomproducttools_domain_model_product.teaser',
 			'config' => [
 				'type' => 'text',
@@ -185,7 +185,7 @@ return [
 		'link_title' => [
 			'exclude' => 1,
 			'l10n_mode' => 'prefixLangTitle',
-			'displayCond' => 'FIELD:discontinued:=:0',
+			/*'displayCond' => 'FIELD:discontinued:=:0',*/
 			'label' => $locallang . 'tx_ecomproducttools_domain_model_product.link_title',
 			'config' => [
 				'type' => 'input',
@@ -196,7 +196,7 @@ return [
 		'link_to_page' => [
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
-			'displayCond' => 'FIELD:discontinued:=:0',
+			/*'displayCond' => 'FIELD:discontinued:=:0',*/
 			'label' => $locallang . 'tx_ecomproducttools_domain_model_product.link_to_page',
 			'config' => [
 				'type' => 'input',
