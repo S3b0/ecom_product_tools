@@ -139,7 +139,7 @@ return [
 		'image' => [
 			'exclude' => 1,
 			'l10n_mode' => 'exclude',
-			'displayCond' => 'FIELD:discontinued:=:0',
+			/*'displayCond' => 'FIELD:discontinued:=:0',*/
 			'label'   => $locallang . 'tx_ecomproducttools_domain_model_product.image',
 			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', [
 				'appearance' => [
