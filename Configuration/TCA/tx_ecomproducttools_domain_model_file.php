@@ -230,7 +230,7 @@ return [
 				],
 				'MM_opposite_field' => 'items',
 				'items' => [
-					[ '', 0 ]
+					[ '-- please choose --', '' ]
 				]
 			]
 		]
