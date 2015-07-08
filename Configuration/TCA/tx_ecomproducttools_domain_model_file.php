@@ -31,7 +31,7 @@ return [
 	],
 	'interface' => [ 'showRecordFieldList' => 'hidden, file_reference, external_url, title, append_to_title, last_modification, revision, approval, language, products' ],
 	'types' => [
-		'1' => [ 'showitem' => 'file_reference;;;;1-1-1, external_url, --palette--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file;1, products, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime' ]
+		'1' => [ 'showitem' => 'file_reference;;;;1-1-1, external_url, --palette--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file;1, products, --div--;LLL:EXT:lang/locallang_tca.xlf:sys_category.tabs.category, file_categories, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime' ]
 	],
 	'palettes' => [
 		'1' => [ 'showitem' => 'title, --linebreak--, append_to_title, --linebreak--, language, last_modification, revision, approval, hidden', 'canNotCollapse' => TRUE ]
@@ -211,6 +211,26 @@ return [
 						'type' => 'suggest',
 						'default' => [ 'searchWholePhrase' => 1 ]
 					]
+				]
+			]
+		],
+		'file_categories' => [
+			'exclude' => 0,
+			'l10n_mode' => 'exclude',
+			'label' => 'LLL:EXT:lang/locallang_tca.xlf:sys_category.categories',
+			'config' => [
+				'type' => 'select',
+				'foreign_table' => 'sys_category',
+				'foreign_table_where' => ' AND sys_category.tx_ext_type=\'ecom_product_tools\' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+				'minitems' => 1,
+				'MM' => 'sys_category_record_mm',
+				'MM_match_fields' => [
+					'fieldname' => 'file_categories',
+					'tablenames' => 'tx_ecomproducttools_domain_model_file'
+				],
+				'MM_opposite_field' => 'items',
+				'items' => [
+					[ '', 0 ]
 				]
 			]
 		]

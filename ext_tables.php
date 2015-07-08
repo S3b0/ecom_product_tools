@@ -39,22 +39,6 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_productdivision', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_productdivision.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_productcategory', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_productcategory.xlf');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
-    'ecom_product_tools',
-    'tx_ecomproducttools_domain_model_file',
-	'file_categories',
-	[
-		'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_categories',
-		// Override generic configuration, e.g. sort by title rather than by sorting
-		'fieldConfiguration' => [
-			'foreign_table_where' => ' AND sys_category.tx_ext_type=\'ecom_product_tools\' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
-			'minitems' => 1,
-			'maxitems' => 1,
-			'renderMode' => 'checkbox'
-		]
-	]
-);
-
 // Add Sprite Icons for different record types (visual distinction)
 \TYPO3\CMS\Backend\Sprite\SpriteManager::addSingleIcons(
 	[
