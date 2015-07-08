@@ -47,7 +47,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 		'label' => 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_file.file_categories',
 		// Override generic configuration, e.g. sort by title rather than by sorting
 		'fieldConfiguration' => [
-			'foreign_table_where' => ' AND (sys_category.uid=' . $extensionConfiguration[ 'rootCategory' ] . ' OR sys_category.parent=' . $extensionConfiguration[ 'rootCategory' ] . ') AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+			'foreign_table_where' => ' AND sys_category.tx_ext_type=\'ecom_product_tools\' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
 			'minitems' => 1,
 			'maxitems' => 1
 		]
