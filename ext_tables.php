@@ -49,7 +49,8 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 		'fieldConfiguration' => [
 			'foreign_table_where' => ' AND sys_category.tx_ext_type=\'ecom_product_tools\' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
 			'minitems' => 1,
-			'maxitems' => 1
+			'maxitems' => 1,
+			'size' => 1
 		]
 	]
 );
