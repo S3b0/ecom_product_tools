@@ -368,6 +368,14 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @param int $offset
+	 * @return \S3b0\EcomProductTools\Domain\Model\ProductCategory
+	 */
+	public function getProductCategory($offset = 0) {
+		return $this->productCategories->toArray()[$offset];
+	}
+
+	/**
 	 * Adds a Certification
 	 *
 	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $certification

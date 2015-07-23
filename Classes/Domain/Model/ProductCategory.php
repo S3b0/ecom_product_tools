@@ -126,4 +126,12 @@ class ProductCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->productDivisions = $productDivisions;
 	}
 
+	/**
+	 * @param int $offset
+	 * @return \S3b0\EcomProductTools\Domain\Model\ProductDivision
+	 */
+	public function getProductDivision($offset = 0) {
+		return $this->productDivisions->toArray()[$offset];
+	}
+
 }

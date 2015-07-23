@@ -29,7 +29,7 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certif
 	'Download-Center'
 );
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ecom_product_tools', 'Configuration/TypoScript', 'ecom Product Tools');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile('ecom_product_tools', 'Resources/Private/TypoScript', 'ecom Product Tools');
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_approval', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_approval.xlf');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_certification', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_certification.xlf');

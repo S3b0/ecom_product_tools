@@ -27,12 +27,12 @@ plugin.tx_ecomproducttools {
 
 [PIDinRootline = {$plugin.tx_ecomproducttools.settings.rootLine}]
 page.includeCSSLibs {
-	ecomproducttools = EXT:ecom_product_tools/Resources/Public/Stylesheets/m.ept.main.css
+	ecomproducttools = EXT:ecom_product_tools/Resources/Public/CSS/m.ept.main.css
 }
 
 page.includeJSFooter {
-	markupJS = EXT:ecom_product_tools/Resources/Public/Javascripts/m.ept.markup.js
-	owl = EXT:ecom_product_tools/Resources/Public/Javascripts/owl.carousel.min.js
+	markupJS = EXT:ecom_product_tools/Resources/Public/JavaScript/m.ept.markup.js
+	owl = EXT:ecom_product_tools/Resources/Public/JavaScript/owl.carousel.min.js
 	owl.forceOnTop = 1
 }
 [global]

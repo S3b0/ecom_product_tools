@@ -27,6 +27,7 @@ namespace S3b0\EcomProductTools\Controller;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
  * DefaultActionController
@@ -37,6 +38,16 @@ class DefaultActionController extends ExtensionController {
 	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\InvalidArgumentNameException
 	 */
 	public function initializeDownloadCenterAction() {
+		if ( !GeneralUtility::_POST('product') && GeneralUtility::_GET('product') && MathUtility::canBeInterpretedAsInteger(GeneralUtility::_GET('product')) ) {
+			/** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
+			$product = $this->productRepository->findByUid(MathUtility::convertToPositiveInteger(GeneralUtility::_GET('product')));
+			$this->request->setArguments([
+				'division' => $product->getProductCategory()->getProductDivision(),
+				'category' => $product->getProductCategory(),
+				'product'  => $product
+			]);
+		}
+
 		if ( GeneralUtility::_POST('division') && (int)GeneralUtility::_POST('division') === 0 ) {
 			$this->request->setArgument('division', NULL);
 		}

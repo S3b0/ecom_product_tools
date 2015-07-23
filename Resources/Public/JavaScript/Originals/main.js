@@ -89,8 +89,10 @@
 		}
 	});
 
-	resetDC('#product-select-category, #product-select-product', false);
-	$('#product-select-division').val(0);
+	if ( $('#product-select-division option:selected').first().val() == 0 ) {
+		resetDC('#product-select-category, #product-select-product', false);
+		$('#product-select-division').val(0);
+	}
 })(jQuery);
 
 function ajaxRequest(action, arguments, onSuccess) {
