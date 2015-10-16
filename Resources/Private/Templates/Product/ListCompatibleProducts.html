@@ -1,0 +1,10 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<p><strong style="color:#444"><f:translate id="views.detail.compatible_products" extensionName="app_library" /></strong></p>
+	<div class="app-lib-detail-grids">
+		<f:for each="{products}" as="product" iteration="iterator"><f:render partial="Misc/ProductCard" arguments="{product: product, iterator: iterator}" /></f:for>
+	</div>
+	<div class="clearfix"></div>
+	<script type="text/javascript" language="JavaScript">$(function(){var i=$(".app-lib-app-qv-card");i.on("mouseover",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).slideUp(100),$(this).children(".app-lib-app-qv-card-overlay").first().stop(!0,!1).slideDown(100)}),i.on("mouseout",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).slideUp(100)})});</script>
+</f:section>

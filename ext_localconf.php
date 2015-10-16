@@ -17,6 +17,12 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'S3b0.EcomProductTools',
+	'CompatibleProducts',
+	[ 'Product' => 'listCompatibleProducts' ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'S3b0.EcomProductTools',
 	'DownloadCenter',
 	[
 		'DefaultAction' => 'downloadCenter',

@@ -41,6 +41,17 @@ class ProductController extends ExtensionController {
 		$this->view->assign('product', $this->productRepository->findByUid((int) $this->settings['product']));
 	}
 
+	/**
+	 * action listCompatibleProductsAction
+	 */
+	public function listCompatibleProductsAction() {
+		$products = $this->productRepository->findByUidList($this->settings['products']);
+		$this->view->assign('products', $products);
+	}
+
+	/**
+	 * action listApprovalsAction
+	 */
 	public function listApprovalsAction() {
 		/** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
 		$product = $this->productRepository->findByUid((int) $this->settings['product']);

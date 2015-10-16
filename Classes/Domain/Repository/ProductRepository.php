@@ -43,6 +43,21 @@ class ProductRepository extends AbstractRepository {
 	];
 
 	/**
+	 * @param string $list
+	 * @param array  $storagePids
+	 *
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findByUidList($list, array $storagePids = []) {
+		$query = $this->createQuery();
+		$query->setQuerySettings( $query->getQuerySettings()->setRespectSysLanguage( FALSE )->setRespectStoragePage( FALSE ) );
+
+		return $query->matching(
+			$query->in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $list, TRUE))
+		)->execute();
+	}
+
+	/**
 	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
 	 * @param boolean                                             $excludeDiscontinuedItems
 	 * @param boolean                                             $excludeExcludedInDownloadCenterItems

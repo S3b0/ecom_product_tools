@@ -3,8 +3,6 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-$extensionConfiguration = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['ecom_product_tools']);
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'ecom_product_tools',
 	'MarkUp',
@@ -18,6 +16,15 @@ $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_markup
 	'ecom_product_tools',
 	'Certifications',
 	'Product Certifications'
+);
+
+$TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_compatibleproducts'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('ecomproducttools_compatibleproducts', 'FILE:EXT:ecom_product_tools/Configuration/FlexForms/flexform_compatible_products.xml');
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'ecom_product_tools',
+	'CompatibleProducts',
+	'Compatible Products'
 );
 
 $TCA['tt_content']['types']['list']['subtypes_addlist']['ecomproducttools_certifications'] = 'pi_flexform';
