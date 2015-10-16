@@ -45,7 +45,12 @@ class ProductController extends ExtensionController {
 	 * action listCompatibleProductsAction
 	 */
 	public function listCompatibleProductsAction() {
-		$products = $this->productRepository->findByUidList($this->settings['products']);
+		$products = [ ];
+		if ( preg_match('[\d,]', $this->settings['products']) ) {
+			foreach ( \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['products'], TRUE) as $uid ) {
+				$products[] = $this->productRepository->findByUid($uid);
+			}
+		}
 		$this->view->assign('products', $products);
 	}
 
