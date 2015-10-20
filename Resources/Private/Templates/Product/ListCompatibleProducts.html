@@ -1,9 +1,8 @@
-<f:layout name="Default" />
+<f:layout name="CompatibleProducts" />
 
 <f:section name="main">
 	<f:if condition="{products -> f:count()}">
-		<p><strong style="color:#444"><f:translate id="views.detail.compatible_products" extensionName="app_library" /></strong></p>
-		<div class="app-lib-detail-grids">
+		<div class="app-lib-detail-grids grid-x6">
 			<f:for each="{products}" as="product" iteration="iterator"><f:render partial="Misc/ProductCard" arguments="{product: product, iterator: iterator}" /></f:for>
 		</div>
 		<div class="clearfix"></div>

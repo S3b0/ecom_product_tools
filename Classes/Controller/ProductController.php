@@ -51,6 +51,7 @@ class ProductController extends ExtensionController {
 				$products[] = $this->productRepository->findByUid($uid);
 			}
 		}
+
 		$this->view->assign('products', $products);
 	}
 
