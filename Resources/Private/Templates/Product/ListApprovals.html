@@ -53,7 +53,7 @@
 													<f:for each="{approvalDocuments}" as="document">
 														<f:if condition="{document.fileReference}">
 															<f:then><a class="btn btn-default morelink" role="button" href="{document.fileReference.originalResource.publicUrl}" target="_blank"><f:translate id="label.dl_certification" /></a></f:then>
-															<f:else><f:link.typolink parameter="{document.externalUrl}" target="_blank"><f:translate id="label.dl_certification" /></f:link.typolink></f:else>
+															<f:else><f:link.typolink parameter="{document.externalUrl}" class="btn btn-default morelink" role="button" target="_blank"><f:translate id="label.dl_certification" /></f:link.typolink></f:else>
 														</f:if>
 													</f:for>
 												</f:else>
