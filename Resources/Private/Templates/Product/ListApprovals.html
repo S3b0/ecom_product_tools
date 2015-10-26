@@ -40,7 +40,10 @@
 														<ul class="dropdown-menu" role="menu">
 															<f:for each="{approvalDocuments}" as="document">
 																<li role="menuitem" class="lang-{document.language.flag}">
-																	<a href="{document.fileReference.originalResource.publicUrl}" target="_blank">{document.title}</a>
+																	<f:if condition="{document.fileReference}">
+																		<f:then><a href="{document.fileReference.originalResource.publicUrl}" target="_blank">{document.title}</a></f:then>
+																		<f:else><f:link.typolink parameter="{document.externalUrl}" target="_blank">{document.title}</f:link.typolink></f:else>
+																	</f:if>
 																</li>
 															</f:for>
 														</ul>
@@ -48,7 +51,10 @@
 												</f:then>
 												<f:else>
 													<f:for each="{approvalDocuments}" as="document">
-														<a class="btn btn-default morelink" role="button" href="{document.fileReference.originalResource.publicUrl}" target="_blank"><f:translate id="label.dl_certification" /></a>
+														<f:if condition="{document.fileReference}">
+															<f:then><a class="btn btn-default morelink" role="button" href="{document.fileReference.originalResource.publicUrl}" target="_blank"><f:translate id="label.dl_certification" /></a></f:then>
+															<f:else><f:link.typolink parameter="{document.externalUrl}" target="_blank"><f:translate id="label.dl_certification" /></f:link.typolink></f:else>
+														</f:if>
 													</f:for>
 												</f:else>
 											</f:if>
