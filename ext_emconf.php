@@ -26,8 +26,8 @@ $EM_CONF[ 'ecom_product_tools' ] = [
 	'constraints' => [
 		'depends' => [
 			'typo3' => '6.2',
-			'php' => '5.4.0-5.5.99',
-			'ecom_toolbox' => '1.2.0',
+			'php' => '5.4.0-5.6.99',
+			'ecom_toolbox' => '',
 			't3ecom' => ''
 		],
 		'conflicts' => [],

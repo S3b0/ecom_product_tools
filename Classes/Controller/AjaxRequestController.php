@@ -122,11 +122,10 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 	public function getProductDataAction(\S3b0\EcomProductTools\Domain\Model\Product $product) {
 		$html = $this->getHTML('GetProductData', [
 			'product' => $product,
-			'files' => $this->fileRepository->ignoreStoragePidAndSysLanguageUid()
-				->findByProduct($product)
+			'files' => $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product)
 		]);
 		$this->view->assign('value', new \ArrayObject([
-			'html' => $html
+			'html' => \Ecom\EcomToolbox\Utility\Div::sanitize_output($html)
 		]));
 	}
 
