@@ -1,3 +1,7 @@
+img.flag-shadow {
+	box-shadow: 0 0 1px #808080;
+}
+
 .align-left {
 	text-align: left
 }
@@ -164,47 +168,46 @@
 	overflow:hidden;
 }
 #approval-list .approval-wrap #tx-ecom-product-tools-carousel {
-	padding: 0 27px
+    padding: 0 27px
 }
 .tx-ecom-product-tools.markup #approval-list .approval-wrap #tx-ecom-product-tools-carousel.fit {
-	padding: 0
+    padding: 0
 }
-.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-buttons div {
-	border-right: 1px solid #d5d7d8;
-	color: #fff;
-	display: block;
-	float: left;
-	font-size: 0;
-	height: 69px;
-	position: absolute;
-	top: 0;
-	width: 27px
+.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-controls .owl-nav div {
+    border-right: 1px solid #d5d7d8;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 0;
+    height: 69px;
+    position: absolute;
+    top: 1px;
+    width: 27px;
+    cursor: pointer
 }
 .tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-carousel .owl-item img {
-	display: inline;
-	width: auto;
+    display: inline;
+    width: auto
 }
-.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-buttons div.owl-next {
-	background: url('../Images/markup-next.png') no-repeat center center #0083cb;
-	float: right;
-	margin: 1px 0 1px 1px;
-	right: 0
+.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-controls .owl-nav div.owl-next {
+    background: url(../Images/markup-next.png) center center no-repeat #0083cb;
+    right: 0
 }
-.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-buttons div.owl-prev {
-	background: url('../Images/markup-prev.png') no-repeat center center #0083cb;
-	left: 0
+.tx-ecom-product-tools.markup #approval-list .approval-wrap .owl-controls .owl-nav div.owl-prev {
+    background: url(../Images/markup-prev.png) center center no-repeat #0083cb;
+    left: 0
 }
 .tx-ecom-product-tools.markup #approval-list .approval-wrap #tx-ecom-product-tools-carousel .item {
-	border-right: 1px solid #d5d7d8;
-	color: #7c7c80;
-	cursor: pointer;
-	display: block;
-	float: none;
-	font-weight: bold;
-	font-size: 12px;
-	padding: 15px 5px;
-	text-align: center;
-	width: auto
+    border-right: 1px solid #d5d7d8;
+    color: #7c7c80;
+    cursor: pointer;
+    display: block;
+    float: none;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 15px 5px;
+    text-align: center;
+    width: auto
 }
 .tx-ecom-product-tools.certifications .approval {
 	margin-bottom: 50px

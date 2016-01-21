@@ -29,8 +29,8 @@ return [
 		],
 		'typeicon_column' => 'setcard_icon',
 		'typeicon_classes' => [
-			'default' => 'extensions-ept-approval',
-			'mask' => 'extensions-ept-approval-###TYPE###'
+			'default' => 'ecom-approval',
+			'mask' => 'ecom-approval-###TYPE###'
 		],
 		'searchFields' => 'title,setcard_icon,icon,icon_user,',
 		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_approval.png'
