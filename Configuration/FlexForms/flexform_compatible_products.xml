@@ -16,7 +16,7 @@
 							<config>
 								<type>select</type>
 								<foreign_table>tx_ecomproducttools_domain_model_product</foreign_table>
-								<foreign_table_where>AND tx_ecomproducttools_domain_model_product.link_to_page AND tx_ecomproducttools_domain_model_product.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_product.title</foreign_table_where>
+								<foreign_table_where>AND tx_ecomproducttools_domain_model_product.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_product.title</foreign_table_where>
 								<size>20</size>
 								<autoSizeMax>30</autoSizeMax>
 								<maxitems>9999</maxitems>
