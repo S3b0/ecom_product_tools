@@ -27,6 +27,8 @@
 		<f:if condition="{product.linkToPage}"><a href="{f:uri.typolink(parameter: product.linkToPage)}"></a></f:if>
 		<h5>{product.title}</h5>
 		<small>{product.teaser -> f:format.html()}</small>
-		<p><i class="fa fa-caret-right fa-lg"></i> <f:translate id="views.list.detailLinkTitle" extensionName="app_library" /></p>
+		<f:if condition="{product.linkToPage}">
+			<p><i class="fa fa-caret-right fa-lg"></i> <f:translate id="views.list.detailLinkTitle" extensionName="app_library" /></p>
+		</f:if>
 	</div>
 </div>
