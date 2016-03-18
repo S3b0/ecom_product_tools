@@ -52,7 +52,10 @@ class ProductController extends ExtensionController {
 			}
 		}
 
-		$this->view->assign('products', $products);
+		$this->view->assignMultiple(array(
+            'products' => $products,
+            'tt_content' => $this->configurationManager->getContentObject()->data
+        ));
 	}
 
 	/**
