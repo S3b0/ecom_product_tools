@@ -30,348 +30,389 @@ namespace S3b0\EcomProductTools\Domain\Model;
 /**
  * A file relation providing detail on files not delivered with FAL
  */
-class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * The fileReference
-	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-	 */
-	protected $fileReference = NULL;
+    /**
+     * The fileReference
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    protected $fileReference = null;
 
-	/**
-	 * The externalUrl
-	 *
-	 * @var string
-	 */
-	protected $externalUrl = '';
+    /**
+     * The externalUrl
+     *
+     * @var string
+     */
+    protected $externalUrl = '';
 
-	/**
-	 * File title to be displayed
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $title = '';
+    /**
+     * File title to be displayed
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $title = '';
 
-	/**
-	 * String to append to tile, if any
-	 *
-	 * @var string
-	 */
-	protected $appendToTitle = '';
+    /**
+     * String to append to tile, if any
+     *
+     * @var string
+     */
+    protected $appendToTitle = '';
 
-	/**
-	 * Last modification date
-	 *
-	 * @var \DateTime
-	 */
-	protected $lastModification;
+    /**
+     * Last modification date
+     *
+     * @var \DateTime
+     */
+    protected $lastModification;
 
-	/**
-	 * The file revision#, if any
-	 *
-	 * @var string
-	 */
-	protected $revision = '';
+    /**
+     * The file revision#, if any
+     *
+     * @var string
+     */
+    protected $revision = '';
 
-	/**
-	 * Assigned approval
-	 *
-	 * @var \S3b0\EcomProductTools\Domain\Model\Approval
-	 */
-	protected $approval = NULL;
+    /**
+     * Assigned approval
+     *
+     * @var \S3b0\EcomProductTools\Domain\Model\Approval
+     */
+    protected $approval = null;
 
-	/**
-	 * File content language
-	 *
-	 * @var \Ecom\EcomToolbox\Domain\Model\Language
-	 */
-	protected $language = NULL;
+    /**
+     * File content language
+     *
+     * @var \Ecom\EcomToolbox\Domain\Model\Language
+     */
+    protected $language = null;
 
-	/**
-	 * Affected products
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product>
-	 */
-	protected $products = NULL;
+    /**
+     * Affected products
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product>
+     */
+    protected $products = null;
 
-	/**
-	 * TYPO3 CMS fileCategories
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-	 */
-	protected $fileCategories = NULL;
+    /**
+     * TYPO3 CMS fileCategories
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    protected $fileCategories = null;
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->products = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->fileCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->products = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->fileCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the fileReference
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
-	 */
-	public function getFileReference() {
-		return $this->fileReference;
-	}
+    /**
+     * Returns the fileReference
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $file
+     */
+    public function getFileReference()
+    {
+        return $this->fileReference;
+    }
 
-	/**
-	 * Sets the fileReference
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference
-	 * @return void
-	 */
-	public function setFileReference(\TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference) {
-		$this->fileReference = $fileReference;
-	}
+    /**
+     * Sets the fileReference
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference
+     *
+     * @return void
+     */
+    public function setFileReference(\TYPO3\CMS\Extbase\Domain\Model\FileReference $fileReference)
+    {
+        $this->fileReference = $fileReference;
+    }
 
-	/**
-	 * Returns the externalUrl
-	 *
-	 * @return string
-	 */
-	public function getExternalUrl() {
-		return $this->externalUrl;
-	}
+    /**
+     * Returns the externalUrl
+     *
+     * @return string
+     */
+    public function getExternalUrl()
+    {
+        return $this->externalUrl;
+    }
 
-	/**
-	 * Sets the externalUrl
-	 *
-	 * @param string $externalUrl
-	 */
-	public function setExternalUrl($externalUrl) {
-		$this->externalUrl = $externalUrl;
-	}
+    /**
+     * Sets the externalUrl
+     *
+     * @param string $externalUrl
+     */
+    public function setExternalUrl($externalUrl)
+    {
+        $this->externalUrl = $externalUrl;
+    }
 
-	/**
-	 * @return string
-	 */
-	public function getUrlType() {
-		$typolinkParams = \TYPO3\CMS\Core\Utility\GeneralUtility::unQuoteFilenames($this->externalUrl, TRUE);
-		$url = $typolinkParams[0];
-		$file = new \SplFileInfo($url);
+    /**
+     * @return string
+     */
+    public function getUrlType()
+    {
+        $typolinkParams = \TYPO3\CMS\Core\Utility\GeneralUtility::unQuoteFilenames($this->externalUrl, true);
+        $url = $typolinkParams[ 0 ];
+        $file = new \SplFileInfo($url);
 
-		return $file->getExtension() ?: 'URL';
-	}
+        return $file->getExtension() ?: 'URL';
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		if ( $this->title ) {
-			return $this->title;
-		} elseif ( $this->getFileCategory()->_languageUid !== $this->getLanguage()->getSysLanguage() ) { // If current language differs from file language
-			/** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
-			$db = $GLOBALS['TYPO3_DB'];
-			$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->getLanguage()->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
-			// If no translation exists, fetch default!
-			if ( !$row ) {
-				$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
-			}
-			return ($row && $row['title'] ? $row['title'] : $this->getFileCategory()->getTitle()) . ' ' . $this->getAppendToTitle();
-		} else {
-			return $this->getFileCategory()->getTitle() . $this->getAppendToTitle();
-		}
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        if ($this->title) {
+            return $this->title;
+        } elseif ($this->getFileCategory()->_languageUid !== $this->getLanguage()->getSysLanguage()) { // If current language differs from file language
+            /** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
+            $db = $GLOBALS[ 'TYPO3_DB' ];
+            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->getLanguage()->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+            // If no translation exists, fetch default!
+            if (!$row) {
+                $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+            }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+            return ($row && $row[ 'title' ] ? $row[ 'title' ] : $this->getFileCategory()->getTitle()) . ' ' . $this->getAppendToTitle();
+        } else {
+            return $this->getFileCategory()->getTitle() . $this->getAppendToTitle();
+        }
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string
-	 */
-	public function getAppendToTitle () {
-		return ' ' . $this->appendToTitle;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $appendToTitle
-	 */
-	public function setAppendToTitle ($appendToTitle) {
-		$this->appendToTitle = $appendToTitle;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string
+     */
+    public function getAppendToTitle()
+    {
+        return ' ' . $this->appendToTitle;
+    }
 
-	/**
-	 * Returns the lastModification
-	 *
-	 * @return \DateTime $lastModification
-	 */
-	public function getLastModification() {
-		return $this->lastModification;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $appendToTitle
+     */
+    public function setAppendToTitle($appendToTitle)
+    {
+        $this->appendToTitle = $appendToTitle;
+    }
 
-	/**
-	 * Sets the lastModification
-	 *
-	 * @param \DateTime $lastModification
-	 * @return void
-	 */
-	public function setLastModification(\DateTime $lastModification) {
-		$this->lastModification = $lastModification;
-	}
+    /**
+     * Returns the lastModification
+     *
+     * @return \DateTime $lastModification
+     */
+    public function getLastModification()
+    {
+        return $this->lastModification;
+    }
 
-	/**
-	 * Returns the revision
-	 *
-	 * @return string $revision
-	 */
-	public function getRevision() {
-		return $this->revision;
-	}
+    /**
+     * Sets the lastModification
+     *
+     * @param \DateTime $lastModification
+     *
+     * @return void
+     */
+    public function setLastModification(\DateTime $lastModification)
+    {
+        $this->lastModification = $lastModification;
+    }
 
-	/**
-	 * Sets the revision
-	 *
-	 * @param string $revision
-	 * @return void
-	 */
-	public function setRevision($revision) {
-		$this->revision = $revision;
-	}
+    /**
+     * Returns the revision
+     *
+     * @return string $revision
+     */
+    public function getRevision()
+    {
+        return $this->revision;
+    }
 
-	/**
-	 * Returns the approval
-	 *
-	 * @return \S3b0\EcomProductTools\Domain\Model\Approval $approval
-	 */
-	public function getApproval() {
-		return $this->approval;
-	}
+    /**
+     * Sets the revision
+     *
+     * @param string $revision
+     *
+     * @return void
+     */
+    public function setRevision($revision)
+    {
+        $this->revision = $revision;
+    }
 
-	/**
-	 * Sets the approval
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Approval $approval
-	 * @return void
-	 */
-	public function setApproval(\S3b0\EcomProductTools\Domain\Model\Approval $approval) {
-		$this->approval = $approval;
-	}
+    /**
+     * Returns the approval
+     *
+     * @return \S3b0\EcomProductTools\Domain\Model\Approval $approval
+     */
+    public function getApproval()
+    {
+        return $this->approval;
+    }
 
-	/**
-	 * Returns the language
-	 *
-	 * @return \Ecom\EcomToolbox\Domain\Model\Language $language
-	 */
-	public function getLanguage() {
-		return $this->language;
-	}
+    /**
+     * Sets the approval
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Approval $approval
+     *
+     * @return void
+     */
+    public function setApproval(\S3b0\EcomProductTools\Domain\Model\Approval $approval)
+    {
+        $this->approval = $approval;
+    }
 
-	/**
-	 * Sets the language
-	 *
-	 * @param \Ecom\EcomToolbox\Domain\Model\Language $language
-	 * @return void
-	 */
-	public function setLanguage(\Ecom\EcomToolbox\Domain\Model\Language $language = NULL) {
-		$this->language = $language;
-	}
+    /**
+     * Returns the language
+     *
+     * @return \Ecom\EcomToolbox\Domain\Model\Language $language
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
 
-	/**
-	 * Adds a Product
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
-	 * @return void
-	 */
-	public function addProduct(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$this->products->attach($product);
-	}
+    /**
+     * Sets the language
+     *
+     * @param \Ecom\EcomToolbox\Domain\Model\Language $language
+     *
+     * @return void
+     */
+    public function setLanguage(\Ecom\EcomToolbox\Domain\Model\Language $language = null)
+    {
+        $this->language = $language;
+    }
 
-	/**
-	 * Removes a Product
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Product $productToRemove The Product to be removed
-	 * @return void
-	 */
-	public function removeProduct(\S3b0\EcomProductTools\Domain\Model\Product $productToRemove) {
-		$this->products->detach($productToRemove);
-	}
+    /**
+     * Adds a Product
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     *
+     * @return void
+     */
+    public function addProduct(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    {
+        $this->products->attach($product);
+    }
 
-	/**
-	 * Returns the products
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product> $products
-	 */
-	public function getProducts() {
-		return $this->products;
-	}
+    /**
+     * Removes a Product
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Product $productToRemove The Product to be removed
+     *
+     * @return void
+     */
+    public function removeProduct(\S3b0\EcomProductTools\Domain\Model\Product $productToRemove)
+    {
+        $this->products->detach($productToRemove);
+    }
 
-	/**
-	 * Sets the products
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product> $products
-	 * @return void
-	 */
-	public function setProducts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $products = NULL) {
-		$this->products = $products;
-	}
+    /**
+     * Returns the products
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product> $products
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory
-	 * @return void
-	 */
-	public function addFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory) {
-		$this->fileCategories->attach($fileCategory);
-	}
+    /**
+     * Sets the products
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Product> $products
+     *
+     * @return void
+     */
+    public function setProducts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $products = null)
+    {
+        $this->products = $products;
+    }
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove The Category to be removed
-	 * @return void
-	 */
-	public function removeFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove) {
-		$this->fileCategories->detach($fileCategoryToRemove);
-	}
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory
+     *
+     * @return void
+     */
+    public function addFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategory)
+    {
+        $this->fileCategories->attach($fileCategory);
+    }
 
-	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-	 */
-	public function getFileCategories() {
-		return $this->fileCategories;
-	}
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove The Category to be removed
+     *
+     * @return void
+     */
+    public function removeFileCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $fileCategoryToRemove)
+    {
+        $this->fileCategories->detach($fileCategoryToRemove);
+    }
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $fileCategories
-	 */
-	public function setFileCategories($fileCategories = NULL) {
-		$this->fileCategories = $fileCategories;
-	}
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    public function getFileCategories()
+    {
+        return $this->fileCategories;
+    }
 
-	/**
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\Category
-	 */
-	public function getFileCategory() {
-		return $this->fileCategories->current();
-	}
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $fileCategories
+     */
+    public function setFileCategories($fileCategories = null)
+    {
+        $this->fileCategories = $fileCategories;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Domain\Model\Category
+     */
+    public function getFileCategory()
+    {
+        return $this->fileCategories->current();
+    }
 
 }

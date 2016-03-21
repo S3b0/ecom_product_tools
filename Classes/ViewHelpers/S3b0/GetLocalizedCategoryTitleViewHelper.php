@@ -15,25 +15,28 @@ namespace TYPO3\CMS\Fluid\ViewHelpers\S3b0;
  *                                                                        */
 
 
-class GetLocalizedCategoryTitleViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class GetLocalizedCategoryTitleViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+{
 
-	/**
-	 * Render
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-	 * @param int                                      $language
-	 *
-	 * @return mixed|string
-	 */
-	public function render(\TYPO3\CMS\Extbase\Domain\Model\Category $category, $language = 0) {
-		if ( $language ) {
-			/** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
-			$db = $GLOBALS['TYPO3_DB'];
-			$row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $category->getUid() . ' AND sys_language_uid=' . $language . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
-			return $row['title'] ?: $category->getTitle();
-		} else {
-			return $category->getTitle();
-		}
-	}
+    /**
+     * Render
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @param int                                      $language
+     *
+     * @return mixed|string
+     */
+    public function render(\TYPO3\CMS\Extbase\Domain\Model\Category $category, $language = 0)
+    {
+        if ($language) {
+            /** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
+            $db = $GLOBALS[ 'TYPO3_DB' ];
+            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $category->getUid() . ' AND sys_language_uid=' . $language . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+
+            return $row[ 'title' ] ?: $category->getTitle();
+        } else {
+            return $category->getTitle();
+        }
+    }
 
 }

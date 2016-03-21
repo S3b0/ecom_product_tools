@@ -30,49 +30,54 @@ namespace S3b0\EcomProductTools\Controller;
 /**
  * ProductController
  */
-class ProductController extends ExtensionController {
+class ProductController extends ExtensionController
+{
 
-	/**
-	 * action showMarkUp
-	 *
-	 * @return void
-	 */
-	public function showMarkUpAction() {
-		$this->view->assign('product', $this->productRepository->findByUid((int) $this->settings['product']));
-	}
+    /**
+     * action showMarkUp
+     *
+     * @return void
+     */
+    public function showMarkUpAction()
+    {
+        $this->view->assign('product', $this->productRepository->findByUid((int)$this->settings[ 'product' ]));
+    }
 
-	/**
-	 * action listCompatibleProductsAction
-	 */
-	public function listCompatibleProductsAction() {
-		$products = [ ];
-		if ( preg_match('/[\d,]/', $this->settings['products']) ) {
-			foreach ( \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings['products'], TRUE) as $uid ) {
-				$products[] = $this->productRepository->findByUid($uid);
-			}
-		}
+    /**
+     * action listCompatibleProductsAction
+     */
+    public function listCompatibleProductsAction()
+    {
+        $products = [];
+        if (preg_match('/[\d,]/', $this->settings[ 'products' ])) {
+            foreach (\TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings[ 'products' ], true) as $uid) {
+                $products[] = $this->productRepository->findByUid($uid);
+            }
+        }
 
-		$this->view->assignMultiple(array(
-            'products' => $products,
-            'tt_content' => $this->configurationManager->getContentObject()->data
-        ));
-	}
+        $this->view->assignMultiple([
+            'products'      => $products,
+            'contentObject' => $this->configurationManager->getContentObject()->data
+        ]);
+    }
 
-	/**
-	 * action listApprovalsAction
-	 */
-	public function listApprovalsAction() {
-		/** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
-		$product = $this->productRepository->findByUid((int) $this->settings['product']);
+    /**
+     * action listApprovalsAction
+     */
+    public function listApprovalsAction()
+    {
+        /** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
+        $product = $this->productRepository->findByUid((int)$this->settings[ 'product' ]);
 
-		/**
-		 * Include flags.css depending on TYPO3 version (moved in 7.1)
-		 * @var \TYPO3\CMS\Frontend\Controller\TyposcriptFrontendController $TSFE
-		 */
-		$TSFE = $GLOBALS['TSFE'];
-		$TSFE->getPageRenderer()->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/CSS/m.flags.css');
+        /**
+         * Include flags.css depending on TYPO3 version (moved in 7.1)
+         *
+         * @var \TYPO3\CMS\Frontend\Controller\TyposcriptFrontendController $TSFE
+         */
+        $TSFE = $GLOBALS[ 'TSFE' ];
+        $TSFE->getPageRenderer()->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/CSS/m.flags.css');
 
-		$this->view->assign('product', $product);
-		$this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findApprovalDocuments($product));
-	}
+        $this->view->assign('product', $product);
+        $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findApprovalDocuments($product));
+    }
 }

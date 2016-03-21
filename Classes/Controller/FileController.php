@@ -30,26 +30,31 @@ namespace S3b0\EcomProductTools\Controller;
 /**
  * FileController
  */
-class FileController extends ExtensionController {
+class FileController extends ExtensionController
+{
 
-	/**
-	 * action listByCategory
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-	 * @return void
-	 */
-	public function listByCategoryAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
-		$this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByCategory($category));
-	}
+    /**
+     * action listByCategory
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     *
+     * @return void
+     */
+    public function listByCategoryAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    {
+        $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByCategory($category));
+    }
 
-	/**
-	 * action listByProduct
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
-	 * @return void
-	 */
-	public function listByProductAction(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product));
-	}
+    /**
+     * action listByProduct
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     *
+     * @return void
+     */
+    public function listByProductAction(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    {
+        $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product));
+    }
 
 }

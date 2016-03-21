@@ -31,63 +31,68 @@ use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
 /**
  * The repository for Files
  */
-class FileRepository extends AbstractRepository {
+class FileRepository extends AbstractRepository
+{
 
-	protected $defaultOrderings = [
-		'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
-		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
-		'pid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	];
+    protected $defaultOrderings = [
+        'fileCategories.sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'sorting'                => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'pid'                    => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+    ];
 
-	/**
-	 * Set repository wide settings
-	 */
-	public function initializeObject() {
-		/** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
-		$querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
-		$querySettings->setRespectStoragePage(FALSE); // Disable storage pid
-		$this->setDefaultQuerySettings($querySettings);
-	}
+    /**
+     * Set repository wide settings
+     */
+    public function initializeObject()
+    {
+        /** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
+        $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
+        $querySettings->setRespectStoragePage(false); // Disable storage pid
+        $this->setDefaultQuerySettings($querySettings);
+    }
 
-	/**
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category) {
-		$query = $this->createQuery();
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    {
+        $query = $this->createQuery();
 
-		return $query->matching(
-			$query->contains('file_categories', $category)
-		)->execute();
-	}
+        return $query->matching(
+            $query->contains('file_categories', $category)
+        )->execute();
+    }
 
-	/**
-	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByProduct(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$query = $this->createQuery();
+    /**
+     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByProduct(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    {
+        $query = $this->createQuery();
 
-		return $query->matching(
-			$query->contains('products', $product)
-		)->execute();
-	}
+        return $query->matching(
+            $query->contains('products', $product)
+        )->execute();
+    }
 
-	/**
-	 * @param \S3b0\EcomProductTools\Domain\Model\Product $product
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findApprovalDocuments(\S3b0\EcomProductTools\Domain\Model\Product $product) {
-		$query = $this->createQuery();
+    /**
+     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findApprovalDocuments(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    {
+        $query = $this->createQuery();
 
-		return $query->matching(
-			$query->logicalAnd([
-				$query->contains('products', $product),
-				$query->greaterThan('approval', 0)
-			])
-		)->execute();
-	}
+        return $query->matching(
+            $query->logicalAnd([
+                $query->contains('products', $product),
+                $query->greaterThan('approval', 0)
+            ])
+        )->execute();
+    }
 }

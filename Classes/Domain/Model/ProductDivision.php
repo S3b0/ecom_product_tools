@@ -30,33 +30,37 @@ namespace S3b0\EcomProductTools\Domain\Model;
 /**
  * ProductDivision
  */
-class ProductDivision extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class ProductDivision extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * Division title to be displayed
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $title = '';
+    /**
+     * Division title to be displayed
+     *
+     * @var string
+     * @validate NotEmpty
+     */
+    protected $title = '';
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title;
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
 }

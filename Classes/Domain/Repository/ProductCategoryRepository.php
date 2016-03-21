@@ -31,24 +31,26 @@ use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
 /**
  * The repository for ProductCategories
  */
-class ProductCategoryRepository extends AbstractRepository {
+class ProductCategoryRepository extends AbstractRepository
+{
 
-	/**
-	 * @var array
-	 */
-	protected $defaultOrderings = [ 'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING ];
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = ['sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING];
 
-	/**
-	 * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division) {
-		$query = $this->createQuery();
+    /**
+     * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByProductDivision(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division)
+    {
+        $query = $this->createQuery();
 
-		return $query->matching(
-			$query->contains('productDivisions', $division)
-		)->execute();
-	}
+        return $query->matching(
+            $query->contains('productDivisions', $division)
+        )->execute();
+    }
 
 }

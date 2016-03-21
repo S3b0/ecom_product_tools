@@ -31,54 +31,61 @@ use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
 /**
  * The repository for Products
  */
-class ProductRepository extends AbstractRepository {
+class ProductRepository extends AbstractRepository
+{
 
-	/**
-	 * @var array
-	 */
-	protected $defaultOrderings = [
-		'discontinued' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
-		'pid' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
-		'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
-	];
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = [
+        'discontinued' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+        'pid'          => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING,
+        'sorting'      => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+    ];
 
-	/**
-	 * @param string $list
-	 * @param array  $storagePids
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByUidList($list, array $storagePids = []) {
-		$query = $this->createQuery();
-		$query->setQuerySettings( $query->getQuerySettings()->setRespectSysLanguage( FALSE )->setRespectStoragePage( FALSE ) );
+    /**
+     * @param string $list
+     * @param array  $storagePids
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByUidList($list, array $storagePids = [])
+    {
+        $query = $this->createQuery();
+        $query->setQuerySettings(
+            $query->getQuerySettings()
+                  ->setRespectSysLanguage(false)
+                  ->setRespectStoragePage(false)
+        );
 
-		return $query->matching(
-			$query->in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $list, TRUE))
-		)->execute();
-	}
+        return $query->matching(
+            $query->in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $list, true))
+        )->execute();
+    }
 
-	/**
-	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
-	 * @param boolean                                             $excludeDiscontinuedItems
-	 * @param boolean                                             $excludeExcludedInDownloadCenterItems
-	 *
-	 * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-	 */
-	public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $excludeDiscontinuedItems = FALSE, $excludeExcludedInDownloadCenterItems = FALSE) {
-		$query = $this->createQuery();
+    /**
+     * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
+     * @param boolean                                             $excludeDiscontinuedItems
+     * @param boolean                                             $excludeExcludedInDownloadCenterItems
+     *
+     * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $excludeDiscontinuedItems = false, $excludeExcludedInDownloadCenterItems = false)
+    {
+        $query = $this->createQuery();
 
-		$andConstraint = [
-			$query->contains('productCategories', $category)
-		];
-		if ( $excludeDiscontinuedItems ) {
-			$andConstraint[] = $query->equals('discontinued', 0);
-		}
-		if ( $excludeExcludedInDownloadCenterItems ) {
-			$andConstraint[] = $query->equals('excludedInDownloadCenter', 0);
-		}
-		$constraint = $query->logicalAnd($andConstraint);
+        $andConstraint = [
+            $query->contains('productCategories', $category)
+        ];
+        if ($excludeDiscontinuedItems) {
+            $andConstraint[] = $query->equals('discontinued', 0);
+        }
+        if ($excludeExcludedInDownloadCenterItems) {
+            $andConstraint[] = $query->equals('excludedInDownloadCenter', 0);
+        }
+        $constraint = $query->logicalAnd($andConstraint);
 
-		return $query->matching($constraint)->execute();
-	}
+        return $query->matching($constraint)->execute();
+    }
 
 }

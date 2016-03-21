@@ -31,11 +31,12 @@ use Ecom\EcomToolbox\Domain\Repository\AbstractRepository;
 /**
  * The repository for Approvals
  */
-class ApprovalRepository extends AbstractRepository {
+class ApprovalRepository extends AbstractRepository
+{
 
-	/**
-	 * @var array
-	 */
-	protected $defaultOrderings = [ 'sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING ];
+    /**
+     * @var array
+     */
+    protected $defaultOrderings = ['sorting' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING];
 
 }

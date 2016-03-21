@@ -30,467 +30,523 @@ namespace S3b0\EcomProductTools\Domain\Model;
 /**
  * Product
  */
-class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+{
 
-	/**
-	 * title
-	 *
-	 * @var string
-	 */
-	protected $title = '';
+    /**
+     * title
+     *
+     * @var string
+     */
+    protected $title = '';
 
-	/**
-	 * teaser
-	 *
-	 * @var string
-	 */
-	protected $teaser = '';
+    /**
+     * teaser
+     *
+     * @var string
+     */
+    protected $teaser = '';
 
-	/**
-	 * image
-	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|\TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy
-	 * @lazy
-	 */
-	protected $image = NULL;
+    /**
+     * image
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference|\TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy
+     * @lazy
+     */
+    protected $image = null;
 
-	/**
-	 * linkTitle
-	 *
-	 * @var string
-	 */
-	protected $linkTitle = '';
+    /**
+     * linkTitle
+     *
+     * @var string
+     */
+    protected $linkTitle = '';
 
-	/**
-	 * linkToPage
-	 *
-	 * @var string
-	 */
-	protected $linkToPage = '';
+    /**
+     * linkToPage
+     *
+     * @var string
+     */
+    protected $linkToPage = '';
 
-	/**
-	 * discontinued
-	 *
-	 * @var boolean
-	 */
-	protected $discontinued = FALSE;
+    /**
+     * discontinued
+     *
+     * @var boolean
+     */
+    protected $discontinued = false;
 
-	/**
-	 * excludedInDownloadCenter
-	 *
-	 * @var boolean
-	 */
-	protected $excludedInDownloadCenter = FALSE;
+    /**
+     * excludedInDownloadCenter
+     *
+     * @var boolean
+     */
+    protected $excludedInDownloadCenter = false;
 
-	/**
-	 * atexZone
-	 *
-	 * @var integer
-	 */
-	protected $atexZone = 0;
+    /**
+     * atexZone
+     *
+     * @var integer
+     */
+    protected $atexZone = 0;
 
-	/**
-	 * necDivision
-	 *
-	 * @var integer
-	 */
-	protected $necDivision = 0;
+    /**
+     * necDivision
+     *
+     * @var integer
+     */
+    protected $necDivision = 0;
 
-	/**
-	 * The corresponding (product-)category
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory>
-	 * @lazy
-	 */
-	protected $productCategories = NULL;
+    /**
+     * The corresponding (product-)category
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory>
+     * @lazy
+     */
+    protected $productCategories = null;
 
-	/**
-	 * certifications
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification>
-	 */
-	protected $certifications = NULL;
+    /**
+     * certifications
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification>
+     */
+    protected $certifications = null;
 
-	/**
-	 * attestations
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification>
-	 */
-	protected $attestations = NULL;
+    /**
+     * attestations
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification>
+     */
+    protected $attestations = null;
 
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->productCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->certifications = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->attestations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->productCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->certifications = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->attestations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
-	/**
-	 * Returns the title
-	 *
-	 * @return string $title
-	 */
-	public function getTitle() {
-		return $this->title . ($this->isDiscontinued() ? \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('product.discontinued', 'ecom_product_tools') : '');
-	}
+    /**
+     * Returns the title
+     *
+     * @return string $title
+     */
+    public function getTitle()
+    {
+        return $this->title . ($this->isDiscontinued() ? \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('product.discontinued', 'ecom_product_tools') : '');
+    }
 
-	/**
-	 * Sets the title
-	 *
-	 * @param string $title
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->title = $title;
-	}
+    /**
+     * Sets the title
+     *
+     * @param string $title
+     *
+     * @return void
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
 
-	/**
-	 * Returns the teaser
-	 *
-	 * @return string $teaser
-	 */
-	public function getTeaser() {
-		return $this->teaser;
-	}
+    /**
+     * Returns the teaser
+     *
+     * @return string $teaser
+     */
+    public function getTeaser()
+    {
+        return $this->teaser;
+    }
 
-	/**
-	 * Sets the teaser
-	 *
-	 * @param string $teaser
-	 * @return void
-	 */
-	public function setTeaser($teaser) {
-		$this->teaser = $teaser;
-	}
+    /**
+     * Sets the teaser
+     *
+     * @param string $teaser
+     *
+     * @return void
+     */
+    public function setTeaser($teaser)
+    {
+        $this->teaser = $teaser;
+    }
 
-	/**
-	 * Returns the image
-	 *
-	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-	 */
-	public function getImage() {
-		return $this->image;
-	}
+    /**
+     * Returns the image
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
 
-	/**
-	 * Sets the image
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
-	 */
-	public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image = NULL) {
-		$this->image = $image;
-	}
+    /**
+     * Sets the image
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $image
+     */
+    public function setImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image = null)
+    {
+        $this->image = $image;
+    }
 
-	/**
-	 * Returns the linkTitle
-	 *
-	 * @return string $linkTitle
-	 */
-	public function getLinkTitle() {
-		return $this->linkTitle;
-	}
+    /**
+     * Returns the linkTitle
+     *
+     * @return string $linkTitle
+     */
+    public function getLinkTitle()
+    {
+        return $this->linkTitle;
+    }
 
-	/**
-	 * Sets the linkTitle
-	 *
-	 * @param string $linkTitle
-	 * @return void
-	 */
-	public function setLinkTitle($linkTitle) {
-		$this->linkTitle = $linkTitle;
-	}
+    /**
+     * Sets the linkTitle
+     *
+     * @param string $linkTitle
+     *
+     * @return void
+     */
+    public function setLinkTitle($linkTitle)
+    {
+        $this->linkTitle = $linkTitle;
+    }
 
-	/**
-	 * Returns the linkToPage
-	 *
-	 * @return string $linkToPage
-	 */
-	public function getLinkToPage() {
-		return $this->linkToPage;
-	}
+    /**
+     * Returns the linkToPage
+     *
+     * @return string $linkToPage
+     */
+    public function getLinkToPage()
+    {
+        return $this->linkToPage;
+    }
 
-	/**
-	 * Sets the linkToPage
-	 *
-	 * @param string $linkToPage
-	 * @return void
-	 */
-	public function setLinkToPage($linkToPage) {
-		$this->linkToPage = $linkToPage;
-	}
+    /**
+     * Sets the linkToPage
+     *
+     * @param string $linkToPage
+     *
+     * @return void
+     */
+    public function setLinkToPage($linkToPage)
+    {
+        $this->linkToPage = $linkToPage;
+    }
 
-	/**
-	 * Returns the discontinued
-	 *
-	 * @return boolean $discontinued
-	 */
-	public function getDiscontinued() {
-		return $this->discontinued;
-	}
+    /**
+     * Returns the discontinued
+     *
+     * @return boolean $discontinued
+     */
+    public function getDiscontinued()
+    {
+        return $this->discontinued;
+    }
 
-	/**
-	 * Sets the discontinued
-	 *
-	 * @param boolean $discontinued
-	 * @return void
-	 */
-	public function setDiscontinued($discontinued) {
-		$this->discontinued = $discontinued;
-	}
+    /**
+     * Sets the discontinued
+     *
+     * @param boolean $discontinued
+     *
+     * @return void
+     */
+    public function setDiscontinued($discontinued)
+    {
+        $this->discontinued = $discontinued;
+    }
 
-	/**
-	 * Returns the boolean state of discontinued
-	 *
-	 * @return boolean
-	 */
-	public function isDiscontinued() {
-		return $this->discontinued;
-	}
+    /**
+     * Returns the boolean state of discontinued
+     *
+     * @return boolean
+     */
+    public function isDiscontinued()
+    {
+        return $this->discontinued;
+    }
 
-	/**
-	 * Returns the excludedInDownloadCenter
-	 *
-	 * @return boolean $excludedInDownloadCenter
-	 */
-	public function getExcludedInDownloadCenter() {
-		return $this->excludedInDownloadCenter;
-	}
+    /**
+     * Returns the excludedInDownloadCenter
+     *
+     * @return boolean $excludedInDownloadCenter
+     */
+    public function getExcludedInDownloadCenter()
+    {
+        return $this->excludedInDownloadCenter;
+    }
 
-	/**
-	 * Sets the excludedInDownloadCenter
-	 *
-	 * @param boolean $excludedInDownloadCenter
-	 * @return void
-	 */
-	public function setExcludedInDownloadCenter($excludedInDownloadCenter) {
-		$this->excludedInDownloadCenter = $excludedInDownloadCenter;
-	}
+    /**
+     * Sets the excludedInDownloadCenter
+     *
+     * @param boolean $excludedInDownloadCenter
+     *
+     * @return void
+     */
+    public function setExcludedInDownloadCenter($excludedInDownloadCenter)
+    {
+        $this->excludedInDownloadCenter = $excludedInDownloadCenter;
+    }
 
-	/**
-	 * Returns the boolean state of excludedInDownloadCenter
-	 *
-	 * @return boolean
-	 */
-	public function isExcludedInDownloadCenter() {
-		return $this->excludedInDownloadCenter;
-	}
+    /**
+     * Returns the boolean state of excludedInDownloadCenter
+     *
+     * @return boolean
+     */
+    public function isExcludedInDownloadCenter()
+    {
+        return $this->excludedInDownloadCenter;
+    }
 
-	/**
-	 * Returns the atexZone
-	 *
-	 * @return integer $atexZone
-	 */
-	public function getAtexZone() {
-		return $this->atexZone;
-	}
+    /**
+     * Returns the atexZone
+     *
+     * @return integer $atexZone
+     */
+    public function getAtexZone()
+    {
+        return $this->atexZone;
+    }
 
-	/**
-	 * Sets the atexZone
-	 *
-	 * @param integer $atexZone
-	 * @return void
-	 */
-	public function setAtexZone($atexZone) {
-		$this->atexZone = $atexZone;
-	}
+    /**
+     * Sets the atexZone
+     *
+     * @param integer $atexZone
+     *
+     * @return void
+     */
+    public function setAtexZone($atexZone)
+    {
+        $this->atexZone = $atexZone;
+    }
 
-	/**
-	 * Returns the necDivision
-	 *
-	 * @return integer $necDivision
-	 */
-	public function getNecDivision() {
-		return $this->necDivision;
-	}
+    /**
+     * Returns the necDivision
+     *
+     * @return integer $necDivision
+     */
+    public function getNecDivision()
+    {
+        return $this->necDivision;
+    }
 
-	/**
-	 * Sets the necDivision
-	 *
-	 * @param integer $necDivision
-	 * @return void
-	 */
-	public function setNecDivision($necDivision) {
-		$this->necDivision = $necDivision;
-	}
+    /**
+     * Sets the necDivision
+     *
+     * @param integer $necDivision
+     *
+     * @return void
+     */
+    public function setNecDivision($necDivision)
+    {
+        $this->necDivision = $necDivision;
+    }
 
-	/**
-	 * Adds a ProductCategory
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategory
-	 * @return void
-	 */
-	public function addProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategory) {
-		$this->productCategories->attach($productCategory);
-	}
+    /**
+     * Adds a ProductCategory
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategory
+     *
+     * @return void
+     */
+    public function addProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategory)
+    {
+        $this->productCategories->attach($productCategory);
+    }
 
-	/**
-	 * Removes a ProductCategory
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategoryToRemove The ProductCategory to be removed
-	 * @return void
-	 */
-	public function removeProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategoryToRemove) {
-		$this->productCategories->detach($productCategoryToRemove);
-	}
+    /**
+     * Removes a ProductCategory
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategoryToRemove The ProductCategory to be removed
+     *
+     * @return void
+     */
+    public function removeProductCategory(\S3b0\EcomProductTools\Domain\Model\ProductCategory $productCategoryToRemove)
+    {
+        $this->productCategories->detach($productCategoryToRemove);
+    }
 
-	/**
-	 * Returns the productCategories
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory> $productCategories
-	 */
-	public function getProductCategories() {
-		return $this->productCategories;
-	}
+    /**
+     * Returns the productCategories
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory> $productCategories
+     */
+    public function getProductCategories()
+    {
+        return $this->productCategories;
+    }
 
-	/**
-	 * Sets the productCategories
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory> $productCategories
-	 * @return void
-	 */
-	public function setProductCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $productCategories) {
-		$this->productCategories = $productCategories;
-	}
+    /**
+     * Sets the productCategories
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\ProductCategory> $productCategories
+     *
+     * @return void
+     */
+    public function setProductCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $productCategories)
+    {
+        $this->productCategories = $productCategories;
+    }
 
-	/**
-	 * @param int $offset
-	 * @return \S3b0\EcomProductTools\Domain\Model\ProductCategory
-	 */
-	public function getProductCategory($offset = 0) {
-		return $this->productCategories->toArray()[$offset];
-	}
+    /**
+     * @param int $offset
+     *
+     * @return \S3b0\EcomProductTools\Domain\Model\ProductCategory
+     */
+    public function getProductCategory($offset = 0)
+    {
+        return $this->productCategories->toArray()[ $offset ];
+    }
 
-	/**
-	 * Adds a Certification
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $certification
-	 * @return void
-	 */
-	public function addCertification(\S3b0\EcomProductTools\Domain\Model\Certification $certification) {
-		$this->certifications->attach($certification);
-	}
+    /**
+     * Adds a Certification
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Certification $certification
+     *
+     * @return void
+     */
+    public function addCertification(\S3b0\EcomProductTools\Domain\Model\Certification $certification)
+    {
+        $this->certifications->attach($certification);
+    }
 
-	/**
-	 * Removes a Certification
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $certificationToRemove The Certification to be removed
-	 * @return void
-	 */
-	public function removeCertification(\S3b0\EcomProductTools\Domain\Model\Certification $certificationToRemove) {
-		$this->certifications->detach($certificationToRemove);
-	}
+    /**
+     * Removes a Certification
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Certification $certificationToRemove The Certification to be removed
+     *
+     * @return void
+     */
+    public function removeCertification(\S3b0\EcomProductTools\Domain\Model\Certification $certificationToRemove)
+    {
+        $this->certifications->detach($certificationToRemove);
+    }
 
-	/**
-	 * Returns the certifications
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $certifications
-	 */
-	public function getCertifications() {
-		return $this->certifications;
-	}
+    /**
+     * Returns the certifications
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $certifications
+     */
+    public function getCertifications()
+    {
+        return $this->certifications;
+    }
 
-	/**
-	 * Sets the certifications
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $certifications
-	 * @return void
-	 */
-	public function setCertifications(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $certifications) {
-		$this->certifications = $certifications;
-	}
+    /**
+     * Sets the certifications
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $certifications
+     *
+     * @return void
+     */
+    public function setCertifications(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $certifications)
+    {
+        $this->certifications = $certifications;
+    }
 
-	/**
-	 * Adds an Attestation
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestation
-	 * @return void
-	 */
-	public function addAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestation) {
-		$this->attestations->attach($attestation);
-	}
+    /**
+     * Adds an Attestation
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestation
+     *
+     * @return void
+     */
+    public function addAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestation)
+    {
+        $this->attestations->attach($attestation);
+    }
 
-	/**
-	 * Removes an Attestation
-	 *
-	 * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove The Attestation to be removed
-	 * @return void
-	 */
-	public function removeAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove) {
-		$this->attestations->detach($attestationToRemove);
-	}
+    /**
+     * Removes an Attestation
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove The Attestation to be removed
+     *
+     * @return void
+     */
+    public function removeAttestation(\S3b0\EcomProductTools\Domain\Model\Certification $attestationToRemove)
+    {
+        $this->attestations->detach($attestationToRemove);
+    }
 
-	/**
-	 * Returns the attestations
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
-	 */
-	public function getAttestations() {
-		return $this->attestations;
-	}
+    /**
+     * Returns the attestations
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
+     */
+    public function getAttestations()
+    {
+        return $this->attestations;
+    }
 
-	/**
-	 * Sets the attestations
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
-	 * @return void
-	 */
-	public function setAttestations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $attestations) {
-		$this->attestations = $attestations;
-	}
+    /**
+     * Sets the attestations
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Certification> $attestations
+     *
+     * @return void
+     */
+    public function setAttestations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $attestations)
+    {
+        $this->attestations = $attestations;
+    }
 
-	/**
-	 * Returns the approvals (similar to groupedFor in Fluid @see Resources/Private/Templates/Product/ShowMarkup.html)
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-	 */
-	public function getApprovals() {
-		$approvals = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    /**
+     * Returns the approvals (similar to groupedFor in Fluid @see Resources/Private/Templates/Product/ShowMarkup.html)
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getApprovals()
+    {
+        $approvals = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 
-		if ( $this->certifications->count() ) {
-			/** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
-			foreach ( $this->certifications as $certification ) {
-				if ( !$approvals->contains($certification->getApproval()) ) {
-					$approvals->attach($certification->getApproval());
-				}
-			}
-		}
+        if ($this->certifications->count()) {
+            /** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
+            foreach ($this->certifications as $certification) {
+                if (!$approvals->contains($certification->getApproval())) {
+                    $approvals->attach($certification->getApproval());
+                }
+            }
+        }
 
-		return $approvals;
-	}
+        return $approvals;
+    }
 
-	/**
-	 * Returns the approvals that are not in list
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-	 */
-	public function getApprovalsNotInList() {
-		$approvals = $this->getApprovals();
+    /**
+     * Returns the approvals that are not in list
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getApprovalsNotInList()
+    {
+        $approvals = $this->getApprovals();
 
-		if ( $approvals->count() ) {
-			/** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
-			foreach ( $this->certifications as $certification ) {
-				if ( $approvals->contains($certification->getApprovalAtList()) ) {
-					$approvals->detach($certification->getApprovalAtList());
-				}
-			}
-		}
+        if ($approvals->count()) {
+            /** @var \S3b0\EcomProductTools\Domain\Model\Certification $certification */
+            foreach ($this->certifications as $certification) {
+                if ($approvals->contains($certification->getApprovalAtList())) {
+                    $approvals->detach($certification->getApprovalAtList());
+                }
+            }
+        }
 
-		return $approvals;
-	}
+        return $approvals;
+    }
 
 }
