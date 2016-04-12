@@ -46,7 +46,7 @@ class FileRepository extends AbstractRepository
     public function initializeObject()
     {
         /** @var \TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface $querySettings */
-        $querySettings = $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QuerySettingsInterface');
+        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface::class);
         $querySettings->setRespectStoragePage(false); // Disable storage pid
         $this->setDefaultQuerySettings($querySettings);
     }
@@ -75,7 +75,10 @@ class FileRepository extends AbstractRepository
         $query = $this->createQuery();
 
         return $query->matching(
-            $query->contains('products', $product)
+            $query->logicalAnd([
+                $query->equals('dlc', 1),
+                $query->contains('products', $product)
+            ])
         )->execute();
     }
 

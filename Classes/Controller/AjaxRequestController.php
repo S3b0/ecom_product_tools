@@ -149,7 +149,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
     private function getHTML($templateName, array $variables = [])
     {
         /** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
-        $view = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $view = $this->objectManager->get(\TYPO3\CMS\Fluid\View\StandaloneView::class);
 
         $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
         $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPath' ] ?: end($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPaths' ]));

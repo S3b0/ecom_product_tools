@@ -5,6 +5,12 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'S3b0.EcomProductTools',
+    'ListAccessory',
+    ['Product' => 'listAccessory']
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'S3b0.EcomProductTools',
     'MarkUp',
     ['Product' => 'showMarkUp']
 );

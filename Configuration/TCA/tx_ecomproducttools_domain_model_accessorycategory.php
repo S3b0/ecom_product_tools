@@ -7,14 +7,13 @@ $locallang = 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db
 
 return [
     'ctrl'      => [
-        'title'         => "{$locallang}tx_ecomproducttools_domain_model_productdivision",
-        'label'         => 'title',
-        'tstamp'        => 'tstamp',
-        'crdate'        => 'crdate',
-        'cruser_id'     => 'cruser_id',
-        'dividers2tabs' => true,
-        'sortby'        => 'sorting',
-
+        'title'                    => "{$locallang}tx_ecomproducttools_domain_model_accessorycategory",
+        'label'                    => 'title',
+        'tstamp'                   => 'tstamp',
+        'crdate'                   => 'crdate',
+        'cruser_id'                => 'cruser_id',
+        'dividers2tabs'            => true,
+        'default_sortby'           => 'ORDER BY title',
         'languageField'            => 'sys_language_uid',
         'transOrigPointerField'    => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -22,10 +21,10 @@ return [
         'enablecolumns'            => [
             'disabled'  => 'hidden',
             'starttime' => 'starttime',
-            'endtime'   => 'endtime'
+            'endtime'   => 'endtime',
         ],
         'searchFields'             => 'title,',
-        'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_productdivision.png'
+        'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_accessorycategory.png'
     ],
     'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title'],
     'types'     => [
@@ -54,8 +53,8 @@ return [
             'config'      => [
                 'type'                => 'select',
                 'items'               => [['', 0]],
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_productdivision',
-                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_productdivision.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_productdivision.sys_language_uid IN (-1,0)'
+                'foreign_table'       => 'tx_ecomproducttools_domain_model_accessorycategory',
+                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_accessorycategory.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_accessorycategory.sys_language_uid IN (-1,0)'
             ]
         ],
         'l10n_diffsource'  => [
@@ -102,18 +101,14 @@ return [
             ]
         ],
 
-        'title' => [
+        'title'             => [
             'exclude' => 0,
-            'label'   => "{$locallang}tx_ecomproducttools_domain_model_productdivision.title",
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessorycategory.title",
             'config'  => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim,required,unique'
             ]
-        ],
-
-        'productcategory' => [
-            'config' => ['type' => 'passthrough']
         ]
     ]
 ];

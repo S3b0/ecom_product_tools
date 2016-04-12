@@ -26,12 +26,29 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * ProductController
  */
 class ProductController extends ExtensionController
 {
+
+    /**
+     * accessoryRepository
+     *
+     * @var \S3b0\EcomProductTools\Domain\Repository\AccessoryRepository
+     * @inject
+     */
+    protected $accessoryRepository = null;
+
+    /**
+     * accessoryCategoryRepository
+     *
+     * @var \S3b0\EcomProductTools\Domain\Repository\AccessoryCategoryRepository
+     * @inject
+     */
+    protected $accessoryCategoryRepository = null;
 
     /**
      * action showMarkUp
@@ -59,6 +76,25 @@ class ProductController extends ExtensionController
             'products'      => $products,
             'contentObject' => $this->configurationManager->getContentObject()->data
         ]);
+    }
+
+    /**
+     * action listAccessory
+     */
+    public function listAccessoryAction()
+    {
+        if ($categories = GeneralUtility::intExplode(',', $this->settings['categories'], true)) {
+            $assign = [];
+            /** @var integer $uid */
+            foreach ($categories as $uid) {
+                /** @var \S3b0\EcomProductTools\Domain\Model\AccessoryCategory $category */
+                if ($category = $this->accessoryCategoryRepository->findByUid($uid)) {
+                    $category->setAccessories($this->accessoryRepository->findByCategoryAndList($category, $this->settings['accessories'], true));
+                    $assign[] = $category;
+                }
+            }
+            $this->view->assign('categories', $assign);
+        }
     }
 
     /**

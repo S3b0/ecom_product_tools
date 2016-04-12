@@ -92,16 +92,22 @@ class ModifyTCA
     public function labelUserFuncEPTDomainModelFile(array &$PA, $pObj = null)
     {
         $row = $PA[ 'row' ];
-        $PA[ 'title' ] = $row[ 'title' ];
+        $title = $row[ 'title' ];
+        if ($row[ 'file_reference' ]) {
+            $fileReference = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordRaw('sys_file_reference', "tablenames=\"{$PA[ 'table' ]}\" AND fieldname=\"file_reference\" AND uid_foreign={$row[ 'uid' ]}");
+            $file = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('sys_file', $fileReference[ 'uid_local' ]);
+            $title = $file[ 'name' ];
+        }
+        $PA[ 'title' ] = $title;
         $raw = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord($PA[ 'table' ], $row[ 'uid' ]);
 
         if (!$row[ 'title' ]) {
             $mapping = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecordRaw('sys_category_record_mm', 'uid_foreign=' . $raw[ 'uid' ] . ' AND tablenames=\'' . $PA[ 'table' ] . '\'');
             $category = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('sys_category', $mapping[ 'uid_local' ], '*', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
-            $PA[ 'title' ] = $category[ 'title' ];
+            $PA[ 'title' ] .= " [{$category[ 'title' ]}]";
         }
 
-        $PA[ 'title' ] .= ' ' . ($raw[ 'append_to_title' ] ?: '') . ' | ' . ucfirst($language[ 'title' ]);
+        $PA[ 'title' ] .= ' ' . ($raw[ 'append_to_title' ] ?: '') . ' | ';
         if (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($raw[ 'language' ]) && $raw[ 'language' ] > 0) {
             $language = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('tx_ecomtoolbox_domain_model_language', $raw[ 'language' ], 'title', \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('tx_ecomtoolbox_domain_model_language'));
             $PA[ 'title' ] .= ucfirst($language[ 'title' ]);

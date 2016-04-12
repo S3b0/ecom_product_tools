@@ -1,0 +1,46 @@
+<T3DataStructure>
+	<meta>
+		<langDisable>1</langDisable>
+	</meta>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Plugin-Configuration</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.categories>
+						<TCEforms>
+							<label>LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessorycategory</label>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_ecomproducttools_domain_model_accessorycategory</foreign_table>
+								<foreign_table_where>AND tx_ecomproducttools_domain_model_accessorycategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_accessorycategory.title</foreign_table_where>
+								<maxitems>9999</maxitems>
+								<minitems>1</minitems>
+								<size>10</size>
+								<autoSizeMax>30</autoSizeMax>
+							</config>
+						</TCEforms>
+					</settings.categories>
+					<settings.accessories>
+						<TCEforms>
+							<label>LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.accessories</label>
+							<displayCond>FIELD:settings.categories:REQ:true</displayCond>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_ecomproducttools_domain_model_accessory</foreign_table>
+								<foreign_table_where>AND tx_ecomproducttools_domain_model_accessory.uid IN (SELECT CONCAT(uid_foreign) FROM tx_ecomproducttools_product_accessory_mm WHERE uid_local=(SELECT tx_product FROM pages WHERE uid=(SELECT pid FROM tt_content WHERE uid=###THIS_UID###))) ORDER BY tx_ecomproducttools_domain_model_accessory.title</foreign_table_where>
+								<maxitems>9999</maxitems>
+								<minitems>0</minitems>
+								<size>10</size>
+								<autoSizeMax>30</autoSizeMax>
+							</config>
+						</TCEforms>
+					</settings.accessories>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

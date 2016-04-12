@@ -12,6 +12,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_file (
 	append_to_title varchar(255) DEFAULT '' NOT NULL,
 	last_modification date DEFAULT '0000-00-00',
 	revision varchar(255) DEFAULT '' NOT NULL,
+	dlc tinyint(4) unsigned DEFAULT '1' NOT NULL,
 	approval int(11) unsigned DEFAULT '0',
 	language int(11) unsigned DEFAULT '0',
 	products int(11) unsigned DEFAULT '0' NOT NULL,
@@ -119,6 +120,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_product (
 	product_categories int(11) unsigned DEFAULT '0' NOT NULL,
 	certifications int(11) unsigned DEFAULT '0' NOT NULL,
 	attestations int(11) unsigned DEFAULT '0' NOT NULL,
+	accessories int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -202,6 +204,73 @@ CREATE TABLE tx_ecomproducttools_domain_model_productcategory (
 );
 
 #
+# Table structure for table 'tx_ecomproducttools_domain_model_accessory'
+#
+CREATE TABLE tx_ecomproducttools_domain_model_accessory (
+
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+
+	title varchar(255) DEFAULT '' NOT NULL,
+	article_numbers varchar(255) DEFAULT '' NOT NULL,
+	teaser text NOT NULL,
+	images int(11) unsigned DEFAULT '0',
+	videos text NOT NULL,
+	link varchar(255) DEFAULT '' NOT NULL,
+	link_title varchar(255) DEFAULT '' NOT NULL,
+	atex_zone int(11) DEFAULT '0' NOT NULL,
+	nec_division int(11) DEFAULT '0' NOT NULL,
+	badges int(11) DEFAULT '0' NOT NULL,
+	accessory_category int(11) unsigned DEFAULT '0' NOT NULL,
+	files int(11) unsigned DEFAULT '0' NOT NULL,
+
+	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+	crdate int(11) unsigned DEFAULT '0' NOT NULL,
+	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+	deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+	sys_language_uid int(11) DEFAULT '0' NOT NULL,
+	l10n_parent int(11) DEFAULT '0' NOT NULL,
+	l10n_diffsource mediumblob,
+
+	PRIMARY KEY (uid),
+	KEY parent (pid),
+	KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
+# Table structure for table 'tx_ecomproducttools_domain_model_accessorycategory'
+#
+CREATE TABLE tx_ecomproducttools_domain_model_accessorycategory (
+
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+
+	title varchar(255) DEFAULT '' NOT NULL,
+
+	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+	crdate int(11) unsigned DEFAULT '0' NOT NULL,
+	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+	deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+	sys_language_uid int(11) DEFAULT '0' NOT NULL,
+	l10n_parent int(11) DEFAULT '0' NOT NULL,
+	l10n_diffsource mediumblob,
+
+	PRIMARY KEY (uid),
+	KEY parent (pid),
+	KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
 # Table structure for table 'tx_ecomproducttools_product_productcategory_mm'
 #
 CREATE TABLE tx_ecomproducttools_product_productcategory_mm (
@@ -241,9 +310,35 @@ CREATE TABLE tx_ecomproducttools_product_attestation_mm (
 );
 
 #
+# Table structure for table 'tx_ecomproducttools_product_accessory_mm'
+#
+CREATE TABLE tx_ecomproducttools_product_accessory_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
 # Table structure for table 'tx_ecomproducttools_file_product_mm'
 #
 CREATE TABLE tx_ecomproducttools_file_product_mm (
+	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
+	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting int(11) unsigned DEFAULT '0' NOT NULL,
+	sorting_foreign int(11) unsigned DEFAULT '0' NOT NULL,
+
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
+);
+
+#
+# Table structure for table 'tx_ecomproducttools_file_accessory_mm'
+#
+CREATE TABLE tx_ecomproducttools_file_accessory_mm (
 	uid_local int(11) unsigned DEFAULT '0' NOT NULL,
 	uid_foreign int(11) unsigned DEFAULT '0' NOT NULL,
 	sorting int(11) unsigned DEFAULT '0' NOT NULL,

@@ -1,0 +1,67 @@
+<div class="col-sm-6 col-md-3">
+	<h3 class="ecom-accessory">{accessory.title}</h3>
+	<div class="ce-clickenlarge-allwrap">
+		<div class="csc-textpic csc-textpic-left csc-textpic-above">
+			<f:if condition="{accessory.images}">
+				<!-- Load images -->
+				<div class="csc-textpic-imagewrap" data-csc-images="{accessory.images -> f:count()}" data-csc-cols="1">
+					<f:for each="{accessory.images}" as="image" iteration="iterator">
+						<div class="csc-textpic-imagerow">
+							<div class="csc-textpic-imagecolumn">
+								<figure class="csc-textpic-image">
+									<f:if condition="{iterator.isFirst}">
+										<span class="image-link-wrap-zoom-overlay">
+											<span class="fa fa-search-plus fa-fw"></span> Zoom
+										</span>
+									</f:if>
+									<a href="{image.originalResource.publicUrl}" class="lightbox" data-fancybox-group="{accessory.lightboxGroup}" data-fb-nav="dots">
+										<div class="product-grid-badges-wrap">
+											{accessory.badges -> f:format.html()}
+										</div>
+										<f:if condition="{iterator.isFirst}">
+											<f:then><f:image src="{image.uid}" treatIdAsReference="1" class="preview-image" width="268" /></f:then>
+											<f:else><f:image src="{image.uid}" treatIdAsReference="1" /></f:else>
+										</f:if>
+									</a>
+								</figure>
+								<f:if condition="{accessory.intrinsicallySafe}">
+									<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAqCAYAAAD1T9h6AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpmMzJlNmZiOC1mZWI5LTRjMWYtYWVkYS1mZDY4MGJjNTBhZDkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUNBNzFCQ0FGODAzMTFFNTkyNzBEREY4MjAxNUM2NkMiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUNBNzFCQzlGODAzMTFFNTkyNzBEREY4MjAxNUM2NkMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3MmE0NjNiZS04ZTA4LTQ2ZTEtYjIwZC00YjVkNTcyNWVlNjgiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6ZjMyZTZmYjgtZmViOS00YzFmLWFlZGEtZmQ2ODBiYzUwYWQ5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" style="position:absolute;right:15px;bottom:15px" />
+								</f:if>
+							</div>
+						</div>
+						<f:if condition="{iterator.isLast}">
+							<f:if condition="{accessory.videos}">
+								<!-- Load videos -->
+								<f:for each="{accessory.videos}" as="video">
+									<div class="csc-textpic-imagerow">
+										<div class="csc-textpic-imagecolumn">
+											<figure class="csc-textpic-image">
+												<a class="lightbox fancybox.iframe" href="https://www.youtube.com/embed/{video}?autoplay=1&rel=0&showinfo=0" data-fancybox-group="{accessory.lightboxGroup}" data-fb-nav="dots">
+													<img src="http://img.youtube.com/vi/{video}/0.jpg">
+												</a>
+											</figure>
+										</div>
+									</div>
+								</f:for>
+							</f:if>
+						</f:if>
+					</f:for>
+				</div>
+			</f:if>
+			<p>{accessory.teaser -> f:format.html()}</p>
+			<f:if condition="{accessory.articleNumbers}">
+				<p><f:for each="{accessory.articleNumbers}" as="articleNumber">
+					<small><span style="font-weight: bold; ">Art.-No.:</span> {articleNumber}</small><br />
+				</f:for></p>
+			</f:if>
+			<f:if condition="{accessory.files}">
+				<p><f:for each="{accessory.files}" as="file">
+					<a href="{file.fileReference.originalResource.publicUrl}"><i class="fa fa-download fa-fw" title="Download"></i> {file.title}</a><br />
+				</f:for></p>
+			</f:if>
+			<f:if condition="{accessory.link}">
+				<f:link.typolink parameter="{accessory.link}" class="btn btn-default morelink">{accessory.linkTitle}</f:link.typolink>
+			</f:if>
+		</div>
+	</div>
+</div>

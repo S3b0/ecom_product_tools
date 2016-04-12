@@ -42,6 +42,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_product.attestations">
 				<source>Attestations</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_product.accessories">
+				<source>Accessories</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file">
 				<source>File</source>
 			</trans-unit>
@@ -75,6 +78,12 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_file.products">
 				<source>Products</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.dlc">
+				<source>Download Center</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_file.dlc_option">
+				<source>Include</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_file.file_categories">
 				<source>File Category</source>
 			</trans-unit>
@@ -92,6 +101,63 @@
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_productcategory.product_divisions">
 				<source>Product Division(s)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory">
+				<source>Accessory</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.article_numbers">
+				<source>Article N°</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.teaser">
+				<source>Teaser</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.images">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.videos">
+				<source>YouTube video ids (one per line)</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.link_title">
+				<source>Link Title</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.link">
+				<source>Link to external url/page</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.badges">
+				<source>Badges</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.badges.1">
+				<source>New</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.badges.2">
+				<source>ATEX</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.badges.3">
+				<source>NEC</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.badges.4">
+				<source>Non-Ex</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.atex_zone">
+				<source>ATEX Zone</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.nec_division">
+				<source>NEC Division</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.accessory_category">
+				<source>Accessory Category</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.files">
+				<source><![CDATA[Files & Docs]]></source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessorycategory">
+				<source>Accessory Category</source>
+			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessorycategory.title">
+				<source>Title</source>
 			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_approval">
 				<source>Approval</source>

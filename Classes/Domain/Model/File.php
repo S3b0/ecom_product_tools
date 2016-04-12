@@ -26,6 +26,9 @@ namespace S3b0\EcomProductTools\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use Ecom\EcomToolbox\Domain\Model\Language;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * A file relation providing detail on files not delivered with FAL
@@ -174,7 +177,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getUrlType()
     {
-        $typolinkParams = \TYPO3\CMS\Core\Utility\GeneralUtility::unQuoteFilenames($this->externalUrl, true);
+        $typolinkParams = GeneralUtility::unQuoteFilenames($this->externalUrl, true);
         $url = $typolinkParams[ 0 ];
         $file = new \SplFileInfo($url);
 
@@ -190,13 +193,13 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         if ($this->title) {
             return $this->title;
-        } elseif ($this->getFileCategory()->_languageUid !== $this->getLanguage()->getSysLanguage()) { // If current language differs from file language
+        } elseif ($this->language instanceof Language && $this->getFileCategory()->_languageUid !== $this->language->getSysLanguage()) { // If current language differs from file language
             /** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
             $db = $GLOBALS[ 'TYPO3_DB' ];
-            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->getLanguage()->getSysLanguage() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->language->getSysLanguage() . BackendUtility::BEenableFields('sys_category'));
             // If no translation exists, fetch default!
             if (!$row) {
-                $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+                $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . BackendUtility::BEenableFields('sys_category'));
             }
 
             return ($row && $row[ 'title' ] ? $row[ 'title' ] : $this->getFileCategory()->getTitle()) . ' ' . $this->getAppendToTitle();

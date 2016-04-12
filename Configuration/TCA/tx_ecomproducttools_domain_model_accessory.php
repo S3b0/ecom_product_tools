@@ -7,13 +7,15 @@ $locallang = 'LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db
 
 return [
     'ctrl'      => [
-        'title'                    => "{$locallang}tx_ecomproducttools_domain_model_product",
+        'title'                    => "{$locallang}tx_ecomproducttools_domain_model_accessory",
         'label'                    => 'title',
+        'label_alt'                => 'accessory_category, article_numbers',
+        'label_alt_force'          => true,
         'tstamp'                   => 'tstamp',
         'crdate'                   => 'crdate',
         'cruser_id'                => 'cruser_id',
         'dividers2tabs'            => true,
-        'sortby'                   => 'sorting',
+        'default_sortby'           => 'ORDER BY title',
         'requestUpdate'            => 'discontinued',
         'languageField'            => 'sys_language_uid',
         'transOrigPointerField'    => 'l10n_parent',
@@ -24,21 +26,17 @@ return [
             'starttime' => 'starttime',
             'endtime'   => 'endtime'
         ],
-        'typeicon_column'          => 'discontinued',
-        'typeicon_classes'         => [
-            'default' => 'extensions-ept-product',
-            'mask'    => 'extensions-ept-product-###TYPE###'
-        ],
-        'searchFields'             => 'title,teaser,link_title,link_to_page,discontinued,excluded_in_download_center,atex_zone,nec_division,product_categories,certifications,attestations,accessories,',
-        'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_product.png'
+        'searchFields'             => 'title,teaser,article_numbers,link,link_title,badges,atex_zone,nec_division,accessory_category,',
+        'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_accessory.png'
     ],
-    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, image, link_title, link_to_page, discontinued, excluded_in_download_center, product_categories, certifications, attestations, accessories'],
+    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, article_numbers, images, videos, link, link_title, badges, accessory_category, files'],
     'types'     => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, product_categories, accessories, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_product.teaser,teaser;;;richtext:rte_transform[mode=ts_links], image, link_title, link_to_page, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_approval,certifications, attestations, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, accessory_category, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser;;;richtext:rte_transform[mode=ts_links], images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'palettes'  => [
-        '1' => ['showitem'       => 'atex_zone, nec_division, discontinued, excluded_in_download_center, hidden',
-                'canNotCollapse' => true
+        '1' => [
+            'showitem'       => 'article_numbers, --linebreak--, atex_zone, nec_division, --linebreak--, badges, hidden',
+            'canNotCollapse' => true
         ]
     ],
     'columns'   => [
@@ -49,7 +47,7 @@ return [
             'config'  => [
                 'type'                => 'select',
                 'foreign_table'       => 'sys_language',
-                'foreign_table_where' => 'ORDER BY sys_language.title',
+                'foreign_table_where' => ' ORDER BY sys_language.title',
                 'items'               => [
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
@@ -63,8 +61,8 @@ return [
             'config'      => [
                 'type'                => 'select',
                 'items'               => [['', 0]],
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_product',
-                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_product.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_product.sys_language_uid IN (-1,0)'
+                'foreign_table'       => 'tx_ecomproducttools_domain_model_accessory',
+                'foreign_table_where' => ' AND tx_ecomproducttools_domain_model_accessory.pid=###CURRENT_PID### AND tx_ecomproducttools_domain_model_accessory.sys_language_uid IN (-1,0)'
             ]
         ],
         'l10n_diffsource'  => [
@@ -106,7 +104,7 @@ return [
 
         'title'              => [
             'exclude' => 1,
-            'label'   => "{$locallang}tx_ecomproducttools_domain_model_product.title",
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessory.title",
             'config'  => [
                 'type' => 'input',
                 'size' => 30,
@@ -115,8 +113,7 @@ return [
         ],
         'teaser'             => [
             'exclude' => 1,
-            /*'displayCond' => 'FIELD:discontinued:=:0',*/
-            'label'   => "{$locallang}tx_ecomproducttools_domain_model_product.teaser",
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessory.teaser",
             'config'  => [
                 'type'    => 'text',
                 'cols'    => 40,
@@ -138,12 +135,21 @@ return [
                 ]
             ]
         ],
-        'image'              => [
+        'article_numbers'    => [
+            'exclude' => 1,
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessory.article_numbers",
+            'config'  => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim'
+            ]
+        ],
+        'images'             => [
             'exclude'   => 1,
             'l10n_mode' => 'exclude',
-            /*'displayCond' => 'FIELD:discontinued:=:0',*/
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.image",
-            'config'    => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('image', [
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.images",
+            'config'    => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('images', [
                 'appearance'    => [
                     'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
                 ],
@@ -180,26 +186,23 @@ return [
 							--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
 							--palette--;;filePalette'
                     ]
-                ],
-                'maxitems'      => 1
+                ]
             ], $GLOBALS[ 'TYPO3_CONF_VARS' ][ 'GFX' ][ 'imagefile_ext' ])
         ],
-        'link_title'         => [
-            'exclude'   => 1,
-            'l10n_mode' => 'prefixLangTitle',
-            /*'displayCond' => 'FIELD:discontinued:=:0',*/
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.link_title",
-            'config'    => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+        'videos'             => [
+            'exclude' => 1,
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessory.videos",
+            'config'  => [
+                'type'    => 'text',
+                'cols'    => 40,
+                'rows'    => 5,
+                'eval'    => 'trim'
             ]
         ],
-        'link_to_page'       => [
+        'link'       => [
             'exclude'   => 1,
             'l10n_mode' => 'exclude',
-            /*'displayCond' => 'FIELD:discontinued:=:0',*/
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.link_to_page",
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.link",
             'config'    => [
                 'type'    => 'input',
                 'size'    => 30,
@@ -221,103 +224,48 @@ return [
                 'softref' => 'typolink'
             ]
         ],
-        'product_categories' => [
+        'link_title'         => [
             'exclude'   => 1,
-            'l10n_mode' => 'exclude',
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.product_categories",
+            'l10n_mode' => 'prefixLangTitle',
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.link_title",
             'config'    => [
-                'type'                => 'select',
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_productcategory',
-                'foregin_table_where' => 'tx_ecomproducttools_domain_model_productcategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_productcategory.title',
-                'MM'                  => 'tx_ecomproducttools_product_productcategory_mm',
-                'size'                => 10,
-                'autoSizeMax'         => 30,
-                'minitems'            => 1,
-                'maxitems'            => 9999,
-                'multiple'            => 0,
-                'wizards'             => [
-                    '_POSITION' => 'top',
-                    'suggest'   => [
-                        'type'    => 'suggest',
-                        'default' => ['searchWholePhrase' => 1]
-                    ]
-                ]
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
             ]
         ],
-        'certifications'     => [
+        'accessory_category' => [
             'exclude'   => 1,
             'l10n_mode' => 'exclude',
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.certifications",
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.accessory_category",
             'config'    => [
                 'type'                => 'select',
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_certification',
-                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_certification.type=0 AND tx_ecomproducttools_domain_model_certification.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_certification.title',
-                'MM'                  => 'tx_ecomproducttools_product_certification_mm',
-                'size'                => 10,
-                'autoSizeMax'         => 30,
-                'maxitems'            => 9999,
-                'multiple'            => 0,
-                'wizards'             => [
-                    '_POSITION' => 'top',
-                    'suggest'   => [
-                        'type'    => 'suggest',
-                        'default' => ['searchWholePhrase' => 1],
-                    ]
-                ]
+                'foreign_table'       => 'tx_ecomproducttools_domain_model_accessorycategory',
+                'foregin_table_where' => 'tx_ecomproducttools_domain_model_accessorycategory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_accessorycategory.title',
+                'minitems'            => 1
             ]
         ],
-        'attestations'       => [
+        'files'              => [
             'exclude'   => 1,
             'l10n_mode' => 'exclude',
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.attestations",
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.files",
             'config'    => [
                 'type'                => 'select',
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_certification',
-                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_certification.type=1 AND tx_ecomproducttools_domain_model_certification.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_certification.title',
-                'MM'                  => 'tx_ecomproducttools_product_attestation_mm',
+                'foreign_table'       => 'tx_ecomproducttools_domain_model_file',
+                'foreign_table_where' => ' AND NOT tx_ecomproducttools_domain_model_file.file_reference=0 AND NOT tx_ecomproducttools_domain_model_file.external_url',
+                'MM'                  => 'tx_ecomproducttools_file_accessory_mm',
                 'size'                => 10,
                 'autoSizeMax'         => 30,
                 'maxitems'            => 9999,
-                'multiple'            => 0,
-                'wizards'             => [
-                    '_POSITION' => 'top',
-                    'suggest'   => [
-                        'type'    => 'suggest',
-                        'default' => ['searchWholePhrase' => 1]
-                    ]
-                ]
-            ]
-        ],
-        'accessories'        => [
-            'exclude'   => 1,
-            'l10n_mode' => 'exclude',
-            'label'     => "{$locallang}tx_ecomproducttools_domain_model_product.accessories",
-            'config'    => [
-                'type'                => 'select',
-                'foreign_table'       => 'tx_ecomproducttools_domain_model_accessory',
-                'foreign_table_where' => 'AND tx_ecomproducttools_domain_model_accessory.sys_language_uid IN (-1,0) ORDER BY tx_ecomproducttools_domain_model_accessory.title',
-                'MM'                  => 'tx_ecomproducttools_product_accessory_mm',
-                'size'                => 10,
-                'autoSizeMax'         => 30,
-                'maxitems'            => 9999,
-                'multiple'            => 0,
-                'wizards'             => [
-                    '_POSITION' => 'top',
-                    'suggest'   => [
-                        'type'    => 'suggest',
-                        'default' => ['searchWholePhrase' => 1]
-                    ]
-                ]
+                'multiple'            => 0
             ]
         ],
 
-
-        'atex_zone'                   => [
-            'exclude'     => 1,
-            'l10n_mode'   => 'exclude',
-            'displayCond' => 'FIELD:discontinued:=:0',
-            'label'       => "{$locallang}tx_ecomproducttools_domain_model_product.atex_zone",
-            'config'      => [
+        'atex_zone'    => [
+            'exclude'   => 1,
+            'l10n_mode' => 'exclude',
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.atex_zone",
+            'config'    => [
                 'type'     => 'select',
                 'items'    => [
                     ['', -1],
@@ -332,12 +280,11 @@ return [
                 'maxitems' => 1
             ]
         ],
-        'nec_division'                => [
-            'exclude'     => 1,
-            'l10n_mode'   => 'exclude',
-            'displayCond' => 'FIELD:discontinued:=:0',
-            'label'       => "{$locallang}tx_ecomproducttools_domain_model_product.nec_division",
-            'config'      => [
+        'nec_division' => [
+            'exclude'   => 1,
+            'l10n_mode' => 'exclude',
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.nec_division",
+            'config'    => [
                 'type'     => 'select',
                 'items'    => [
                     ['', -1],
@@ -352,37 +299,22 @@ return [
                 'maxitems' => 1
             ]
         ],
-        'discontinued'                => [
+        'badges'       => [
             'exclude'   => 1,
             'l10n_mode' => 'exclude',
-            /*'label' => $locallang . 'tx_ecomproducttools_domain_model_product.discontinued',*/
+            'label'     => "{$locallang}tx_ecomproducttools_domain_model_accessory.badges",
             'config'    => [
                 'type'    => 'check',
                 'items'   => [
-                    [
-                        "{$locallang}tx_ecomproducttools_domain_model_product.discontinued",
-                        1
-                    ]
+                    ["{$locallang}tx_ecomproducttools_domain_model_accessory.badges.1"],
+                    ["{$locallang}tx_ecomproducttools_domain_model_accessory.badges.2"],
+                    ["{$locallang}tx_ecomproducttools_domain_model_accessory.badges.3"],
+                    ["{$locallang}tx_ecomproducttools_domain_model_accessory.badges.4"]
                 ],
                 'default' => 0
             ]
         ],
-        'excluded_in_download_center' => [
-            'exclude'   => 1,
-            'l10n_mode' => 'exclude',
-            /*'label' => $locallang . 'tx_ecomproducttools_domain_model_product.excluded_in_download_center',*/
-            'config'    => [
-                'type'    => 'check',
-                'items'   => [
-                    [
-                        "{$locallang}tx_ecomproducttools_domain_model_product.excluded_in_download_center",
-                        1
-                    ]
-                ],
-                'default' => 0
-            ]
-        ],
-        'hidden'                      => [
+        'hidden'       => [
             'exclude' => 1,
             /*'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',*/
             'config'  => [
@@ -394,10 +326,7 @@ return [
                     ]
                 ]
             ]
-        ],
-
-        'fileReference' => [
-            'config' => ['type' => 'passthrough']
         ]
+
     ]
 ];

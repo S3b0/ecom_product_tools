@@ -22,11 +22,11 @@ $EM_CONF[ 'ecom_product_tools' ] = [
     'uploadfolder'     => 0,
     'createDirs'       => '',
     'clearCacheOnLoad' => 0,
-    'version'          => '7.6.3',
+    'version'          => '7.6.4',
     'constraints'      => [
         'depends'   => [
             'typo3'        => '7.6.0',
-            'php'          => '5.4.0-5.6.99',
+            'php'          => '5.5.0-0.0.0',
             'ecom_toolbox' => '',
             't3ecom'       => ''
         ],

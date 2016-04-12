@@ -50,7 +50,7 @@ global $TYPO3_CONF_VARS;
 $TYPO3_CONF_VARS[ 'FE' ][ 'debug' ] = '0';
 
 /** @var \S3b0\EcomProductTools\Utility\AjaxDispatcher $dispatcher */
-$dispatcher = CoreUtility\GeneralUtility::makeInstance('S3b0\\EcomProductTools\\Utility\\AjaxDispatcher');
+$dispatcher = CoreUtility\GeneralUtility::makeInstance(\S3b0\EcomProductTools\Utility\AjaxDispatcher::class);
 
 // ATTENTION! Dispatcher first needs to be initialized here!!!
 echo $dispatcher
