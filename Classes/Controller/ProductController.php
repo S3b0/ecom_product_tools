@@ -26,6 +26,8 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use S3b0\EcomProductTools\Domain\Model as Model;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -67,7 +69,7 @@ class ProductController extends ExtensionController
     {
         $products = [];
         if (preg_match('/[\d,]/', $this->settings[ 'products' ])) {
-            foreach (\TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $this->settings[ 'products' ], true) as $uid) {
+            foreach (GeneralUtility::intExplode(',', $this->settings[ 'products' ], true) as $uid) {
                 $products[] = $this->productRepository->findByUid($uid);
             }
         }
@@ -87,7 +89,7 @@ class ProductController extends ExtensionController
             $assign = [];
             /** @var integer $uid */
             foreach ($categories as $uid) {
-                /** @var \S3b0\EcomProductTools\Domain\Model\AccessoryCategory $category */
+                /** @var Model\AccessoryCategory $category */
                 if ($category = $this->accessoryCategoryRepository->findByUid($uid)) {
                     $category->setAccessories($this->accessoryRepository->findByCategoryAndList($category, $this->settings['accessories'], true));
                     $assign[] = $category;
@@ -102,16 +104,16 @@ class ProductController extends ExtensionController
      */
     public function listApprovalsAction()
     {
-        /** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
+        /** @var Model\Product $product */
         $product = $this->productRepository->findByUid((int)$this->settings[ 'product' ]);
 
         /**
          * Include flags.css depending on TYPO3 version (moved in 7.1)
          *
-         * @var \TYPO3\CMS\Frontend\Controller\TyposcriptFrontendController $TSFE
+         * @var PageRenderer $pageRenderer
          */
-        $TSFE = $GLOBALS[ 'TSFE' ];
-        $TSFE->getPageRenderer()->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/CSS/m.flags.css');
+        $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
+        $pageRenderer->addCssFile('/typo3conf/ext/ecom_product_tools/Resources/Public/Styles/m.flags.css');
 
         $this->view->assign('product', $product);
         $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findApprovalDocuments($product));

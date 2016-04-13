@@ -29,12 +29,20 @@ namespace S3b0\EcomProductTools\Domain\Model;
 use Ecom\EcomToolbox\Domain\Model\Language;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * A file relation providing detail on files not delivered with FAL
  */
 class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
+
+    /**
+     * @var \DateTime
+     */
+    protected $crdate = null;
 
     /**
      * The fileReference
@@ -173,18 +181,6 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @return string
-     */
-    public function getUrlType()
-    {
-        $typolinkParams = GeneralUtility::unQuoteFilenames($this->externalUrl, true);
-        $url = $typolinkParams[ 0 ];
-        $file = new \SplFileInfo($url);
-
-        return $file->getExtension() ?: 'URL';
-    }
-
-    /**
      * Returns the title
      *
      * @return string $title
@@ -196,13 +192,13 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         } elseif ($this->language instanceof Language && $this->getFileCategory()->_languageUid !== $this->language->getSysLanguage()) { // If current language differs from file language
             /** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
             $db = $GLOBALS[ 'TYPO3_DB' ];
-            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $this->getFileCategory()->getUid() . ' AND sys_language_uid=' . $this->language->getSysLanguage() . BackendUtility::BEenableFields('sys_category'));
+            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', "l10n_parent={$this->getFileCategory()->getUid()} AND sys_language_uid={$this->language->getSysLanguage()}" . BackendUtility::BEenableFields('sys_category'));
             // If no translation exists, fetch default!
             if (!$row) {
-                $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'uid=' . $this->getFileCategory()->getUid() . BackendUtility::BEenableFields('sys_category'));
+                $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', "uid={$this->getFileCategory()->getUid()}" . BackendUtility::BEenableFields('sys_category'));
             }
 
-            return ($row && $row[ 'title' ] ? $row[ 'title' ] : $this->getFileCategory()->getTitle()) . ' ' . $this->getAppendToTitle();
+            return ($row && $row[ 'title' ] ? $row[ 'title' ] : $this->getFileCategory()->getTitle()) . " {$this->getAppendToTitle()}";
         } else {
             return $this->getFileCategory()->getTitle() . $this->getAppendToTitle();
         }
@@ -269,7 +265,7 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getRevision()
     {
-        return $this->revision;
+        return $this->revision ?: '-';
     }
 
     /**
@@ -416,6 +412,113 @@ class File extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getFileCategory()
     {
         return $this->fileCategories->current();
+    }
+
+    /**
+     * FLUID HELPERS (file.{pseudoProperty})
+     * avoiding some if-else loops, making fluid easier to read
+     */
+
+    /**
+     * @return array
+     */
+    public function getInfo()
+    {
+        $lastModifiedDate = null;
+        if ($this->lastModification instanceof \DateTime) {
+            $lastModifiedDate = $this->lastModification;
+        } elseif ($this->fileReference instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference) {
+            $lastModifiedDate = $this->fileReference->getOriginalResource()->getCreationTime();
+        } elseif ($this->crdate instanceof \DateTime) {
+            $lastModifiedDate = $this->crdate;
+        }
+
+        if ($this->fileReference instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference) {
+            return [
+                'link'         => $this->fileReference->getOriginalResource()->getPublicUrl(),
+                'type'         => $this->fileReference->getOriginalResource()->getExtension(),
+                'size'         => $this->formatSize($this->fileReference->getOriginalResource()->getSize()),
+                'lastModified' => $lastModifiedDate
+            ];
+        } elseif (GeneralUtility::isValidUrl($this->externalUrl)) {
+            /** @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer $cObj */
+            $cObj = GeneralUtility::makeInstance(\TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer::class);
+            $typolinkParams = GeneralUtility::unQuoteFilenames($this->externalUrl, true);
+            $url = $typolinkParams[ 0 ];
+            $file = new \SplFileInfo($url);
+
+            return [
+                'link'         => $cObj->getTypoLink_URL($this->externalUrl),
+                'type'         => $file->getExtension() ?: 'URI',
+                'size'         => $file->isReadable() ? $this->formatSize($file->getSize()) : 'n/a',
+                'lastModified' => $lastModifiedDate
+            ];
+        } else {
+            return [
+                'link'         => '#',
+                'type'         => '',
+                'size'         => 'n/a',
+                'lastModified' => $lastModifiedDate
+            ];
+        }
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isUri()
+    {
+        return (bool)preg_match('/^(php\d?|html?|uri)$/i', $this->getInfo()[ 'type' ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getSha1()
+    {
+        return $this->fileReference instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference ? $this->fileReference->getOriginalResource()->getSha1() : '-';
+    }
+
+    /**
+     * @param int $value
+     *
+     * @return mixed
+     * @throws \TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException
+     */
+    protected function formatSize($value = 0)
+    {
+        $units = GeneralUtility::trimExplode('|', LocalizationUtility::translate('file_size_units', 'ecom_toolbox'), true) ?: [
+            'B',
+            'KB',
+            'MB',
+            'GB',
+            'TB',
+            'PB',
+            'EB',
+            'ZB',
+            'YB'
+        ];
+        /** @var ConfigurationManager $configurationManager */
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
+        $settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+
+        if (!is_integer($value) && !is_float($value)) {
+            if (is_numeric($value)) {
+                $value = (float)$value;
+            } else {
+                $value = 0;
+            }
+        }
+        $bytes = max($value, 0);
+        $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+        $pow = min($pow, count($units) - 1);
+        $bytes /= pow(2, (10 * $pow));
+
+        return sprintf(
+            '%s %s',
+            number_format(round($bytes, 8), 2, $settings[ 'decimalSeparator' ], $settings[ 'thousandsSeparator' ]),
+            $units[ $pow ]
+        );
     }
 
 }

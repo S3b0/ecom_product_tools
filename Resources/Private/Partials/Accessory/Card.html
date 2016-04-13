@@ -56,7 +56,7 @@
 			</f:if>
 			<f:if condition="{accessory.files}">
 				<p><f:for each="{accessory.files}" as="file">
-					<a href="{file.fileReference.originalResource.publicUrl}"><i class="fa fa-download fa-fw" title="Download"></i> {file.title}</a><br />
+					<a href="{file.info.link}" target="_blank"><i class="fa fa-download fa-fw" title="Download"></i> {file.title}</a><br />
 				</f:for></p>
 			</f:if>
 			<f:if condition="{accessory.link}">

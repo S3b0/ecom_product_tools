@@ -15,6 +15,8 @@ namespace TYPO3\CMS\Fluid\ViewHelpers\S3b0;
  *                                                                        */
 
 
+use TYPO3\CMS\Backend\Utility\BackendUtility;
+
 class GetLocalizedCategoryTitleViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
 
@@ -31,7 +33,7 @@ class GetLocalizedCategoryTitleViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelp
         if ($language) {
             /** @var \TYPO3\CMS\Core\Database\DatabaseConnection $db */
             $db = $GLOBALS[ 'TYPO3_DB' ];
-            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $category->getUid() . ' AND sys_language_uid=' . $language . \TYPO3\CMS\Backend\Utility\BackendUtility::BEenableFields('sys_category'));
+            $row = $db->exec_SELECTgetSingleRow('title', 'sys_category', 'l10n_parent=' . $category->getUid() . ' AND sys_language_uid=' . $language . BackendUtility::BEenableFields('sys_category'));
 
             return $row[ 'title' ] ?: $category->getTitle();
         } else {

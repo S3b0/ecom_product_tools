@@ -26,6 +26,7 @@ namespace S3b0\EcomProductTools\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
  * Product
@@ -150,7 +151,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getTitle()
     {
-        return $this->title . ($this->isDiscontinued() ? \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('product.discontinued', 'ecom_product_tools') : '');
+        return $this->title . ($this->isDiscontinued() ? LocalizationUtility::translate('product.discontinued', 'ecom_product_tools') : '');
     }
 
     /**

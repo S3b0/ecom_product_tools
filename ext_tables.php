@@ -55,7 +55,7 @@ $TCA[ 'tt_content' ][ 'types' ][ 'list' ][ 'subtypes_addlist' ][ 'ecomproducttoo
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_ecomproducttools_domain_model_productcategory', 'EXT:ecom_product_tools/Resources/Private/Language/locallang_csh_tx_ecomproducttools_domain_model_productcategory.xlf');
 
 // Add Sprite Icons for different record types (visual distinction)
-$resourcePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/';
+$resourcePath = 'EXT:ecom_product_tools/Resources/Public/';
 /** @var \TYPO3\CMS\Core\Imaging\IconRegistry $iconRegistry */
 $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
 $iconRegistry->registerIcon(
@@ -1374,6 +1374,11 @@ $iconRegistry->registerIcon(
     ['source' => "{$resourcePath}Images/Flag/BE/Zimbabwe.png"]
 );
 $iconRegistry->registerIcon(
+    'ecom-certification',
+    \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+    ['source' => "{$resourcePath}Icons/tx_ecomproducttools_domain_model_certification.png"]
+);
+$iconRegistry->registerIcon(
     'ecom-certification-0',
     \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
     ['source' => "{$resourcePath}Icons/tx_ecomproducttools_domain_model_certification_certification.png"]
@@ -1392,6 +1397,11 @@ $iconRegistry->registerIcon(
     'ecom-product-1',
     \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
     ['source' => "{$resourcePath}Icons/tx_ecomproducttools_domain_model_product_discontinued.png"]
+);
+$iconRegistry->registerIcon(
+    'ecom-file',
+    \TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
+    ['source' => "{$resourcePath}Icons/tx_ecomproducttools_domain_model_file.png"]
 );
 $iconRegistry->registerIcon(
     'ecom-file-external-url',

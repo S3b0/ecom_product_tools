@@ -26,8 +26,8 @@ return [
         ],
         'typeicon_column'          => 'discontinued',
         'typeicon_classes'         => [
-            'default' => 'extensions-ept-product',
-            'mask'    => 'extensions-ept-product-###TYPE###'
+            'default' => 'ecom-product-0',
+            'mask'    => 'ecom-product-###TYPE###'
         ],
         'searchFields'             => 'title,teaser,link_title,link_to_page,discontinued,excluded_in_download_center,atex_zone,nec_division,product_categories,certifications,attestations,accessories,',
         'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_product.png'

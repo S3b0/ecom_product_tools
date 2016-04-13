@@ -26,12 +26,11 @@ namespace S3b0\EcomProductTools\Domain\Model;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
  * AccessoryCategory
  */
-class AccessoryCategory extends AbstractEntity
+class AccessoryCategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
@@ -49,6 +48,15 @@ class AccessoryCategory extends AbstractEntity
      * AccessoryCategory constructor.
      */
     public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     */
+    protected function initStorageObjects()
     {
         $this->accessories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }

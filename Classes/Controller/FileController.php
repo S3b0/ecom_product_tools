@@ -26,6 +26,8 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use S3b0\EcomProductTools\Domain\Model\Product;
+use TYPO3\CMS\Extbase\Domain\Model\Category;
 
 /**
  * FileController
@@ -36,11 +38,11 @@ class FileController extends ExtensionController
     /**
      * action listByCategory
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     * @param Category $category
      *
      * @return void
      */
-    public function listByCategoryAction(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function listByCategoryAction(Category $category)
     {
         $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByCategory($category));
     }
@@ -48,11 +50,11 @@ class FileController extends ExtensionController
     /**
      * action listByProduct
      *
-     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     * @param Product $product
      *
      * @return void
      */
-    public function listByProductAction(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    public function listByProductAction(Product $product)
     {
         $this->view->assign('files', $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product));
     }

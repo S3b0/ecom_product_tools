@@ -14,6 +14,24 @@ img.flag-shadow {
 .align-justify {
 	text-align: justify
 }
+.align-top {
+	vertical-align: top;
+}
+.align-mid {
+	vertical-align: middle;
+}
+.align-bot {
+	vertical-align: bottom;
+}
+.align-ttop {
+	vertical-align: text-top;
+}
+.align-tbot {
+vertical-align: text-bottom;
+}
+.align-base {
+	vertical-align: baseline;
+}
 .nowrap {
 	white-space: nowrap
 }

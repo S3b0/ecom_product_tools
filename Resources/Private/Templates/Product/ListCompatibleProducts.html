@@ -3,7 +3,7 @@
 <f:section name="main">
 	<f:if condition="{products -> f:count()}">
 		<div class="app-lib-detail-grids grid-x6">
-			<f:for each="{products}" as="product" iteration="iterator"><f:render partial="Misc/ProductCard" arguments="{product: product, iterator: iterator}" /></f:for>
+			<f:for each="{products}" as="product" iteration="iterator"><f:render partial="Product/Card" arguments="{product: product, iterator: iterator}" /></f:for>
 		</div>
 		<div class="clearfix"></div>
 		<script type="text/javascript" language="JavaScript">$(function(){var i=$(".app-lib-app-qv-card");i.on("mouseover",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).slideUp(100),$(this).children(".app-lib-app-qv-card-overlay").first().stop(!0,!1).slideDown(100)}),i.on("mouseout",function(){$(".app-lib-app-qv-card-overlay").stop(!0,!1).slideUp(100)})});</script>

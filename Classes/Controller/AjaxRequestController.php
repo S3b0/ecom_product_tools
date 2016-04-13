@@ -25,6 +25,14 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use Ecom\EcomToolbox\Utility as ToolboxUtility;
+use S3b0\EcomProductTools\Domain\Model\Product;
+use S3b0\EcomProductTools\Domain\Model\ProductCategory;
+use S3b0\EcomProductTools\Domain\Model\ProductDivision;
+use TYPO3\CMS\Core\Utility as CoreUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\View\JsonView;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * AjaxRequestController
@@ -33,14 +41,14 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
 {
 
     /**
-     * @var \TYPO3\CMS\Extbase\Mvc\View\JsonView $view
+     * @var JsonView $view
      */
     protected $view;
 
     /**
      * @var string
      */
-    protected $defaultViewObjectName = 'TYPO3\\CMS\\Extbase\\Mvc\\View\\JsonView';
+    protected $defaultViewObjectName = JsonView::class;
 
     /**
      * Initializes the controller before invoking an action method.
@@ -67,7 +75,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
      */
     public function initializeGetProductCategoriesByProductDivisionAction()
     {
-        if (!$this->request->getArgument('division') instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('division'))) {
+        if (!$this->request->getArgument('division') instanceof ProductDivision && CoreUtility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('division'))) {
             $this->request->setArgument('division', $this->productDivisionRepository->findByUid($this->request->getArgument('division')));
         }
     }
@@ -75,11 +83,11 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
     /**
      * action getProductCategoriesByProductDivision
      *
-     * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
+     * @param ProductDivision $division
      *
      * @return void
      */
-    public function getProductCategoriesByProductDivisionAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division)
+    public function getProductCategoriesByProductDivisionAction(ProductDivision $division)
     {
         $this->view->assign('value', $this->productCategoryRepository->ignoreStoragePidAndSysLanguageUid()->jsonRequestSetOrderingByAlphabet()->findByProductDivision($division));
     }
@@ -90,7 +98,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
      */
     public function initializeGetProductsByProductCategoryAction()
     {
-        if (!$this->request->getArgument('category') instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('category'))) {
+        if (!$this->request->getArgument('category') instanceof ProductDivision && CoreUtility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('category'))) {
             $this->request->setArgument('category', $this->productCategoryRepository->findByUid($this->request->getArgument('category')));
         }
         if (!is_bool($this->request->getArgument('discontinued'))) {
@@ -101,12 +109,12 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
     /**
      * action getProductsByProductCategory
      *
-     * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
-     * @param boolean                                             $discontinued
+     * @param ProductCategory $category
+     * @param boolean         $discontinued
      *
      * @return void
      */
-    public function getProductsByProductCategoryAction(\S3b0\EcomProductTools\Domain\Model\ProductCategory $category, $discontinued = false)
+    public function getProductsByProductCategoryAction(ProductCategory $category, $discontinued = false)
     {
         $this->view->assign('value', $this->productRepository->ignoreStoragePidAndSysLanguageUid()->findByProductCategory($category, $discontinued, true));
     }
@@ -117,7 +125,7 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
      */
     public function initializeGetProductDataAction()
     {
-        if (!$this->request->getArgument('product') instanceof \S3b0\EcomProductTools\Domain\Model\Product && \TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('product'))) {
+        if (!$this->request->getArgument('product') instanceof Product && CoreUtility\MathUtility::canBeInterpretedAsInteger($this->request->getArgument('product'))) {
             $this->request->setArgument('product', $this->productRepository->findByUid($this->request->getArgument('product')));
         }
     }
@@ -125,18 +133,18 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
     /**
      * action getProductData
      *
-     * @param \S3b0\EcomProductTools\Domain\Model\Product $product
+     * @param Product $product
      *
      * @return void
      */
-    public function getProductDataAction(\S3b0\EcomProductTools\Domain\Model\Product $product)
+    public function getProductDataAction(Product $product)
     {
         $html = $this->getHTML('GetProductData', [
             'product' => $product,
             'files'   => $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product)
         ]);
         $this->view->assign('value', new \ArrayObject([
-            'html' => \Ecom\EcomToolbox\Utility\Div::sanitize_output($html)
+            'html' => ToolboxUtility\Div::sanitize_output($html)
         ]));
     }
 
@@ -148,12 +156,12 @@ class AjaxRequestController extends \S3b0\EcomProductTools\Controller\ExtensionC
      */
     private function getHTML($templateName, array $variables = [])
     {
-        /** @var \TYPO3\CMS\Fluid\View\StandaloneView $view */
-        $view = $this->objectManager->get(\TYPO3\CMS\Fluid\View\StandaloneView::class);
+        /** @var StandaloneView $view */
+        $view = $this->objectManager->get(StandaloneView::class);
 
-        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-        $templateRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPath' ] ?: end($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPaths' ]));
-        $partialRootPath = \TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration[ 'view' ][ 'partialRootPath' ] ?: end($extbaseFrameworkConfiguration[ 'view' ][ 'partialRootPaths' ]));
+        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+        $templateRootPath = CoreUtility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPath' ] ?: end($extbaseFrameworkConfiguration[ 'view' ][ 'templateRootPaths' ]));
+        $partialRootPath = CoreUtility\GeneralUtility::getFileAbsFileName($extbaseFrameworkConfiguration[ 'view' ][ 'partialRootPath' ] ?: end($extbaseFrameworkConfiguration[ 'view' ][ 'partialRootPaths' ]));
         $templatePathAndFilename = $templateRootPath . 'StandAloneViews/' . $templateName . '.html';
         $view->setTemplatePathAndFilename($templatePathAndFilename);
         $view->setPartialRootPaths([$partialRootPath]);

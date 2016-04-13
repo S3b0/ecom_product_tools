@@ -92,8 +92,8 @@
 
 	<div id="product-data">
 		<f:if condition="{product}">
-			<f:render partial="Misc/ListFiles" arguments="{files: files, language: language}" />
-			<f:if condition="{product.teaser}"><f:render partial="Misc/ProductTeaser" arguments="{product: product}" /></f:if>
+			<f:render partial="File/List" arguments="{files: files, language: language}" />
+			<f:if condition="{product.teaser}"><f:render partial="Product\Teaser" arguments="{product: product}" /></f:if>
 		</f:if>
 	</div>
 

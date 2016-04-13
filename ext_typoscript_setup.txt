@@ -1,0 +1,14 @@
+config.tx_extbase {
+	persistence {
+		classes {
+			S3b0\EcomProductTools\Domain\Model\File {
+				mapping {
+					tableName = tx_ecomproducttools_domain_model_file
+					columns {
+						crdate.mapOnProperty = crdate
+					}
+				}
+			}
+		}
+	}
+}

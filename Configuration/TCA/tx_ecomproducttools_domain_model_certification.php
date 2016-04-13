@@ -27,8 +27,8 @@ return [
         ],
         'typeicon_column'            => 'type',
         'typeicon_classes'           => [
-            'default' => 'extensions-ept-certification',
-            'mask'    => 'extensions-ept-certification-###TYPE###'
+            'default' => 'ecom-certification',
+            'mask'    => 'ecom-certification-###TYPE###'
         ],
         'useColumnsForDefaultValues' => 'type,approval',
         'searchFields'               => 'type,title,approval,approval_at_list,',

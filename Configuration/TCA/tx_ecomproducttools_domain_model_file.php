@@ -24,8 +24,8 @@ return [
         ],
         'typeicon_column'  => 'file_reference',
         'typeicon_classes' => [
-            'default' => 'extensions-ept-file',
-            '0'       => 'extensions-ept-file-external-url'
+            'default' => 'ecom-file',
+            '0'       => 'ecom-file-external-url'
         ],
         'searchFields'     => 'file_reference,external_url,title,append_to_title,last_modification,revision,language,products,dlc,',
         'iconfile'         => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_file.png'

@@ -26,7 +26,8 @@ namespace S3b0\EcomProductTools\Controller;
  *
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use S3b0\EcomProductTools\Domain\Model as Model;
+use TYPO3\CMS\Core\Utility as CoreUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
@@ -40,9 +41,9 @@ class DefaultActionController extends ExtensionController
      */
     public function initializeDownloadCenterAction()
     {
-        if (!GeneralUtility::_POST('product') && GeneralUtility::_GET('product') && MathUtility::canBeInterpretedAsInteger(GeneralUtility::_GET('product'))) {
-            /** @var \S3b0\EcomProductTools\Domain\Model\Product $product */
-            $product = $this->productRepository->findByUid(MathUtility::convertToPositiveInteger(GeneralUtility::_GET('product')));
+        if (!CoreUtility\GeneralUtility::_POST('product') && CoreUtility\GeneralUtility::_GET('product') && MathUtility::canBeInterpretedAsInteger(CoreUtility\GeneralUtility::_GET('product'))) {
+            /** @var Model\Product $product */
+            $product = $this->productRepository->findByUid(MathUtility::convertToPositiveInteger(CoreUtility\GeneralUtility::_GET('product')));
             $this->request->setArguments([
                 'division' => $product->getProductCategory()->getProductDivision(),
                 'category' => $product->getProductCategory(),
@@ -50,13 +51,13 @@ class DefaultActionController extends ExtensionController
             ]);
         }
 
-        if (GeneralUtility::_POST('division') && (int)GeneralUtility::_POST('division') === 0) {
+        if (CoreUtility\GeneralUtility::_POST('division') && (int)CoreUtility\GeneralUtility::_POST('division') === 0) {
             $this->request->setArgument('division', null);
         }
-        if (GeneralUtility::_POST('category') && (int)GeneralUtility::_POST('category') === 0) {
+        if (CoreUtility\GeneralUtility::_POST('category') && (int)CoreUtility\GeneralUtility::_POST('category') === 0) {
             $this->request->setArgument('category', null);
         }
-        if (GeneralUtility::_POST('product') && (int)GeneralUtility::_POST('product') === 0) {
+        if (CoreUtility\GeneralUtility::_POST('product') && (int)CoreUtility\GeneralUtility::_POST('product') === 0) {
             $this->request->setArgument('product', null);
         }
     }
@@ -64,26 +65,26 @@ class DefaultActionController extends ExtensionController
     /**
      * action downloadCenter
      *
-     * @param \S3b0\EcomProductTools\Domain\Model\ProductDivision $division
-     * @param \S3b0\EcomProductTools\Domain\Model\ProductCategory $category
-     * @param \S3b0\EcomProductTools\Domain\Model\Product         $product
-     * @param boolean                                             $discontinued
+     * @param Model\ProductDivision $division
+     * @param Model\ProductCategory $category
+     * @param Model\Product         $product
+     * @param boolean               $discontinued
      *
      * @return void
      */
-    public function downloadCenterAction(\S3b0\EcomProductTools\Domain\Model\ProductDivision $division = null, \S3b0\EcomProductTools\Domain\Model\ProductCategory $category = null, \S3b0\EcomProductTools\Domain\Model\Product $product = null, $discontinued = false)
+    public function downloadCenterAction(Model\ProductDivision $division = null, Model\ProductCategory $category = null, Model\Product $product = null, $discontinued = false)
     {
-        $category = $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? ($category->getProductDivisions()->contains($division) ? $category : null) : null;
-        $product = $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? ($product->getProductCategories()->contains($category) ? $product : null) : null;
+        $category = $category instanceof Model\ProductCategory ? ($category->getProductDivisions()->contains($division) ? $category : null) : null;
+        $product = $product instanceof Model\Product ? ($product->getProductCategories()->contains($category) ? $product : null) : null;
 
         $this->view->assignMultiple([
             'discontinued'      => $discontinued,
             'product'           => $product,
             'category'          => $category,
             'division'          => $division,
-            'files'             => $product instanceof \S3b0\EcomProductTools\Domain\Model\Product ? $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product) : null,
-            'products'          => $category instanceof \S3b0\EcomProductTools\Domain\Model\ProductCategory ? $this->productRepository->ignoreStoragePidAndSysLanguageUid()->findByProductCategory($category, $discontinued) : null,
-            'productCategories' => $division instanceof \S3b0\EcomProductTools\Domain\Model\ProductDivision ? $this->productCategoryRepository->ignoreStoragePidAndSysLanguageUid()->findByProductDivision($division) : null,
+            'files'             => $product instanceof Model\Product ? $this->fileRepository->ignoreStoragePidAndSysLanguageUid()->findByProduct($product) : null,
+            'products'          => $category instanceof Model\ProductCategory ? $this->productRepository->ignoreStoragePidAndSysLanguageUid()->findByProductCategory($category, $discontinued) : null,
+            'productCategories' => $division instanceof Model\ProductDivision ? $this->productCategoryRepository->ignoreStoragePidAndSysLanguageUid()->findByProductDivision($division) : null,
             'productDivisions'  => $this->productDivisionRepository->findAll()
         ]);
     }

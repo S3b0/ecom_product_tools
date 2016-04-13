@@ -183,6 +183,6 @@ class Approval extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getIconSource()
     {
-        return $this->icon ? 'EXT:ecom_product_tools/Resources/Public/Images/Approval/' . $this->icon . '.png' : ($this->iconUser ? $this->iconUser->getOriginalResource()->getPublicUrl() : null);
+        return $this->icon ? 'EXT:ecom_product_tools/Resources/Public/Images/Approval/' . $this->icon . '.png' : ($this->iconUser instanceof \TYPO3\CMS\Extbase\Domain\Model\FileReference ? $this->iconUser->getOriginalResource()->getPublicUrl() : null);
     }
 }
