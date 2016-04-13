@@ -54,6 +54,11 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var string
      */
+    protected $shortDescription = '';
+
+    /**
+     * @var string
+     */
     protected $articleNumbers = '';
 
     /**
@@ -150,6 +155,22 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setTeaser($teaser)
     {
         $this->teaser = $teaser;
+    }
+
+    /**
+     * @return string
+     */
+    public function getShortDescription()
+    {
+        return $this->shortDescription;
+    }
+
+    /**
+     * @param string $shortDescription
+     */
+    public function setShortDescription($shortDescription)
+    {
+        $this->shortDescription = $shortDescription;
     }
 
     /**

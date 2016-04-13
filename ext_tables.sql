@@ -214,6 +214,7 @@ CREATE TABLE tx_ecomproducttools_domain_model_accessory (
 	title varchar(255) DEFAULT '' NOT NULL,
 	article_numbers varchar(255) DEFAULT '' NOT NULL,
 	teaser text NOT NULL,
+	short_description varchar(255) DEFAULT '' NOT NULL,
 	images int(11) unsigned DEFAULT '0',
 	videos text NOT NULL,
 	link varchar(255) DEFAULT '' NOT NULL,

@@ -26,12 +26,19 @@ return [
             'starttime' => 'starttime',
             'endtime'   => 'endtime'
         ],
-        'searchFields'             => 'title,teaser,article_numbers,link,link_title,badges,atex_zone,nec_division,accessory_category,',
+        'searchFields'             => 'title,teaser,short_description,article_numbers,link,link_title,badges,atex_zone,nec_division,accessory_category,',
         'iconfile'                 => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('ecom_product_tools') . 'Resources/Public/Icons/tx_ecomproducttools_domain_model_accessory.png'
     ],
-    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, article_numbers, images, videos, link, link_title, badges, accessory_category, files'],
+    'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, short_description, article_numbers, images, videos, link, link_title, badges, accessory_category, files'],
     'types'     => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, accessory_category, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser;;;richtext:rte_transform[mode=ts_links], images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => [
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, accessory_category, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser, short_description, images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
+            'columnsOverrides' => [
+                'teaser' => [
+                    'defaultExtras' => 'richtext:rte_transform'
+                ]
+            ]
+        ]
     ],
     'palettes'  => [
         '1' => [
@@ -133,6 +140,15 @@ return [
                         ]
                     ]
                 ]
+            ]
+        ],
+        'short_description'  => [
+            'exclude' => 1,
+            'label'   => "{$locallang}tx_ecomproducttools_domain_model_accessory.short_description",
+            'config'  => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim,required'
             ]
         ],
         'article_numbers'    => [

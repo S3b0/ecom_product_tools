@@ -33,6 +33,7 @@ namespace S3b0\EcomProductTools\Utility;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 use TYPO3\CMS\Backend\Utility\BackendUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
@@ -94,17 +95,19 @@ class ModifyTCA
      */
     public function labelUserFuncEPTDomainModelFile(array &$PA, $pObj = null)
     {
-        $row = $PA[ 'row' ];
+        $row = BackendUtility::getRecord($PA[ 'table' ], (int)$PA[ 'row' ][ 'uid' ]);
         $title = $row[ 'title' ];
         if ($row[ 'file_reference' ]) {
             $fileReference = BackendUtility::getRecordRaw('sys_file_reference', "tablenames=\"{$PA[ 'table' ]}\" AND fieldname=\"file_reference\" AND uid_foreign={$row[ 'uid' ]}");
             $file = BackendUtility::getRecord('sys_file', $fileReference[ 'uid_local' ]);
             $title = $file[ 'name' ];
+        } elseif ($row[ 'external_url' ]) {
+            $title = reset(GeneralUtility::unQuoteFilenames($row[ 'external_url' ]));
         }
         $PA[ 'title' ] = $title;
         $raw = BackendUtility::getRecord($PA[ 'table' ], $row[ 'uid' ]);
 
-        if (!$row[ 'title' ]) {
+        if (empty($row[ 'title' ])) {
             $mapping = BackendUtility::getRecordRaw('sys_category_record_mm', 'uid_foreign=' . $raw[ 'uid' ] . ' AND tablenames=\'' . $PA[ 'table' ] . '\'');
             $category = BackendUtility::getRecord('sys_category', $mapping[ 'uid_local' ], '*', BackendUtility::BEenableFields('sys_category'));
             $PA[ 'title' ] .= " [{$category[ 'title' ]}]";

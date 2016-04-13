@@ -114,6 +114,9 @@
 			<trans-unit id="tx_ecomproducttools_domain_model_accessory.teaser">
 				<source>Teaser</source>
 			</trans-unit>
+			<trans-unit id="tx_ecomproducttools_domain_model_accessory.short_description">
+				<source>Short description (configurator)</source>
+			</trans-unit>
 			<trans-unit id="tx_ecomproducttools_domain_model_accessory.images">
 				<source>Images</source>
 			</trans-unit>

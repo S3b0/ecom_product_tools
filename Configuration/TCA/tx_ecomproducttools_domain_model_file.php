@@ -9,7 +9,7 @@ return [
     'ctrl'      => [
         'title'            => "{$locallang}tx_ecomproducttools_domain_model_file",
         'label'            => 'file_reference',
-        'label_userFunc'   => 'S3b0\\EcomProductTools\\Utility\\ModifyTCA->labelUserFuncEPTDomainModelFile',
+        'label_userFunc'   => \S3b0\EcomProductTools\Utility\ModifyTCA::class . '->labelUserFuncEPTDomainModelFile',
         'tstamp'           => 'tstamp',
         'crdate'           => 'crdate',
         'cruser_id'        => 'cruser_id',

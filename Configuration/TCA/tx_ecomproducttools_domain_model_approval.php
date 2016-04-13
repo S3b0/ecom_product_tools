@@ -11,7 +11,7 @@ return [
     'ctrl'      => [
         'title'          => "{$locallang}tx_ecomproducttools_domain_model_approval",
         'label'          => 'title',
-        'label_userFunc' => 'S3b0\\EcomProductTools\\Utility\\ModifyTCA->labelUserFuncEPTDomainModelApproval',
+        'label_userFunc' => \S3b0\EcomProductTools\Utility\ModifyTCA::class . '->labelUserFuncEPTDomainModelApproval',
         'tstamp'         => 'tstamp',
         'crdate'         => 'crdate',
         'cruser_id'      => 'cruser_id',
