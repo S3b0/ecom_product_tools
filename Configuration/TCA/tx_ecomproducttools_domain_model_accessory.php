@@ -32,7 +32,7 @@ return [
     'interface' => ['showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, title, teaser, short_description, article_numbers, images, videos, link, link_title, badges, accessory_category, files'],
     'types'     => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, accessory_category, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser, short_description, images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, title;;1, files, --div--;LLL:EXT:ecom_product_tools/Resources/Private/Language/locallang_db.xlf:tx_ecomproducttools_domain_model_accessory.teaser,teaser, short_description, images, videos, link, link_title, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access, starttime, endtime',
             'columnsOverrides' => [
                 'teaser' => [
                     'defaultExtras' => 'richtext:rte_transform'
@@ -42,7 +42,7 @@ return [
     ],
     'palettes'  => [
         '1' => [
-            'showitem'       => 'article_numbers, --linebreak--, atex_zone, nec_division, --linebreak--, badges, hidden',
+            'showitem'       => 'article_numbers, --linebreak--, accessory_category, --linebreak--, atex_zone, nec_division, --linebreak--, badges, hidden',
             'canNotCollapse' => true
         ]
     ],
