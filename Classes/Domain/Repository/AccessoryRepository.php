@@ -65,4 +65,20 @@ class AccessoryRepository extends AbstractRepository
         return [];
     }
 
+    /**
+     * @param integer $uid
+     *
+     * @return array|bool|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findByProduct($uid = 0)
+    {
+        if ($uid) {
+            return $this->createQuery()->matching(
+                $this->createQuery()->contains('products', $uid)
+            )->execute();
+        }
+
+        return false;
+    }
+
 }

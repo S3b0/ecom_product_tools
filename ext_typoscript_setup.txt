@@ -9,6 +9,14 @@ config.tx_extbase {
 					}
 				}
 			}
+			S3b0\EcomProductTools\Domain\Model\Accessory {
+				mapping {
+					tableName = tx_ecomproducttools_domain_model_accessory
+					columns {
+						sorting.mapOnProperty = sorting
+					}
+				}
+			}
 		}
 	}
 }

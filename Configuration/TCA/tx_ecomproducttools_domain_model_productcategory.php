@@ -126,7 +126,7 @@ return [
                 'minitems'            => 1,
                 'maxitems'            => 9999,
                 'multiple'            => 0,
-                'renderMode'          => 'checkbox'
+                'renderType'          => 'selectCheckBox'
             ]
         ],
 

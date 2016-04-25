@@ -41,6 +41,11 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     const BADGE_NON_EX = 8;
 
     /**
+     * @var integer
+     */
+    protected $sorting = 0;
+
+    /**
      * @var string
      * @validate NotEmpty
      */
@@ -126,6 +131,22 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * @return integer
+     */
+    public function getSorting()
+    {
+        return $this->sorting;
+    }
+
+    /**
+     * @param integer $sorting
+     */
+    public function setSorting($sorting)
+    {
+        $this->sorting = $sorting;
+    }
+
+    /**
      * @return string $title
      */
     public function getTitle()
@@ -179,6 +200,14 @@ class Accessory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getArticleNumbers()
     {
         return GeneralUtility::trimExplode(PHP_EOL, $this->articleNumbers, true);
+    }
+
+    /**
+     * @return array
+     */
+    public function getArticleNumbersPlain()
+    {
+        return $this->articleNumbers;
     }
 
     /**

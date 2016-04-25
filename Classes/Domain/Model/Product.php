@@ -121,6 +121,13 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $attestations = null;
 
     /**
+     * accessories
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Accessory>
+     */
+    protected $accessories = null;
+
+    /**
      * __construct
      */
     public function __construct()
@@ -142,6 +149,7 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
         $this->productCategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->certifications = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         $this->attestations = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->accessories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
     }
 
     /**
@@ -506,6 +514,60 @@ class Product extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setAttestations(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $attestations)
     {
         $this->attestations = $attestations;
+    }
+
+    /**
+     * Adds an Accessory
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Accessory $accessory
+     *
+     * @return void
+     */
+    public function addAccessory(\S3b0\EcomProductTools\Domain\Model\Accessory $accessory)
+    {
+        $this->accessories->attach($accessory);
+    }
+
+    /**
+     * Removes an Accessory
+     *
+     * @param \S3b0\EcomProductTools\Domain\Model\Accessory $accessoryToRemove The Accessory to be removed
+     *
+     * @return void
+     */
+    public function removeAccessory(\S3b0\EcomProductTools\Domain\Model\Accessory $accessoryToRemove)
+    {
+        $this->accessories->detach($accessoryToRemove);
+    }
+
+    /**
+     * Returns the accessories
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Accessory> $accessories
+     */
+    public function getAccessories()
+    {
+        return $this->accessories;
+    }
+
+    /**
+     * Sets the accessories
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\S3b0\EcomProductTools\Domain\Model\Accessory> $accessories
+     *
+     * @return void
+     */
+    public function setAccessories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $accessories)
+    {
+        $this->accessories = $accessories;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function hasAccessories()
+    {
+        return boolval($this->accessories->count());
     }
 
     /**

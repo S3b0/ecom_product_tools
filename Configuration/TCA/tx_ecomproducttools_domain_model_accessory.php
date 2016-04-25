@@ -15,6 +15,7 @@ return [
         'crdate'                   => 'crdate',
         'cruser_id'                => 'cruser_id',
         'dividers2tabs'            => true,
+        'sortby'                   => 'sorting',
         'default_sortby'           => 'ORDER BY title',
         'requestUpdate'            => 'discontinued',
         'languageField'            => 'sys_language_uid',
